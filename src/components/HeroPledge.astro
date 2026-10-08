@@ -1,0 +1,41 @@
+---
+// About hero: a promise card that ticks off how we behave, one habit at a time.
+const rows = [
+  { t: 'Expert', s: 'We know the work we staff' }, { t: 'Reliable', s: 'On time, as promised' },
+  { t: 'Connected', s: 'Clients and consultants, matched' }, { t: 'Direct', s: 'Plain language, no jargon' },
+];
+---
+<div class="pledge-art" aria-hidden="true">
+  <div class="ghost g2"></div><div class="ghost g1"></div>
+  <div class="card">
+    <div class="head"><span class="label"><i></i>How we work</span><em>4 / 4</em></div>
+    {rows.map((r, i) => (
+      <div class="row" style={`--k:${i}`}>
+        <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="10" class="ring" /><circle cx="12" cy="12" r="10" class="fill" pathLength="1" /><path d="M7.5 12.5l3 3 6-7" pathLength="1" class="tick" /></svg>
+        <div><b>{r.t}</b><span>{r.s}</span></div>
+      </div>
+    ))}
+  </div>
+  <span class="tag">Same promise, every placement</span>
+</div>
+<style>
+  .pledge-art { position: absolute; inset: 0; }
+  .ghost { position: absolute; border-radius: 3.4cqw; border: 1px solid rgba(255,255,255,.14); background: rgba(19,41,77,.45); }
+  .g1 { left: 9cqw; top: 15cqw; width: 78cqw; height: 72cqw; transform: rotate(-3deg); }
+  .g2 { left: 12cqw; top: 12cqw; width: 78cqw; height: 72cqw; transform: rotate(3.5deg); opacity: .6; }
+  .card { position: absolute; left: 11cqw; top: 11cqw; width: 78cqw; padding: 4cqw 4.4cqw 3cqw; border-radius: 3.4cqw; background: rgba(19,41,77,.92); border: 1px solid rgba(255,255,255,.26); animation: floaty 7s ease-in-out infinite; }
+  .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2cqw; }
+  .head .label { display: flex; align-items: center; gap: 1.4cqw; font-size: max(9px, 2.3cqw); color: #9FB0CB; } .head .label i { width: 1.6cqw; height: 1.6cqw; border-radius: 50%; background: var(--orange); }
+  .head em { font-style: normal; font-family: var(--font-mono); font-size: max(9px, 2.3cqw); color: var(--orange); }
+  .row { display: flex; align-items: center; gap: 3cqw; padding: 2.6cqw 0; border-top: 1px solid rgba(255,255,255,.1); }
+  .row svg { flex: none; width: 8cqw; height: 8cqw; }
+  .row circle { fill: none; stroke-width: 1.6; } .ring { stroke: rgba(255,255,255,.25); }
+  .fill { stroke: var(--orange); stroke-dasharray: 1; stroke-dashoffset: 1; transform: rotate(-90deg); transform-origin: 50% 50%; animation: fillring 8s ease-in-out infinite; animation-delay: calc(var(--k) * 1.3s); }
+  .tick { fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: tick 8s ease-in-out infinite; animation-delay: calc(var(--k) * 1.3s); }
+  .row b { display: block; font-family: var(--font-display); font-size: max(13px, 4.1cqw); color: #fff; line-height: 1.2; }
+  .row span { display: block; font-size: max(9px, 2.5cqw); color: var(--on-navy); margin-top: .5cqw; }
+  .tag { position: absolute; left: 50%; bottom: 3cqw; transform: translateX(-50%); font-size: max(10px, 2.6cqw); font-weight: 600; color: var(--navy); background: var(--orange); padding: 1.3cqw 3cqw; border-radius: 99px; white-space: nowrap; animation: floaty 5s ease-in-out infinite 1s; }
+  @keyframes fillring { 0% { stroke-dashoffset: 1; } 10%, 82% { stroke-dashoffset: 0; } 92%, 100% { stroke-dashoffset: 1; } }
+  @keyframes tick { 0%, 7% { stroke-dashoffset: 1; } 14%, 82% { stroke-dashoffset: 0; } 92%, 100% { stroke-dashoffset: 1; } }
+  @media (prefers-reduced-motion: reduce) { .card, .tag, .fill, .tick { animation: none !important; } .fill, .tick { stroke-dashoffset: 0; } }
+</style>

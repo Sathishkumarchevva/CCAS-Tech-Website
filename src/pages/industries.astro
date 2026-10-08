@@ -4,54 +4,197 @@ import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
 import IndustryImage from '../components/IndustryImage.astro';
+import HeroRadar from '../components/HeroRadar.astro';
 import { industries } from '../data/site';
+
+const cols = [
+  { key: 'Full-Stack Developer', short: 'Full-Stack' }, { key: 'DevOps Engineer', short: 'DevOps' }, { key: 'Data Science', short: 'Data Science' },
+  { key: 'Web Developer', short: 'Web' }, { key: 'Mobile App Development', short: 'Mobile' }, { key: 'Cybersecurity Engineer', short: 'Cyber Eng.' },
+  { key: 'Database Administrator', short: 'DBA' }, { key: 'Network Architect', short: 'Network' }, { key: 'Business Intelligence', short: 'BI' },
+  { key: 'Information Security Analyst', short: 'InfoSec' },
+];
+const approach = [
+  { icon: 'ShieldCheck', title: 'Compliance-aware', blurb: 'We ask candidates about the controls your sector expects (audit trails, access reviews, data handling) before anyone reaches your shortlist.' },
+  { icon: 'Lock', title: 'Security built in', blurb: 'Consultants who treat security as part of the build, not a review at the end.' },
+  { icon: 'Layers', title: 'Sector and stack', blurb: 'Experience on your technology and in your industry. Not one or the other.' },
+];
 ---
 <Base title="Industries" description="IT consultants who already know your sector: technology, e-commerce, banking, finance, insurance and marketing.">
-  <PageHero eyebrow="Industries" title="Consultants who speak your industry's language." lede="Sector experience cuts ramp-up time. We match on the stack and on the compliance, security and delivery habits your industry expects." chips={['Banking', 'Insurance', 'E-commerce', 'Finance']} flip />
+  <PageHero eyebrow="Industries" title="Consultants who speak your industry's language." lede="Sector experience cuts ramp-up time. We match on the stack and on the compliance, security and delivery habits your industry expects.">
+    <a class="btn btn--primary" href="#sectors">Pick your sector <Icon name="ArrowRight" size={20} /></a>
+    <HeroRadar slot="art" />
+  </PageHero>
 
-  <nav class="subnav" aria-label="Industries">
-    <div class="wrap"><ul role="list">{industries.map((i) => <li><a href={`#${i.slug}`}>{i.title}</a></li>)}</ul></div>
-  </nav>
+  <!-- SECTOR PICKER -->
+  <section class="section" id="sectors">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Our sectors</span><h2 data-split>Start with where you work.</h2></div>
+        <p class="lede reveal">Choose your industry to see the roles we place most and how we approach it.</p>
+      </div>
 
-  <section class="section">
-    <div class="wrap list">
-      {industries.map((ind, i) => (
-        <article class:list={['ind', { flip: i % 2 === 1 }]} id={ind.slug}>
-          <div class="img reveal" data-r={i % 2 ? 'right' : 'left'}>
-            <div class="img-in" data-parallax="0.07" data-zoom="1.14"><IndustryImage name={ind.image} alt="" sizes="(min-width: 900px) 640px, 100vw" width={1200} /></div>
-            <span class="big-n" aria-hidden="true">0{i + 1}</span>
-          </div>
-          <div class="txt">
-            <span class="label eyebrow reveal">Industry 0{i + 1}</span>
-            <h2 data-split>{ind.title}</h2>
-            <p class="lede reveal" style="--d:.15s">{ind.detail}</p>
-            <p class="label reveal" style="margin-top:28px;--d:.2s">Roles we place most</p>
-            <ul class="tags reveal" style="margin-top:12px;--d:.25s">{ind.roles.map((r) => <li>{r}</li>)}</ul>
-            <p class="reveal" style="margin-top:32px;--d:.3s"><a class="arrow-link" href="/contact/">Talk to a {ind.title.toLowerCase()} specialist <Icon name="ArrowRight" size={18} /></a></p>
-          </div>
-        </article>
-      ))}
+      <div class="picker reveal" data-picker>
+        {industries.map((ind) => <span class="anchor" id={ind.slug}></span>)}
+        <div class="tabs" role="tablist" aria-label="Industries" aria-orientation="vertical">
+          {industries.map((ind, i) => (
+            <button type="button" role="tab" class="tab" id={`tab-${ind.slug}`} aria-controls={`panel-${ind.slug}`} aria-selected={i === 0} tabindex={i === 0 ? 0 : -1} data-slug={ind.slug}>
+              <span class="n">0{i + 1}</span>
+              <span class="t">{ind.title}</span>
+              <span class="b">{ind.blurb}</span>
+              <Icon name="ArrowRight" size={22} class="go" />
+            </button>
+          ))}
+        </div>
+
+        <div class="panels">
+          {industries.map((ind, i) => (
+            <article class="panel" role="tabpanel" id={`panel-${ind.slug}`} aria-labelledby={`tab-${ind.slug}`} hidden={i !== 0} tabindex="0">
+              <div class="shot"><IndustryImage name={ind.image} alt="" sizes="(min-width: 960px) 700px, 100vw" width={1200} loading={i === 0 ? 'eager' : 'lazy'} /><span class="chip">{ind.title}</span></div>
+              <div class="body">
+                <h3>{ind.title}</h3>
+                <p class="lede">{ind.detail}</p>
+                <p class="label" style="margin-top:24px">Roles we place most</p>
+                <ul class="tags" style="margin-top:12px">{ind.roles.map((r) => <li>{r}</li>)}</ul>
+                <p style="margin-top:28px"><a class="btn btn--secondary btn--sm" href="/contact/">Talk to a {ind.title.toLowerCase()} specialist <Icon name="ArrowRight" size={18} /></a></p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- MATRIX -->
+  <section class="section section--mist">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">At a glance</span><h2 data-split>Roles we place most, by industry.</h2></div>
+        <p class="lede reveal">A dot means it is one of the roles we place most often in that sector. We staff every role in every sector on request.</p>
+      </div>
+      <div class="matrix-wrap reveal" data-r="up-lg">
+        <table class="matrix">
+          <thead>
+            <tr><th scope="col"><span class="sr-only">Industry</span></th>{cols.map((c) => <th scope="col"><span>{c.short}</span></th>)}</tr>
+          </thead>
+          <tbody>
+            {industries.map((ind) => (
+              <tr>
+                <th scope="row"><a href={`#${ind.slug}`} data-jump={ind.slug}>{ind.title}</a></th>
+                {cols.map((c) => (
+                  <td>{ind.roles.includes(c.key) ? <span class="dot"><span class="sr-only">Yes: {c.key}</span></span> : <span class="sr-only">No</span>}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="section section--navy dark">
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">How we approach it</span><h2 data-split>Regulated or not, the standard is the same.</h2></div>
+        <p class="lede reveal">Every sector has its own rules. We find out what yours are before we send anyone.</p>
+      </div>
+      <div class="grid grid--3">
+        {approach.map((a, i) => (
+          <article class="card card--dark spot reveal" data-r="up-lg" style={`--d:${i * 0.1}s`}>
+            <span class="icon-tile"><Icon name={a.icon} /></span>
+            <h3>{a.title}</h3>
+            <p>{a.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <CtaBand title="Don't see your industry?" text="We staff across sectors. Tell us about your team and we'll tell you honestly whether we're the right fit." />
 </Base>
 
-<style>
-  .subnav { position: sticky; top: var(--header-h); z-index: 20; background: rgba(255,255,255,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-  .subnav ul { display: flex; gap: 8px; padding: 12px 0; overflow-x: auto; scrollbar-width: none; }
-  .subnav a { display: block; padding: 8px 16px; border-radius: 999px; font-weight: 600; font-size: 15px; color: var(--navy); text-decoration: none; white-space: nowrap; transition: background-color .2s, color .2s; }
-  .subnav a:hover { background: var(--navy); color: #fff; }
-  .list { display: grid; gap: clamp(72px, 10vw, 140px); }
-  .ind { display: grid; gap: 40px; align-items: center; scroll-margin-top: calc(var(--header-h) + 80px); }
-  .img { position: relative; border-radius: var(--radius-card); overflow: hidden; aspect-ratio: 4 / 3; background: var(--navy); }
-  .img-in { position: absolute; inset: 0; }
-  .img-in :global(img) { width: 100%; height: 100%; object-fit: cover; }
-  .img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(11,31,58,.7)); pointer-events: none; }
-  .big-n { position: absolute; z-index: 1; left: 24px; bottom: 8px; font-family: var(--font-display); font-weight: 700; font-size: clamp(72px, 9vw, 128px); line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.85); pointer-events: none; }
-  .txt h2 { margin: 16px 0 20px; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.08; letter-spacing: -.02em; }
-  @media (min-width: 900px) {
-    .ind { grid-template-columns: 1.1fr 1fr; gap: 88px; }
-    .ind.flip { grid-template-columns: 1fr 1.1fr; }
-    .ind.flip .img { order: 2; }
+<script>
+  const root = document.querySelector<HTMLElement>('[data-picker]');
+  if (root) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role=tab]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[role=tabpanel]')];
+    const select = (slug: string, focus = false) => {
+      tabs.forEach((t) => { const on = t.dataset.slug === slug; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; if (on && focus) t.focus(); });
+      panels.forEach((p) => { p.hidden = p.id !== `panel-${slug}`; });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => { select(t.dataset.slug!); history.replaceState(null, '', `#${t.dataset.slug}`); });
+      t.addEventListener('keydown', (e) => {
+        const k = e.key; let n = -1;
+        if (k === 'ArrowDown' || k === 'ArrowRight') n = (i + 1) % tabs.length;
+        else if (k === 'ArrowUp' || k === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+        else if (k === 'Home') n = 0; else if (k === 'End') n = tabs.length - 1;
+        if (n >= 0) { e.preventDefault(); select(tabs[n].dataset.slug!, true); }
+      });
+    });
+    // deep links (/industries/#banking, footer, home tiles, matrix rows)
+    const fromHash = () => {
+      const slug = location.hash.slice(1);
+      if (slug && tabs.some((t) => t.dataset.slug === slug)) { select(slug); root.scrollIntoView({ block: 'start' }); }
+    };
+    fromHash();
+    addEventListener('hashchange', fromHash);
+    document.querySelectorAll<HTMLAnchorElement>('[data-jump]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); select(a.dataset.jump!); history.replaceState(null, '', `#${a.dataset.jump}`); root.scrollIntoView({ behavior: 'smooth', block: 'center' }); }));
   }
+</script>
+
+<style>
+  .anchor { position: absolute; top: 0; scroll-margin-top: calc(var(--header-h) + 24px); }
+  .picker { position: relative; display: grid; gap: 28px; align-items: start; }
+  @media (min-width: 960px) { .picker { grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.4fr); gap: 40px; } }
+
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  @media (min-width: 960px) { .tabs { flex-direction: column; overflow: visible; padding: 0; gap: 4px; position: sticky; top: calc(var(--header-h) + 24px); } }
+
+  .tab { position: relative; flex: none; display: grid; grid-template-columns: auto 1fr auto; align-items: center; column-gap: 14px; text-align: left; padding: 12px 18px; border-radius: 14px; border: 1px solid var(--border); background: #fff; color: var(--navy); cursor: pointer; transition: background-color .25s, border-color .25s, transform .25s; }
+  .tab .n { font-family: var(--font-mono); font-size: 12px; color: var(--steel); }
+  .tab .t { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.2; white-space: nowrap; }
+  .tab .b { display: none; grid-column: 2 / 3; font-size: 14px; line-height: 20px; color: var(--steel); margin-top: 4px; }
+  .tab :global(.go) { display: none; transition: transform .25s; }
+  .tab:hover { border-color: var(--navy); }
+  .tab[aria-selected="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .tab[aria-selected="true"] .n { color: var(--orange); }
+  @media (min-width: 960px) {
+    .tab { padding: 20px 22px; border-radius: 18px; }
+    .tab .t { font-size: 26px; white-space: normal; }
+    .tab .b { display: block; }
+    .tab :global(.go) { display: block; grid-row: 1 / 3; grid-column: 3; opacity: .35; }
+    .tab[aria-selected="true"] { transform: translateX(8px); }
+    .tab[aria-selected="true"] .b { color: var(--on-navy); }
+    .tab[aria-selected="true"] :global(.go) { opacity: 1; color: var(--orange); transform: translateX(4px); }
+    .tab[aria-selected="true"]::before { content: ""; position: absolute; left: -8px; top: 22%; bottom: 22%; width: 4px; border-radius: 4px; background: var(--orange); }
+  }
+
+  .panel { border: 1px solid var(--border); border-radius: 24px; overflow: hidden; background: #fff; animation: panelIn .6s cubic-bezier(.2,.8,.2,1) both; }
+  .panel[hidden] { display: none; }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(18px); } }
+  .shot { position: relative; aspect-ratio: 16 / 9; background: var(--navy); overflow: hidden; }
+  .shot :global(img) { width: 100%; height: 100%; object-fit: cover; animation: kenburns 1.6s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes kenburns { from { transform: scale(1.12); } }
+  .shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(11,31,58,.55)); pointer-events: none; }
+  .chip { position: absolute; z-index: 1; left: 20px; bottom: 18px; padding: 8px 16px; border-radius: 99px; background: var(--orange); color: var(--navy); font-weight: 600; font-size: 14px; }
+  .body { padding: clamp(24px, 3.4vw, 44px); }
+  .body h3 { font-size: clamp(30px, 3.4vw, 44px); font-weight: 700; letter-spacing: -.02em; margin-bottom: 16px; }
+
+  .matrix-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-card); background: #fff; }
+  .matrix { width: 100%; border-collapse: collapse; min-width: 760px; }
+  .matrix thead th { height: 112px; vertical-align: bottom; padding: 0 0 14px; font-weight: 500; font-size: 13px; color: var(--steel); }
+  .matrix thead th span { display: inline-block; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+  .matrix tbody th { text-align: left; padding: 0 20px; position: sticky; left: 0; background: #fff; z-index: 1; font-family: var(--font-display); font-size: 18px; }
+  .matrix tbody th a { display: block; padding: 18px 0; color: var(--navy); text-decoration: none; }
+  .matrix tbody th a:hover { color: var(--orange-text); }
+  .matrix tbody tr { border-top: 1px solid var(--border); transition: background-color .2s; }
+  .matrix tbody tr:hover, .matrix tbody tr:hover th { background: var(--mist); }
+  .matrix td { text-align: center; height: 62px; }
+  .dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 5px rgba(255,122,26,.16); transition: transform .25s; }
+  tr:hover .dot { transform: scale(1.25); }
+
+  .section--navy { overflow: hidden; isolation: isolate; }
 </style>

@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Steps from '../components/Steps.astro';
 import Icon from '../components/Icon.astro';
+import HeroMatch from '../components/HeroMatch.astro';
 const perks = [
   { icon: 'Target', title: 'Roles that fit your skills', blurb: 'We match on what you are best at, not on keywords in a résumé.' },
   { icon: 'FileText', title: 'Clear contracts', blurb: 'Rate, term and scope in writing before you start. No surprises.' },
@@ -17,7 +18,8 @@ const path = [
 ];
 ---
 <Base title="Consultants — join our network" description="Join the CCAS Tech consultant network. Clear contracts, roles matched to your skills, and a recruiter who stays close.">
-  <PageHero eyebrow="Consultants" title="Join our network." lede="If you build, secure or run technology for a living, we'd like to know you. Tell us what you do best and we'll bring roles that fit." chips={['Clear contracts', 'Roles that fit', 'A recruiter who stays close']}>
+  <PageHero eyebrow="Consultants" title="Join our network." lede="If you build, secure or run technology for a living, we'd like to know you. Tell us what you do best and we'll bring roles that fit.">
+    <HeroMatch slot="art" />
     <a class="btn btn--primary" href="#apply">Apply now <Icon name="ArrowRight" size={20} /></a>
   </PageHero>
 

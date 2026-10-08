@@ -3,10 +3,11 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
+import HeroPledge from '../components/HeroPledge.astro';
 import { values, stats } from '../data/site';
 ---
 <Base title="About" description="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants.">
-  <PageHero eyebrow="About CCAS Tech" title="The right expert, connected to the right team." lede="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants." chips={['Expert', 'Reliable', 'Connected', 'Direct']} />
+  <PageHero eyebrow="About CCAS Tech" title="The right expert, connected to the right team." lede="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants."><HeroPledge slot="art" /></PageHero>
 
   <section class="section statement">
     <div class="wrap">

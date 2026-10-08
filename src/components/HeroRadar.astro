@@ -1,0 +1,41 @@
+---
+// Industries hero: a sector radar. The sweep "finds" each industry as it passes over it.
+const T = 8; // seconds per sweep
+const items = [
+  { n: 'Technology', a: 55, r: 34 }, { n: 'E-commerce', a: 100, r: 38 }, { n: 'Banking', a: 150, r: 22 },
+  { n: 'Finance', a: 215, r: 35 }, { n: 'Insurance', a: 262, r: 26 }, { n: 'Marketing', a: 305, r: 37 },
+].map((b) => {
+  const rad = (b.a * Math.PI) / 180;
+  return { ...b, x: 50 + Math.sin(rad) * b.r, y: 50 - Math.cos(rad) * b.r, left: Math.sin(rad) > 0, delay: (((b.a - 80 + 360) % 360) / 360) * T };
+});
+---
+<div class="radar-art" aria-hidden="true">
+  <div class="radar">
+    <i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i>
+    <i class="axis v"></i><i class="axis h"></i>
+    <div class="sweep"></div>
+    <span class="core"></span>
+    {items.map((b) => (
+      <div class:list={['blip', { inward: b.left }]} style={`left:${b.x.toFixed(2)}%;top:${b.y.toFixed(2)}%;--d:${b.delay.toFixed(2)}s`}>
+        <i></i><span>{b.n}</span>
+      </div>
+    ))}
+  </div>
+</div>
+<style>
+  .radar-art { position: absolute; inset: 0; }
+  .radar { position: absolute; inset: 4cqw; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); background: radial-gradient(circle, rgba(255,122,26,.07), rgba(11,31,58,0) 72%); }
+  .ring { position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.14); }
+  .r1 { inset: 17%; } .r2 { inset: 33%; } .r3 { inset: 49%; }
+  .axis { position: absolute; background: rgba(255,255,255,.1); } .axis.v { left: 50%; top: 0; bottom: 0; width: 1px; } .axis.h { top: 50%; left: 0; right: 0; height: 1px; }
+  .sweep { position: absolute; inset: 0; border-radius: 50%; animation: spin 8s linear infinite;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(255,122,26,.0) 8deg, rgba(255,122,26,.34) 76deg, rgba(255,190,140,.95) 80deg, transparent 80.6deg); }
+  .core { position: absolute; left: 50%; top: 50%; width: 3cqw; height: 3cqw; margin: -1.5cqw 0 0 -1.5cqw; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 1.2cqw rgba(255,122,26,.25); }
+  .blip { position: absolute; display: flex; align-items: center; gap: 1.4cqw; transform: translate(-1.2cqw, -50%); }
+  .blip.inward { flex-direction: row-reverse; transform: translate(calc(-100% + 1.2cqw), -50%); }
+  .blip i { flex: none; width: 2.4cqw; height: 2.4cqw; border-radius: 50%; background: #fff; animation: blip 8s linear infinite; animation-delay: var(--d); }
+  .blip span { font-size: max(10px, 2.7cqw); font-weight: 600; color: #fff; padding: .7cqw 1.8cqw; border-radius: 99px; background: rgba(19,41,77,.82); border: 1px solid var(--on-navy-line); white-space: nowrap; animation: lab 8s linear infinite; animation-delay: var(--d); }
+  @keyframes blip { 0% { transform: scale(2.4); background: var(--orange); box-shadow: 0 0 0 2cqw rgba(255,122,26,.35); opacity: 1; } 14% { transform: scale(1); background: var(--orange); box-shadow: 0 0 0 0 rgba(255,122,26,0); } 100% { transform: scale(1); background: #fff; opacity: .55; } }
+  @keyframes lab { 0% { border-color: var(--orange); opacity: 1; } 100% { opacity: .62; } }
+  @media (prefers-reduced-motion: reduce) { .sweep, .blip i, .blip span { animation: none !important; } .blip i { background: var(--orange); } }
+</style>

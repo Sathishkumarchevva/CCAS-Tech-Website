@@ -3,10 +3,11 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Icon from '../components/Icon.astro';
+import HeroChat from '../components/HeroChat.astro';
 import { site } from '../data/site';
 ---
 <Base title="Contact" description="Talk to a CCAS Tech specialist. Tell us the role, the stack and the timeline and we'll reply the same business day.">
-  <PageHero eyebrow="Contact" title="Talk to a specialist today." lede="Tell us the role, the stack and the timeline. We'll reply within one business day." chips={['Reply in 1 business day', 'Specialists, not form-bots']} flip />
+  <PageHero eyebrow="Contact" title="Talk to a specialist today." lede="Tell us the role, the stack and the timeline. We'll reply within one business day."><HeroChat slot="art" /></PageHero>
   <section class="section">
     <div class="wrap two">
       <div class="info">

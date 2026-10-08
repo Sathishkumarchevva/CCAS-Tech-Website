@@ -4,10 +4,12 @@ import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
 import TechMarquee from '../components/TechMarquee.astro';
+import HeroStack from '../components/HeroStack.astro';
 import { roles, management, engagement, groups } from '../data/site';
 ---
 <Base title="Services" description="IT consulting and staffing: cloud, data, cybersecurity, software and network specialists, plus management leaders — on contract, contract-to-hire or direct hire.">
-  <PageHero eyebrow="Services" title="Technology talent, ready to ship." lede="Twelve technical specialisms and four management disciplines. Every consultant vetted for depth, every contract clear." chips={['Kubernetes', 'Python', 'Zero trust', 'React']}>
+  <PageHero eyebrow="Services" title="Technology talent, ready to ship." lede="Twelve technical specialisms and four management disciplines. Every consultant vetted for depth, every contract clear."> 
+    <HeroStack slot="art" />
     <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
     <a class="btn btn--outline" href="#roles">Browse roles</a>
   </PageHero>

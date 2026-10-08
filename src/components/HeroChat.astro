@@ -1,0 +1,42 @@
+---
+// Contact hero: a short chat — you ask, a specialist answers the same day. CSS loop.
+---
+<div class="chat-art" aria-hidden="true">
+  <div class="win">
+    <div class="bar"><span class="av">C</span><div><b>CCAS Tech specialist</b><em><u></u>Online</em></div></div>
+    <div class="msgs">
+      <p class="m me m1">We need a senior DevOps engineer for 3 months. Kubernetes and Terraform.</p>
+      <div class="slot">
+        <p class="m them typing"><i></i><i></i><i></i></p>
+        <p class="m them m2">Got it. A shortlist of vetted consultants is coming today.</p>
+      </div>
+    </div>
+    <div class="input"><span>Write a message…</span><b></b></div>
+  </div>
+  <span class="note">Reply within one business day</span>
+</div>
+<style>
+  .chat-art { position: absolute; inset: 0; }
+  .win { position: absolute; left: 5cqw; top: 9cqw; width: 90cqw; height: 80cqw; display: grid; grid-template-rows: auto 1fr auto; border-radius: 3.4cqw; background: rgba(19,41,77,.92); border: 1px solid rgba(255,255,255,.26); overflow: hidden; animation: floaty 7s ease-in-out infinite; }
+  .bar { display: flex; align-items: center; gap: 2.4cqw; padding: 3cqw 4cqw; border-bottom: 1px solid rgba(255,255,255,.12); color: #fff; }
+  .bar b { display: block; font-size: max(11px, 3.1cqw); font-family: var(--font-display); }
+  .bar em { display: flex; align-items: center; gap: 1cqw; font-style: normal; font-size: max(9px, 2.4cqw); color: var(--on-navy); }
+  .bar u { width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: #7EE2A8; }
+  .av { width: 7.5cqw; height: 7.5cqw; border-radius: 50%; background: var(--orange); color: var(--navy); display: grid; place-items: center; font-weight: 700; font-size: 3.4cqw; font-family: var(--font-display); }
+  .msgs { display: grid; align-content: start; gap: 3cqw; padding: 4cqw; }
+  .m { margin: 0; max-width: 76%; padding: 2.6cqw 3.4cqw; border-radius: 3cqw; font-size: max(10px, 2.9cqw); line-height: 1.4; }
+  .me { justify-self: end; background: var(--orange); color: var(--navy); border-bottom-right-radius: .8cqw; font-weight: 500; }
+  .them { justify-self: start; background: var(--slate); color: #fff; border-bottom-left-radius: .8cqw; }
+  .slot { display: grid; } .slot > * { grid-area: 1 / 1; }
+  .typing { display: flex; gap: 1.2cqw; align-items: center; align-self: start; height: fit-content; padding: 3cqw 3.6cqw; }
+  .typing i { width: 1.6cqw; height: 1.6cqw; border-radius: 50%; background: #C5CEDD; animation: dot 1s ease-in-out infinite; } .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  .input { display: flex; align-items: center; justify-content: space-between; margin: 0 3cqw 3cqw; padding: 1.8cqw 2cqw 1.8cqw 3.4cqw; border-radius: 99px; background: rgba(255,255,255,.08); font-size: max(9px, 2.6cqw); color: #9FB0CB; }
+  .input b { width: 5.4cqw; height: 5.4cqw; border-radius: 50%; background: var(--orange); }
+  .m1 { animation: m1 12s ease-in-out infinite; } .typing { animation: typ 12s ease-in-out infinite; } .m2 { animation: m2 12s ease-in-out infinite; }
+  .note { position: absolute; right: 1cqw; bottom: 2cqw; font-size: max(10px, 2.6cqw); font-weight: 600; color: #fff; padding: 1.3cqw 3cqw; border-radius: 99px; background: rgba(19,41,77,.9); border: 1px solid var(--orange); animation: floaty 5s ease-in-out infinite 1s; }
+  @keyframes m1 { 0%, 4% { opacity: 0; transform: translateY(3cqw) scale(.96); } 9%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+  @keyframes typ { 0%, 20% { opacity: 0; } 24%, 36% { opacity: 1; } 40%, 100% { opacity: 0; } }
+  @keyframes m2 { 0%, 38% { opacity: 0; transform: translateY(3cqw) scale(.96); } 44%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; } }
+  @keyframes dot { 50% { transform: translateY(-1.1cqw); background: #fff; } }
+  @media (prefers-reduced-motion: reduce) { .win, .note, .m1, .typing i, .m2 { animation: none !important; } .typing { display: none; } .m1, .m2 { opacity: 1; } }
+</style>

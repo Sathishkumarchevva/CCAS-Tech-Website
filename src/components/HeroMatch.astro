@@ -1,0 +1,50 @@
+---
+// Consultants hero: a consultant profile gets matched, in turn, to roles. Pure CSS loop.
+const roles = [
+  { t: 'Senior DevOps Engineer', m: 'Contract', y: 13 },
+  { t: 'Cloud Security Analyst', m: 'Contract-to-hire', y: 40 },
+  { t: 'Full-Stack Developer', m: 'Direct hire', y: 67 },
+];
+---
+<div class="match-art" aria-hidden="true">
+  <div class="profile">
+    <div class="who"><span class="avatar"><i></i></span><div><b>Your profile</b><em><u></u>Available</em></div></div>
+    <ul><li>Python</li><li>AWS</li><li>Kubernetes</li><li>Terraform</li></ul>
+    <div class="bars"><s></s><s></s><s></s></div>
+  </div>
+  <svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+    {roles.map((r, i) => (
+      <path d={`M40 50 C 46 50, 44 ${r.y + 9}, 51 ${r.y + 9}`} pathLength="1" style={`--k:${i}`} />
+    ))}
+  </svg>
+  {roles.map((r, i) => (
+    <div class="role" style={`top:${r.y}cqw;--k:${i}`}>
+      <div><b>{r.t}</b><span>{r.m}</span></div>
+      <em>Matched</em>
+    </div>
+  ))}
+</div>
+<style>
+  .match-art { position: absolute; inset: 0; --cycle: 12s; }
+  .profile { position: absolute; left: 0; top: 24cqw; width: 40cqw; padding: 3.4cqw; border-radius: 3cqw; background: rgba(19,41,77,.85); border: 1px solid rgba(255,255,255,.22); display: grid; gap: 2.6cqw; animation: floaty 7s ease-in-out infinite; }
+  .who { display: flex; align-items: center; gap: 2cqw; color: #fff; }
+  .who b { display: block; font-size: max(11px, 3.1cqw); font-family: var(--font-display); }
+  .who em { display: flex; align-items: center; gap: 1cqw; font-style: normal; font-size: max(9px, 2.4cqw); color: var(--on-navy); }
+  .who u { width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: #7EE2A8; box-shadow: 0 0 0 .6cqw rgba(126,226,168,.25); }
+  .avatar { position: relative; flex: none; width: 8.5cqw; height: 8.5cqw; border-radius: 50%; background: linear-gradient(135deg, #3A62AA, #1A3358); overflow: hidden; border: 1px solid rgba(255,255,255,.3); }
+  .avatar i { position: absolute; left: 50%; top: 58%; width: 6.2cqw; height: 6.2cqw; margin-left: -3.1cqw; border-radius: 50% 50% 0 0; background: rgba(255,255,255,.85); }
+  .avatar::before { content: ""; position: absolute; left: 50%; top: 18%; width: 3.2cqw; height: 3.2cqw; margin-left: -1.6cqw; border-radius: 50%; background: rgba(255,255,255,.85); }
+  .profile ul { display: flex; flex-wrap: wrap; gap: 1.2cqw; padding: 0; margin: 0; list-style: none; }
+  .profile li { font-family: var(--font-mono); font-size: max(8px, 2.1cqw); padding: .8cqw 1.5cqw; border-radius: 1.2cqw; background: rgba(255,255,255,.1); color: #E6ECF6; }
+  .bars { display: grid; gap: 1cqw; } .bars s { display: block; height: 1cqw; border-radius: 1cqw; background: rgba(255,255,255,.12); } .bars s:nth-child(1) { width: 90%; } .bars s:nth-child(2) { width: 70%; } .bars s:nth-child(3) { width: 80%; }
+  svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  path { fill: none; stroke: var(--orange); stroke-width: .7; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: draw var(--cycle) ease-in-out infinite; animation-delay: calc(var(--k) * 4s); }
+  .role { position: absolute; left: 51cqw; width: 49cqw; height: 18cqw; padding: 0 3cqw; display: flex; align-items: center; justify-content: space-between; gap: 2cqw; border-radius: 2.6cqw; background: rgba(19,41,77,.78); border: 1px solid rgba(255,255,255,.2); color: #fff; animation: on var(--cycle) ease-in-out infinite; animation-delay: calc(var(--k) * 4s); }
+  .role b { display: block; font-size: max(10px, 2.8cqw); font-family: var(--font-display); line-height: 1.2; }
+  .role span { display: block; margin-top: .6cqw; font-size: max(8px, 2.1cqw); color: var(--on-navy); font-family: var(--font-mono); }
+  .role em { flex: none; font-style: normal; font-weight: 600; font-size: max(8px, 2.1cqw); padding: .9cqw 1.8cqw; border-radius: 99px; background: var(--orange); color: var(--navy); opacity: 0; animation: badge var(--cycle) ease-in-out infinite; animation-delay: calc(var(--k) * 4s); }
+  @keyframes draw { 0% { stroke-dashoffset: 1; opacity: 1; } 10%, 28% { stroke-dashoffset: 0; opacity: 1; } 33%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+  @keyframes on { 0%, 33%, 100% { border-color: rgba(255,255,255,.2); transform: none; } 6%, 28% { border-color: var(--orange); transform: translateX(-1.6cqw); } }
+  @keyframes badge { 0%, 5% { opacity: 0; transform: scale(.6); } 11%, 28% { opacity: 1; transform: none; } 33%, 100% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .profile, path, .role, .role em { animation: none !important; } path { opacity: .6; stroke-dashoffset: 0; } .role:nth-of-type(1) em { opacity: 1; } }
+</style>

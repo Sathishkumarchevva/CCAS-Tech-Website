@@ -1,0 +1,41 @@
+---
+// Services hero: an isometric technology stack. Layers light up bottom-to-top as data packets rise through them.
+const layers = ['Security', 'Cloud', 'Data', 'APIs', 'Front-end']; // bottom → top
+---
+<div class="stack-art" aria-hidden="true">
+  <div class="glow"></div>
+  <div class="bob">
+    <div class="stack">
+      {layers.map((l, i) => (
+        <div class="plate" style={`--i:${i}`}><span>{l}</span><b></b></div>
+      ))}
+      {[0, 1, 2].map((p) => <i class="packet" style={`--p:${p}`}></i>)}
+    </div>
+  </div>
+</div>
+<style>
+  .stack-art { position: absolute; inset: 0; }
+  .glow { position: absolute; left: 50%; top: 62%; width: 76cqw; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,122,26,.2), transparent 64%); animation: breathe 6s ease-in-out infinite; }
+  .bob { position: absolute; inset: 0; animation: bob 7s ease-in-out infinite; }
+  .stack { position: absolute; left: 50%; top: 60%; width: 48cqw; height: 48cqw; margin: -24cqw 0 0 -24cqw; transform-style: preserve-3d; transform: rotateX(58deg) rotateZ(-38deg); }
+  .plate { position: absolute; inset: 0; --z: calc(var(--i) * 9.5cqw); transform: translateZ(var(--z));
+    border-radius: 2.4cqw; border: 1px solid rgba(255,255,255,.32);
+    background:
+      linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px) 0 0 / 4.8cqw 4.8cqw,
+      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px) 0 0 / 4.8cqw 4.8cqw,
+      linear-gradient(135deg, rgba(58,98,170,.62), rgba(13,33,66,.82));
+    box-shadow: 0 0 0 1px rgba(5,14,30,.5) inset;
+    animation: plate 8s ease-in-out infinite; animation-delay: calc(var(--i) * 1.6s); }
+  .plate span { position: absolute; left: 3cqw; bottom: 2.6cqw; font-family: var(--font-mono); font-size: max(9px, 2.5cqw); letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.88); }
+  .plate b { position: absolute; right: 3cqw; top: 3cqw; width: 4cqw; height: 4cqw; border-radius: .8cqw; background: rgba(255,255,255,.22); }
+  .plate:nth-child(odd) b { background: rgba(255,122,26,.7); }
+  .packet { position: absolute; left: 50%; top: 50%; width: 2.2cqw; height: 2.2cqw; margin: -1.1cqw 0 0 -1.1cqw; border-radius: 50%; background: var(--orange); box-shadow: 0 0 2cqw rgba(255,122,26,.9); animation: rise 4.8s ease-in infinite; animation-delay: calc(var(--p) * 1.6s); opacity: 0; }
+  .packet:nth-of-type(2) { margin-left: 5cqw; } .packet:nth-of-type(3) { margin-left: -6cqw; margin-top: 4cqw; }
+  @keyframes plate {
+    0%, 28%, 100% { transform: translateZ(var(--z)); border-color: rgba(255,255,255,.32); filter: none; }
+    8%, 20% { transform: translateZ(calc(var(--z) + 3.2cqw)); border-color: var(--orange); filter: brightness(1.45) saturate(1.2); }
+  }
+  @keyframes rise { 0% { transform: translateZ(0); opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateZ(40cqw); opacity: 0; } }
+  @keyframes bob { 50% { transform: translateY(-2.4cqw); } }
+  @media (prefers-reduced-motion: reduce) { .glow, .bob, .plate, .packet { animation: none !important; } .packet { display: none; } }
+</style>
