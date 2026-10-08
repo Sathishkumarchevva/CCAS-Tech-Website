@@ -1,13 +1,25 @@
 ---
-interface Props { eyebrow: string; title: string; lede?: string; }
-const { eyebrow, title, lede } = Astro.props;
+import HeroArt from './HeroArt.astro';
+interface Props { eyebrow: string; title: string; lede?: string; chips?: string[]; flip?: boolean; }
+const { eyebrow, title, lede, chips = [], flip = false } = Astro.props;
 ---
-<section class="page-hero dark">
+<section class="page-hero dark" data-glow>
   <canvas class="stars" data-stars aria-hidden="true"></canvas>
-  <div class="wrap">
-    <span class="label eyebrow">{eyebrow}</span>
-    <h1>{title}</h1>
-    {lede && <p class="lede">{lede}</p>}
-    <div class="actions"><slot /></div>
+  <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap ph-grid">
+    <div class="copy">
+      <span class="label eyebrow reveal">{eyebrow}</span>
+      <h1 data-split>{title}</h1>
+      {lede && <p class="lede reveal" style="--d:.3s">{lede}</p>}
+      <div class="actions reveal" style="--d:.42s"><slot /></div>
+    </div>
+    <HeroArt chips={chips} flip={flip} />
   </div>
 </section>
+<style>
+  .ph-grid { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 960px) { .ph-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px; } }
+  .page-hero { padding-block: clamp(64px, 9vw, 128px); }
+  .page-hero :global(.lede) { font-size: clamp(18px, 1.7vw, 22px); }
+</style>

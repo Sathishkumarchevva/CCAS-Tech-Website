@@ -38,8 +38,8 @@
 
   --radius-btn: 12px;
   --radius-card: 20px;
-  --max: 1200px;
-  --gutter: clamp(20px, 5vw, 40px);
+  --max: 1680px;   /* prototype hero/nav were full-bleed; the guidelines' 1200px felt cramped on wide screens */
+  --gutter: clamp(20px, 5vw, 72px);
   --header-h: 64px;
   --section-y: clamp(72px, 9vw, 120px);
 
@@ -86,7 +86,7 @@ p { text-wrap: pretty; }
 .section--mist .eyebrow { color: var(--slate); }
 
 /* ---------- Layout ---------- */
-.wrap { width: 100%; max-width: calc(var(--max) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: var(--section-y); position: relative; }
 .section--mist { background: var(--mist); }
 .section--navy, .section--dark { background: var(--navy); color: var(--on-navy); }
@@ -105,7 +105,7 @@ p { text-wrap: pretty; }
 .grid { display: grid; gap: 20px; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
-.grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+.grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); }
 
 /* ---------- Buttons (guidelines 06.2) ---------- */
 .btn {
@@ -158,7 +158,7 @@ p { text-wrap: pretty; }
 
 /* ---------- Page hero (inner pages) ---------- */
 .page-hero { background: var(--navy); color: var(--on-navy); position: relative; overflow: hidden; padding-block: clamp(56px, 8vw, 104px); isolation: isolate; }
-.page-hero h1 { color: #fff; margin-top: 16px; max-width: 18ch; }
+.page-hero h1 { color: #fff; margin-top: 20px; font-size: clamp(38px, 5.4vw, 72px); line-height: 1.06; letter-spacing: -0.025em; max-width: 14ch; }
 .page-hero .lede { margin-top: 24px; max-width: 620px; color: var(--on-navy); }
 .page-hero .eyebrow { color: var(--orange); }
 .page-hero .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 16px; }

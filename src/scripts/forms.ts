@@ -18,7 +18,9 @@ document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => 
       el.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input,select,textarea').forEach((i) => (i.disabled = !on));
     });
   };
-  seg.forEach((r) => r.addEventListener('change', applyAudience));
+  const ta = form.querySelector<HTMLTextAreaElement>('textarea[data-ph-hiring]');
+  const setPlaceholder = (v: string) => { if (ta) ta.placeholder = (v === 'seeking' ? ta.dataset.phSeeking : ta.dataset.phHiring) ?? ''; };
+  seg.forEach((r) => r.addEventListener('change', () => { applyAudience(); setPlaceholder(r.value); }));
   applyAudience();
 
   form.addEventListener('submit', async (e) => {

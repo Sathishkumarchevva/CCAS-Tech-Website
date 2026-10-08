@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Motion & depth layer. Everything here is decorative: content is fully
+   visible without JS, and prefers-reduced-motion switches it off.
+   ========================================================================== */
+
+/* ---------- Page-to-page transitions (cross-document View Transitions) ---------- */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+::view-transition-group(site-header) { animation: none; }
+::view-transition-old(root) { animation: vt-out .25s ease both; }
+::view-transition-new(root) { animation: vt-in .45s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(10px); } }
+
+/* ---------- Reveal variants ---------- */
+.js .reveal[data-r="left"]  { transform: translateX(-36px); }
+.js .reveal[data-r="right"] { transform: translateX(36px); }
+.js .reveal[data-r="scale"] { transform: scale(.94); }
+.js .reveal[data-r="up-lg"] { transform: translateY(40px); }
+.js .reveal.is-in, .js .reveal[data-r].is-in { opacity: 1; transform: none; }
+
+/* ---------- Word-by-word headline reveal ---------- */
+.js .split .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.js .split .w > span { display: inline-block; transform: translateY(112%); transition: transform .9s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i, 0) * 60ms + var(--base, 80ms)); }
+.js .split.is-in .w > span { transform: none; }
+
+/* ---------- Ambient background layers ---------- */
+.aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+.aurora i { position: absolute; width: min(70vw, 860px); aspect-ratio: 1; border-radius: 50%; animation: drift 20s ease-in-out infinite alternate; will-change: transform; }
+.aurora i:nth-child(1) { background: radial-gradient(circle, rgba(255,122,26,.26), transparent 62%); top: -35%; right: -12%; }
+.aurora i:nth-child(2) { background: radial-gradient(circle, rgba(70,110,190,.38), transparent 62%); bottom: -45%; left: -15%; animation-duration: 26s; animation-delay: -8s; }
+@keyframes drift { to { transform: translate3d(-6%, 9%, 0) scale(1.18); } }
+
+.grid-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .9;
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 72% 35%, #000, transparent 75%); mask-image: radial-gradient(ellipse 70% 80% at 72% 35%, #000, transparent 75%); }
+
+[data-glow]::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .9;
+  background: radial-gradient(520px circle at var(--gx, 72%) var(--gy, 30%), rgba(255,122,26,.13), transparent 60%); transition: background-position .2s; }
+
+.section--mist { background-image: radial-gradient(rgba(11,31,58,.07) 1px, transparent 1px); background-size: 24px 24px; }
+
+/* ---------- Cursor spotlight on cards ---------- */
+.spot { position: relative; overflow: hidden; isolation: isolate; }
+.spot::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(255,122,26,.14), transparent 62%); }
+.spot:hover::after { opacity: 1; }
+.card--dark.spot::after, .dark .spot::after { background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(255,122,26,.22), transparent 62%); }
+.card.spot { transition: border-color .25s, transform .25s, box-shadow .25s; }
+.card.spot:hover { border-color: var(--navy); transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(11,31,58,.35); }
+.card--dark.spot:hover { border-color: rgba(255,122,26,.55); box-shadow: 0 18px 40px -22px rgba(0,0,0,.6); }
+.icon-tile { transition: background-color .25s, color .25s, transform .35s cubic-bezier(.2,.8,.2,1); }
+.spot:hover .icon-tile { transform: translateY(-3px) rotate(-4deg); }
+
+/* ---------- Buttons: shine sweep ---------- */
+.btn--primary { position: relative; overflow: hidden; }
+.btn--primary::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%); transform: translateX(-130%); transition: transform .7s; pointer-events: none; }
+.btn--primary:hover::after { transform: translateX(130%); }
+
+/* ---------- Scroll progress ---------- */
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--orange); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); pointer-events: none; }
+
+/* ---------- Parallax targets ---------- */
+[data-parallax] { transform: translate3d(0, var(--py, 0px), 0) scale(var(--ps, 1)); will-change: transform; }
+
+/* ---------- Scroll-scrubbed statement ---------- */
+.scrub { font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 4.2vw, 56px); line-height: 1.18; letter-spacing: -0.02em; color: var(--navy); text-wrap: balance; }
+.js .scrub .sw { opacity: .16; transition: opacity .35s; }
+.js .scrub .sw.on { opacity: 1; }
+.scrub em { font-style: normal; color: var(--orange-text); }
+
+/* ---------- Floating chips ---------- */
+@keyframes floaty { 50% { transform: translateY(-8px); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes breathe { 50% { transform: scale(1.05); } }
+@keyframes pulse-ring { from { transform: scale(.6); opacity: .6; } to { transform: scale(1.5); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora i, .btn--primary::after { animation: none !important; transition: none !important; }
+  .js .split .w > span { transform: none !important; }
+  .js .scrub .sw { opacity: 1; }
+  [data-parallax] { transform: none !important; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+}
+
+/* Side-slide reveals start off-canvas; on small screens use an upward reveal instead and never let the page scroll sideways. */
+body { overflow-x: clip; }
+@media (max-width: 899px) {
+  .js .reveal[data-r="left"], .js .reveal[data-r="right"] { transform: translateY(24px); }
+  .js .reveal.is-in, .js .reveal[data-r].is-in { transform: none; }
+}

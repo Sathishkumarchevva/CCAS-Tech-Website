@@ -1,0 +1,34 @@
+---
+import Icon from './Icon.astro';
+interface Props { items: { icon: string; title: string; blurb: string }[]; }
+const { items } = Astro.props;
+---
+<ol class="steps" role="list" data-inview>
+  <li class="line" aria-hidden="true"><i></i></li>
+  {items.map((s, i) => (
+    <li class="step reveal" style={`--d:${0.12 + i * 0.16}s`}>
+      <span class="node"><span>{i + 1}</span></span>
+      <div class="card spot">
+        <span class="icon-tile icon-tile--navy"><Icon name={s.icon} /></span>
+        <h3>{s.title}</h3>
+        <p>{s.blurb}</p>
+      </div>
+    </li>
+  ))}
+</ol>
+<style>
+  .steps { position: relative; display: grid; gap: 28px; padding: 0; }
+  @media (min-width: 900px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 8px; } }
+  .line { display: none; }
+  @media (min-width: 900px) {
+    .line { display: block; position: absolute; left: calc(100% / 6); right: calc(100% / 6); top: 28px; height: 2px; background: var(--border); }
+    .line i { display: block; height: 100%; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(.2,.8,.2,1) .35s; }
+    .steps.is-in .line i { transform: scaleX(1); }
+  }
+  .step { position: relative; display: grid; gap: 20px; }
+  .node { display: grid; place-items: center; justify-self: start; width: 56px; height: 56px; border-radius: 50%; background: #fff; border: 2px solid var(--navy); z-index: 1; position: relative; }
+  @media (min-width: 900px) { .node { justify-self: center; } }
+  .node span { font-family: var(--font-mono); font-size: 16px; color: var(--navy); }
+  .card { padding: 32px; height: 100%; }
+  .card h3 { font-size: 24px; font-weight: 700; }
+</style>

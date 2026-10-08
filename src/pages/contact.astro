@@ -6,19 +6,25 @@ import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 ---
 <Base title="Contact" description="Talk to a CCAS Tech specialist. Tell us the role, the stack and the timeline and we'll reply the same business day.">
-  <PageHero eyebrow="Contact" title="Talk to a specialist today." lede="Tell us the role, the stack and the timeline. We'll reply within one business day." />
+  <PageHero eyebrow="Contact" title="Talk to a specialist today." lede="Tell us the role, the stack and the timeline. We'll reply within one business day." chips={['Reply in 1 business day', 'Specialists, not form-bots']} flip />
   <section class="section">
     <div class="wrap two">
       <div class="info">
-        <h2>Prefer to write or call?</h2>
+        <h2 data-split>Prefer to write or call?</h2>
         <ul role="list">
-          <li><span class="icon-tile"><Icon name="Mail" /></span><div><span class="label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div></li>
-          {site.phone && <li><span class="icon-tile"><Icon name="Phone" /></span><div><span class="label">Phone</span><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></div></li>}
-          {site.address && <li><span class="icon-tile"><Icon name="MapPin" /></span><div><span class="label">Office</span><span>{site.address}</span></div></li>}
-          <li><span class="icon-tile"><Icon name="Clock" /></span><div><span class="label">Response time</span><span>Within one business day</span></div></li>
+          <li class="spot reveal"><span class="icon-tile"><Icon name="Mail" /></span><div><span class="label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div></li>
+          {site.phone && <li class="spot reveal"><span class="icon-tile"><Icon name="Phone" /></span><div><span class="label">Phone</span><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></div></li>}
+          {site.address && <li class="spot reveal"><span class="icon-tile"><Icon name="MapPin" /></span><div><span class="label">Office</span><span>{site.address}</span></div></li>}
+          <li class="spot reveal"><span class="icon-tile"><Icon name="Clock" /></span><div><span class="label">Response time</span><span>Within one business day</span></div></li>
         </ul>
+        <ol class="next" role="list">
+          <li class="label">What happens next</li>
+          <li><b>1</b> A specialist reads your request the same day.</li>
+          <li><b>2</b> We call or email to shape the role.</li>
+          <li><b>3</b> You get a short list of vetted consultants.</li>
+        </ol>
       </div>
-      <ContactForm id="contact-form" />
+      <div class="reveal" data-r="right"><ContactForm id="contact-form" /></div>
     </div>
   </section>
 </Base>
@@ -34,8 +40,16 @@ import { site } from '../data/site';
   .two { display: grid; gap: 48px; }
   @media (min-width: 960px) { .two { grid-template-columns: 1fr 1.3fr; gap: 64px; } }
   .info h2 { margin-bottom: 32px; }
-  .info ul { padding: 0; display: grid; gap: 24px; }
+  .info ul:not(.next) { padding: 0; display: grid; gap: 16px; }
+  .info ul:not(.next) { list-style: none; }
   .info li { display: flex; gap: 16px; align-items: center; }
+  .info ul li { padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-card); background: #fff; transition: border-color .25s, transform .25s; }
+  .info ul li:hover { border-color: var(--navy); transform: translateY(-3px); }
+  .next { margin-top: 40px; padding: 28px; border-radius: var(--radius-card); background: var(--mist); display: grid; gap: 14px; }
+  .next li { display: flex; gap: 14px; align-items: flex-start; color: var(--slate); padding: 0; border: 0; background: none; }
+  .next li:hover { transform: none; border: 0; }
+  .next li.label { color: var(--steel); }
+  .next b { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--font-mono); font-size: 13px; font-weight: 400; }
   .info :global(.icon-tile) { margin: 0; flex-shrink: 0; }
   .info li > div { display: grid; }
   .info a { font-weight: 600; text-decoration: none; color: var(--navy); }

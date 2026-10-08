@@ -38,7 +38,7 @@ const { theme = 'light', audience = 'hiring', toggle = true, id = 'contact-form'
     <label for={`${id}-msg`}>
       <span data-for="hiring" class="inline">Tell us about the project</span><span data-for="seeking" class="inline">Tell us about your experience</span>
     </label>
-    <textarea id={`${id}-msg`} name="message" rows="4" placeholder="Team size, timeline, tech stack…"></textarea>
+    <textarea id={`${id}-msg`} name="message" rows="4" data-ph-hiring="Team size, timeline, tech stack…" data-ph-seeking="Your core skills, years of experience, rate and availability…" placeholder={audience === 'seeking' ? 'Your core skills, years of experience, rate and availability…' : 'Team size, timeline, tech stack…'}></textarea>
   </div>
 
   <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>

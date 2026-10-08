@@ -3,23 +3,27 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import ContactForm from '../components/ContactForm.astro';
 import IndustryImage from '../components/IndustryImage.astro';
+import Steps from '../components/Steps.astro';
+import TechMarquee from '../components/TechMarquee.astro';
 import { roles, management, industries, steps, values, stats, trusted, site } from '../data/site';
 ---
 <Base title="IT consulting & staffing" description="CCAS Tech connects businesses with highly skilled IT consultants — cloud, data, cybersecurity and software delivery. The right expert, connected to the right team.">
 
   <!-- HERO -->
-  <section class="hero dark">
+  <section class="hero dark" data-glow>
     <canvas class="stars" data-stars aria-hidden="true"></canvas>
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+    <div class="grid-bg" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div class="copy">
         <span class="label eyebrow reveal">IT consulting &amp; staffing · USA</span>
-        <h1 class="display reveal" style="--d:.08s">Highly skilled IT consultants, <em>ready when you are.</em></h1>
-        <p class="lede reveal" style="--d:.16s">CCAS Tech connects businesses with vetted technology consultants across cloud, data, cybersecurity and software delivery. Vetted consultants. Clear contracts.</p>
-        <div class="ctas reveal" style="--d:.24s">
+        <h1 class="display" data-split>Highly skilled IT consultants, <em>ready when you are.</em></h1>
+        <p class="lede reveal" style="--d:.45s">CCAS Tech connects businesses with vetted technology consultants across cloud, data, cybersecurity and software delivery. Vetted consultants. Clear contracts.</p>
+        <div class="ctas reveal" style="--d:.6s">
           <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
           <a class="btn btn--outline" href="/consultants/">Join our network</a>
         </div>
-        <ul class="chips reveal" role="list" aria-label="Skills we place" style="--d:.32s">
+        <ul class="chips reveal" role="list" aria-label="Skills we place" style="--d:.75s">
           {['Full-stack', 'Cloud & DevOps', 'Data & AI', 'QA automation', 'Cybersecurity', 'Mobile'].map((c) => <li>{c}</li>)}
         </ul>
       </div>
@@ -57,7 +61,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
       <ul class="role-grid" role="list">
         {roles.map((r, i) => (
           <li class="reveal" style={`--d:${(i % 4) * 0.05}s`}>
-            <a class="role" href={`/services/#${r.slug}`}>
+            <a class="role spot" href={`/services/#${r.slug}`}>
               <span class="icon-tile"><Icon name={r.icon} /></span>
               <h3>{r.title}</h3>
               <p>{r.blurb}</p>
@@ -69,6 +73,8 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
     </div>
   </section>
 
+  <TechMarquee />
+
   <!-- HOW IT WORKS -->
   <section class="section" id="how">
     <div class="wrap">
@@ -76,15 +82,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
         <div><span class="label eyebrow">How it works</span><h2>From brief to first day, without the runaround.</h2></div>
         <p class="lede">We keep the process short and the language plain, so you always know what happens next.</p>
       </div>
-      <ol class="grid grid--3 steps" role="list">
-        {steps.map((s, i) => (
-          <li class="card card--accent reveal" style={`--d:${i * 0.08}s`}>
-            <span class="label step-n">0{i + 1}</span>
-            <h3>{s.title}</h3>
-            <p>{s.blurb}</p>
-          </li>
-        ))}
-      </ol>
+      <Steps items={steps} />
     </div>
   </section>
 
@@ -97,7 +95,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
       </div>
       <div class="grid grid--4">
         {management.map((m, i) => (
-          <article class="card card--dark reveal" style={`--d:${i * 0.06}s`}>
+          <article class="card card--dark spot reveal" style={`--d:${i * 0.08}s`} data-r="up-lg">
             <span class="icon-tile"><Icon name={m.icon} /></span>
             <h3 class="h4">{m.title}</h3>
             <p>{m.blurb}</p>
@@ -119,7 +117,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
           <li class="reveal" style={`--d:${(i % 3) * 0.06}s`}>
             <a class="tile" href={`/industries/#${ind.slug}`}>
               <IndustryImage name={ind.image} alt="" />
-              <span class="cap">{ind.title} <Icon name="ArrowRight" size={20} /></span>
+              <span class="cap"><span class="cap-t">{ind.title} <Icon name="ArrowRight" size={20} /></span><span class="cap-b">{ind.blurb}</span></span>
             </a>
           </li>
         ))}
@@ -139,7 +137,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
         </div>
         <ul class="values" role="list">
           {values.map((v) => (
-            <li class="card">
+            <li class="card spot reveal" data-r="right">
               <span class="icon-tile icon-tile--navy"><Icon name={v.icon} /></span>
               <div><h3 class="h4">{v.title}</h3><p>{v.blurb}</p></div>
             </li>
@@ -147,9 +145,9 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
         </ul>
       </div>
 
-      <div class="stats dark">
+      <div class="stats dark reveal" data-r="scale">
         <h3>Ready to achieve your goals?<br /><em>Let us guide you.</em></h3>
-        {stats.map((s) => <div class="stat"><b>{s.value}</b><span>{s.label}</span></div>)}
+        {stats.map((s) => <div class="stat"><b data-count={s.value}>{s.value}</b><span>{s.label}</span></div>)}
       </div>
     </div>
   </section>
@@ -175,6 +173,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
 <style>
   /* Hero */
   .hero { position: relative; isolation: isolate; overflow: hidden; background: var(--navy); }
+  .hero .display { font-size: clamp(42px, 6vw, 84px); line-height: 1.04; letter-spacing: -0.03em; }
   .stars { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
   .hero-grid { display: grid; gap: 32px; align-items: center; min-height: min(calc(100svh - var(--header-h) - 96px), 760px); padding-block: 48px 64px; }
   .hero .display { margin-top: 24px; color: #fff; }
@@ -183,9 +182,9 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
   .ctas { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px; }
   .chips { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; max-width: 560px; padding: 0; }
   .chips li { padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.07); border: 1px solid var(--on-navy-line); font-size: 14px; line-height: 20px; color: #DDE4F0; }
-  @media (min-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 24px; } }
+  @media (min-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 24px; } }
 
-  .stage { position: relative; height: clamp(320px, 52vw, 640px); border-radius: 28px; }
+  .stage { position: relative; height: clamp(320px, 52vw, 700px); border-radius: 28px; }
   .stage::before { content: ""; position: absolute; left: 50%; top: 50%; width: 80%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,122,26,.16), transparent 65%); animation: glow 4s ease-in-out infinite; }
   @keyframes glow { 50% { opacity: .45; transform: translate(-50%, -50%) scale(1.12); } }
   .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -214,26 +213,26 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
   }
 
   /* Services grid */
-  .role-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); padding: 0; }
-  .role { display: block; height: 100%; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-card); padding: 28px; text-decoration: none; transition: border-color .2s, transform .2s; }
-  .role:hover { border-color: var(--navy); transform: translateY(-2px); }
+  .role-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); padding: 0; }
+  .role { display: block; height: 100%; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-card); padding: 28px; text-decoration: none; transition: border-color .25s, transform .25s, box-shadow .25s; }
+  .role:hover { border-color: var(--navy); transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(11,31,58,.35); }
   .role h3 { font-size: 20px; line-height: 26px; font-weight: 700; margin-bottom: 8px; }
   .role p { color: var(--steel); font-size: 15px; line-height: 24px; }
   .role:hover .icon-tile { background: var(--navy); color: #fff; }
   .more { margin-top: 40px; }
 
-  .steps { padding: 0; counter-reset: s; }
-  .steps .card { padding: 32px; }
-  .step-n { color: var(--orange-text); display: block; margin-bottom: 12px; }
-  .steps h3 { font-size: 24px; }
 
   /* Industries */
   .ind-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); padding: 0; }
   .tile { position: relative; display: block; aspect-ratio: 4 / 3; border-radius: var(--radius-card); overflow: hidden; color: #fff; text-decoration: none; background: var(--navy); }
   .tile :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
   .tile:hover :global(img) { transform: scale(1.05); }
-  .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(11,31,58,.92)); }
-  .cap { position: absolute; z-index: 1; left: 24px; right: 24px; bottom: 20px; display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+  .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(11,31,58,.94)); }
+  .cap { position: absolute; z-index: 1; left: 24px; right: 24px; bottom: 20px; display: grid; gap: 6px; }
+  .cap-t { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 24px; }
+  .cap-b { font-size: 15px; line-height: 22px; color: #DDE4F0; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.2,.8,.2,1), opacity .35s; }
+  .tile:hover .cap-b, .tile:focus-visible .cap-b { max-height: 70px; opacity: 1; }
+  @media (hover: none) { .cap-b { max-height: 70px; opacity: 1; } }
   .cap :global(svg) { transition: transform .2s; }
   .tile:hover .cap :global(svg) { transform: translateX(4px); color: var(--orange); }
 

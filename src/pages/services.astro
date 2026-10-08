@@ -3,44 +3,55 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
-import { roles, management, engagement } from '../data/site';
+import TechMarquee from '../components/TechMarquee.astro';
+import { roles, management, engagement, groups } from '../data/site';
 ---
 <Base title="Services" description="IT consulting and staffing: cloud, data, cybersecurity, software and network specialists, plus management leaders — on contract, contract-to-hire or direct hire.">
-  <PageHero eyebrow="Services" title="Technology talent, ready to ship." lede="Twelve technical specialisms and four management disciplines — every consultant vetted for depth, and every contract clear.">
+  <PageHero eyebrow="Services" title="Technology talent, ready to ship." lede="Twelve technical specialisms and four management disciplines. Every consultant vetted for depth, every contract clear." chips={['Kubernetes', 'Python', 'Zero trust', 'React']}>
     <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
+    <a class="btn btn--outline" href="#roles">Browse roles</a>
   </PageHero>
 
-  <section class="section">
+  <section class="section" id="roles">
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">Technology talent</span><h2>Specialists across the stack.</h2></div>
-        <p class="lede">Tell us the role and the stack. We'll send a short list of consultants who have done the work before.</p>
+        <div><span class="label eyebrow">Technology talent</span><h2 data-split>Specialists across the stack.</h2></div>
+        <p class="lede reveal">Tell us the role and the stack. We'll send a short list of consultants who have done the work before.</p>
       </div>
+
+      <div class="filters reveal" role="group" aria-label="Filter roles">
+        {groups.map((g) => <button type="button" class="chip-btn" data-filter={g.id} aria-pressed={g.id === 'all'}>{g.label}</button>)}
+        <span class="count label"><b data-count-out>{roles.length}</b> roles</span>
+      </div>
+
       <div class="roles">
-        {roles.map((r) => (
-          <article class="role card reveal" id={r.slug}>
+        {roles.map((r, i) => (
+          <article class="role card spot reveal" id={r.slug} data-group={r.group} style={`--d:${(i % 3) * 0.07}s`}>
             <div class="role-head">
               <span class="icon-tile icon-tile--navy"><Icon name={r.icon} /></span>
               <h3>{r.title}</h3>
             </div>
             <p class="role-detail">{r.detail}</p>
             <ul class="tags" aria-label={`${r.title} skills`}>{r.skills.map((s) => <li>{s}</li>)}</ul>
-            <a class="arrow-link" href={`/contact/?role=${encodeURIComponent(r.title)}`}>Request a {r.title.toLowerCase()} <Icon name="ArrowRight" size={18} /></a>
+            <a class="arrow-link" href={`/contact/?role=${encodeURIComponent(r.title)}`}>Request this role <Icon name="ArrowRight" size={18} /></a>
           </article>
         ))}
       </div>
     </div>
   </section>
 
+  <TechMarquee />
+
   <section class="section section--navy dark" id="management">
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">Strategic leadership</span><h2>Management expertise.</h2></div>
-        <p class="lede">Seasoned leaders who steer your programs, finances and teams toward measurable outcomes — on an interim or project basis.</p>
+        <div><span class="label eyebrow">Strategic leadership</span><h2 data-split>Management expertise.</h2></div>
+        <p class="lede reveal">Seasoned leaders who steer your programs, finances and teams toward measurable outcomes, on an interim or project basis.</p>
       </div>
       <div class="grid grid--4">
-        {management.map((m) => (
-          <article class="card card--dark reveal">
+        {management.map((m, i) => (
+          <article class="card card--dark spot reveal" data-r="up-lg" style={`--d:${i * 0.08}s`}>
             <span class="icon-tile"><Icon name={m.icon} /></span>
             <h3 class="h4">{m.title}</h3>
             <p>{m.blurb}</p>
@@ -53,12 +64,13 @@ import { roles, management, engagement } from '../data/site';
   <section class="section section--mist" id="engagement">
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">How we work with you</span><h2>Three ways to engage.</h2></div>
-        <p class="lede">Pick the model that fits the work. Rates, terms and start date are agreed up front.</p>
+        <div><span class="label eyebrow">How we work with you</span><h2 data-split>Three ways to engage.</h2></div>
+        <p class="lede reveal">Pick the model that fits the work. Rates, terms and start date are agreed up front.</p>
       </div>
       <div class="grid grid--3">
-        {engagement.map((e) => (
-          <article class="card card--accent reveal">
+        {engagement.map((e, i) => (
+          <article class="card card--accent spot reveal" style={`--d:${i * 0.1}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={e.icon} /></span>
             <h3>{e.title}</h3>
             <p>{e.blurb}</p>
           </article>
@@ -71,11 +83,21 @@ import { roles, management, engagement } from '../data/site';
 </Base>
 
 <style>
-  .roles { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }
-  .role { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: calc(var(--header-h) + 16px); }
+  .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .chip-btn { padding: 10px 20px; border-radius: 999px; border: 2px solid var(--border); background: #fff; color: var(--navy); font-weight: 600; font-size: 15px; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s, transform .2s; }
+  .chip-btn:hover { border-color: var(--navy); }
+  .chip-btn[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .count { margin-left: auto; color: var(--steel); }
+  .count b { color: var(--navy); font-weight: 400; }
+  .roles { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+  .role { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: calc(var(--header-h) + 24px); }
+  .role[hidden] { display: none; }
+  .role.pop { animation: pop .5s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.97); } }
   .role-head { display: flex; align-items: center; gap: 16px; }
   .role-head :global(.icon-tile) { margin: 0; flex-shrink: 0; }
   .role h3 { font-size: 22px; line-height: 28px; font-weight: 700; margin: 0; }
   .role-detail { color: var(--steel); }
   .role .arrow-link { margin-top: auto; }
+  .section--navy { overflow: hidden; isolation: isolate; }
 </style>

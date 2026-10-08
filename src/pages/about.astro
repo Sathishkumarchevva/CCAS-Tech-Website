@@ -6,30 +6,24 @@ import Icon from '../components/Icon.astro';
 import { values, stats } from '../data/site';
 ---
 <Base title="About" description="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants.">
-  <PageHero eyebrow="About CCAS Tech" title="The right expert, connected to the right team." lede="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants." />
+  <PageHero eyebrow="About CCAS Tech" title="The right expert, connected to the right team." lede="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants." chips={['Expert', 'Reliable', 'Connected', 'Direct']} />
 
-  <section class="section">
-    <div class="wrap story">
-      <div>
-        <span class="label eyebrow">What we do</span>
-        <h2 style="margin-top:16px">We know the work we staff.</h2>
-      </div>
-      <div class="body">
-        <p class="lede">Hiring technical people is hard to do well. The résumé says one thing, the project needs another, and a wrong placement costs months.</p>
-        <p class="lede">We start by understanding the work. Then we match consultants who have done it before, agree clear contracts, and stay close once the engagement starts. We place people who build with quality and precision, and we stand behind every placement.</p>
-      </div>
+  <section class="section statement">
+    <div class="wrap">
+      <span class="label eyebrow reveal">What we do</span>
+      <p class="scrub" data-scrub>Hiring technical people is hard to do well. The résumé says one thing, the project needs another. So we start by understanding the work, then match consultants who have done it before, agree clear contracts and <em>stay close once it starts.</em></p>
     </div>
   </section>
 
   <section class="section section--mist">
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">How we behave</span><h2>Expert. Reliable. Connected. Direct.</h2></div>
-        <p class="lede">Four habits that shape every conversation, every shortlist and every contract.</p>
+        <div><span class="label eyebrow">How we behave</span><h2 data-split>Expert. Reliable. Connected. Direct.</h2></div>
+        <p class="lede reveal">Four habits that shape every conversation, every shortlist and every contract.</p>
       </div>
       <div class="grid grid--4">
-        {values.map((v) => (
-          <article class="card reveal">
+        {values.map((v, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${i * 0.08}s`}>
             <span class="icon-tile icon-tile--navy"><Icon name={v.icon} /></span>
             <h3 class="h4">{v.title}</h3>
             <p>{v.blurb}</p>
@@ -41,18 +35,25 @@ import { values, stats } from '../data/site';
 
   <section class="section">
     <div class="wrap mark-grid">
-      <div class="mark-art"><img src="/images/ccas-tech-mark-color.svg" alt="" width="240" height="240" loading="lazy" /></div>
+      <div class="mark-art reveal" data-r="left">
+        <svg viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+          <g class="ring r1"><circle cx="200" cy="200" r="150" fill="none" stroke="#0B1F3A" stroke-opacity=".14" stroke-width="1.5" stroke-dasharray="3 9" /><circle cx="350" cy="200" r="7" fill="#FF7A1A" /></g>
+          <g class="ring r2"><circle cx="200" cy="200" r="185" fill="none" stroke="#0B1F3A" stroke-opacity=".1" stroke-width="1.5" /><circle cx="200" cy="15" r="5" fill="#0B1F3A" /></g>
+        </svg>
+        <img src="/images/ccas-tech-mark-color.svg" alt="" width="240" height="240" loading="lazy" />
+      </div>
       <div>
-        <span class="label eyebrow">Our mark</span>
-        <h2 style="margin-top:16px">Two arcs, one match.</h2>
-        <p class="lede" style="margin-top:24px">Two nested arcs form a double C — client and consultant — opening toward a single orange point: the right match. It is the idea behind everything we do.</p>
+        <span class="label eyebrow reveal">Our mark</span>
+        <h2 data-split style="margin-top:16px">Two arcs, one match.</h2>
+        <p class="lede reveal" style="margin-top:24px;--d:.2s">Two nested arcs form a double C — client and consultant — opening toward a single orange point: the right match. It is the idea behind everything we do.</p>
       </div>
     </div>
   </section>
 
-  <section class="section section--navy dark" style="padding-block:clamp(56px,7vw,88px)">
+  <section class="section section--navy dark numbers" data-glow>
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
     <div class="wrap stats">
-      {stats.map((s) => <div class="stat"><b>{s.value}</b><span>{s.label}</span></div>)}
+      {stats.map((s) => <div class="stat reveal" data-r="up-lg"><b data-count={s.value}>{s.value}</b><span>{s.label}</span></div>)}
     </div>
   </section>
 
@@ -60,14 +61,18 @@ import { values, stats } from '../data/site';
 </Base>
 
 <style>
-  .story { display: grid; gap: 32px; }
-  .body { display: grid; gap: 20px; max-width: 640px; }
-  @media (min-width: 900px) { .story { grid-template-columns: 1fr 1.2fr; gap: 72px; } }
-  .mark-grid { display: grid; gap: 40px; align-items: center; }
-  .mark-art { background: var(--mist); border-radius: var(--radius-card); display: grid; place-items: center; aspect-ratio: 4/3; }
-  .mark-art img { width: min(46%, 220px); height: auto; }
-  @media (min-width: 900px) { .mark-grid { grid-template-columns: 1fr 1.1fr; gap: 72px; } }
-  .stats { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-  .stat b { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 5vw, 64px); line-height: 1.1; letter-spacing: -.02em; color: #fff; }
-  .stat span { color: var(--on-navy); }
+  .statement { padding-block: clamp(80px, 11vw, 160px); }
+  .statement .scrub { margin-top: 28px; max-width: 24em; }
+  .mark-grid { display: grid; gap: 48px; align-items: center; }
+  .mark-art { position: relative; background: var(--mist); border-radius: var(--radius-card); display: grid; place-items: center; aspect-ratio: 1; max-width: 520px; width: 100%; overflow: hidden; }
+  .mark-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mark-art img { position: relative; width: 42%; height: auto; animation: breathe 6s ease-in-out infinite; }
+  .ring { transform-box: view-box; transform-origin: 50% 50%; animation: spin 50s linear infinite; }
+  .ring.r2 { animation-duration: 80s; animation-direction: reverse; }
+  @media (min-width: 900px) { .mark-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
+  .numbers { overflow: hidden; isolation: isolate; padding-block: clamp(72px, 9vw, 120px); }
+  .stats { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .stat b { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(56px, 8vw, 112px); line-height: 1; letter-spacing: -.03em; color: #fff; }
+  .stat span { display: block; margin-top: 12px; color: var(--on-navy); font-size: 18px; }
+  @media (prefers-reduced-motion: reduce) { .mark-art img, .ring { animation: none; } }
 </style>
