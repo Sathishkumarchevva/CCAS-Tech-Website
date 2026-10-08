@@ -22,5 +22,6 @@ const { eyebrow, title, lede } = Astro.props;
   .page-hero { padding-block: clamp(56px, 8vw, 120px); }
   .page-hero :global(.lede) { font-size: clamp(18px, 1.7vw, 22px); }
   .art-wrap { width: min(100%, 560px); margin-inline: auto; }
+  @media (min-width: 960px) { .art-wrap { margin-inline: auto 0; } }
   .art { position: relative; width: 100%; aspect-ratio: 1; container-type: inline-size; }
 </style>

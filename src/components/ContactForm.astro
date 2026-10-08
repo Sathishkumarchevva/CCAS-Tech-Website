@@ -67,9 +67,9 @@ const { theme = 'light', audience = 'hiring', toggle = true, id = 'contact-form'
   .form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(255,122,26,.55); }
   .form :user-invalid { border-color: #B42318; }
   .form .seg { display: flex; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
-  .form .seg label { flex: 1; min-width: 0; }
+  .form .seg label { flex: 1; min-width: 0; display: flex; }
   .form .seg input { position: absolute; opacity: 0; pointer-events: none; }
-  .form .seg span { display: block; text-align: center; padding: 12px 8px; border-radius: 12px; border: 2px solid var(--navy); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
+  .form .seg span { display: grid; place-items: center; width: 100%; min-height: 48px; text-align: center; padding: 8px 10px; line-height: 1.25; border-radius: 12px; border: 2px solid var(--navy); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
   .form .seg input:checked + span { background: var(--orange); border-color: var(--orange); color: var(--navy); }
   .form .seg input:focus-visible + span { outline: 3px solid var(--orange); outline-offset: 2px; }
   .form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

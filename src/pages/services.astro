@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
-import TechMarquee from '../components/TechMarquee.astro';
 import HeroStack from '../components/HeroStack.astro';
 import { roles, management, engagement, groups } from '../data/site';
 ---
@@ -41,8 +40,6 @@ import { roles, management, engagement, groups } from '../data/site';
       </div>
     </div>
   </section>
-
-  <TechMarquee />
 
   <section class="section section--navy dark" id="management">
     <div class="aurora" aria-hidden="true"><i></i><i></i></div>
@@ -93,12 +90,18 @@ import { roles, management, engagement, groups } from '../data/site';
   .count b { color: var(--navy); font-weight: 400; }
   .roles { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
   .role { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: calc(var(--header-h) + 24px); }
+  @supports (grid-template-rows: subgrid) {
+    .roles { row-gap: 20px; }
+    .role { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 20px; align-content: start; }
+    .role .tags { align-content: start; }
+    .role .arrow-link { align-self: end; }
+  }
   .role[hidden] { display: none; }
   .role.pop { animation: pop .5s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.97); } }
   .role-head { display: flex; align-items: center; gap: 16px; }
   .role-head :global(.icon-tile) { margin: 0; flex-shrink: 0; }
-  .role h3 { font-size: 22px; line-height: 28px; font-weight: 700; margin: 0; }
+  .role h3 { margin: 0; }
   .role-detail { color: var(--steel); }
   .role .arrow-link { margin-top: auto; }
   .section--navy { overflow: hidden; isolation: isolate; }

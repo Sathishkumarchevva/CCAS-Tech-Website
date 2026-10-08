@@ -25,10 +25,10 @@ const { items } = Astro.props;
     .line i { display: block; height: 100%; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(.2,.8,.2,1) .35s; }
     .steps.is-in .line i { transform: scaleX(1); }
   }
-  .step { position: relative; display: grid; gap: 20px; }
+  .step { position: relative; display: grid; gap: 12px; }
+  @media (max-width: 899px) { .steps { gap: 20px; } .node { width: 40px; height: 40px; } .node span { font-size: 14px; } }
   .node { display: grid; place-items: center; justify-self: start; width: 56px; height: 56px; border-radius: 50%; background: #fff; border: 2px solid var(--navy); z-index: 1; position: relative; }
   @media (min-width: 900px) { .node { justify-self: center; } }
   .node span { font-family: var(--font-mono); font-size: 16px; color: var(--navy); }
   .card { padding: 32px; height: 100%; }
-  .card h3 { font-size: 24px; font-weight: 700; }
 </style>

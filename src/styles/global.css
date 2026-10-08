@@ -180,3 +180,40 @@ p { text-wrap: pretty; }
 .prose p, .prose li { color: #2a3140; margin-bottom: 14px; }
 .prose ul { padding-left: 22px; }
 .prose a { color: var(--orange-text); }
+
+/* ==========================================================================
+   Layout consistency pass
+   ========================================================================== */
+
+/* Eyebrow label → heading rhythm is the same everywhere */
+.eyebrow { display: flex; width: fit-content; }
+.eyebrow + h1, .eyebrow + h2 { margin-top: 16px; }
+
+/* One card-title style across every section */
+.card h3, .card h4, .role h3, .h4 {
+  font-family: var(--font-display); font-weight: 700; font-size: clamp(19px, 1.5vw, 22px); line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 8px;
+}
+.card--dark h3, .card--dark h4 { color: #fff; }
+
+/* Accent tab on cards sits on the top edge (not as a flow element) so every card has the same child structure */
+.card--accent { padding-top: 40px; }
+.card--accent::before { position: absolute; top: 0; left: 32px; margin: 0; width: 48px; height: 4px; border-radius: 0 0 4px 4px; }
+
+/* Rows of cards line their icon / title / text up across the row, even when a title wraps to two lines */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 640px) {
+    .grid > .card:has(> .icon-tile) { display: grid; grid-template-rows: subgrid; grid-row: span 3; row-gap: 0; align-content: start; }
+    .grid > .card:has(> .icon-tile) > p { margin: 0; align-self: start; }
+  }
+}
+
+/* Compact, horizontal cards on phones so long lists don't become endless scrolls */
+@media (max-width: 639px) {
+  .card:has(> .icon-tile) { display: grid; grid-template-columns: 48px 1fr; column-gap: 16px; align-items: start; padding: 20px; }
+  .card:has(> .icon-tile) > .icon-tile { grid-row: 1 / span 2; margin: 0; }
+  .card:has(> .icon-tile) > h3, .card:has(> .icon-tile) > h4 { grid-column: 2; align-self: end; }
+  .card:has(> .icon-tile) > p { grid-column: 2; margin: 0; }
+  .card--accent { padding-top: 28px; }
+  .card--accent::before { left: 20px; }
+  .sec-head { margin-bottom: 32px; }
+}
