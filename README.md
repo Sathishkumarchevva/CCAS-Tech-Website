@@ -33,14 +33,19 @@ Almost all copy lives in **`src/data/site.ts`**: contact details, nav, the 12 ro
 
 ## Contact forms
 
-Both forms POST JSON to the URL in `PUBLIC_FORM_ENDPOINT` (works with Formspree, Basin, Getform or any JSON endpoint).
+All three forms (homepage, Contact, Consultants → Apply) post to `/api/submit` ([`api/submit.js`](api/submit.js), a Vercel serverless function). It validates the data, discards spam, and forwards it to a **Power Automate** flow that adds a row to a table in a **Microsoft Excel** workbook.
 
-```bash
-cp .env.example .env     # then set PUBLIC_FORM_ENDPOINT=https://formspree.io/f/xxxxxxx
-```
+Setup (about 15 minutes, in your Microsoft 365 account): [`docs/form-to-excel-power-automate.md`](docs/form-to-excel-power-automate.md). Then add two environment variables in Vercel and redeploy:
 
-On Vercel/Netlify, set it as an environment variable instead. **If it is empty, the forms fall back to opening the visitor's email client** (`mailto:`), so nothing is silently lost — but set an endpoint before launch.
-Includes a honeypot field, native validation, and clear success/error messages.
+| Variable | Purpose |
+|---|---|
+| `POWER_AUTOMATE_URL` | The flow's "HTTP POST URL". Secret: keep it server-side (no `PUBLIC_` prefix). |
+| `FORM_TIMEZONE` | Optional. Time zone for the "Submitted (local)" column. Default `America/New_York`. |
+
+The "When an HTTP request is received" trigger needs a **Power Automate Premium** licence. The guide explains the alternative if you don't have one.
+
+Until `POWER_AUTOMATE_URL` is set (and during `npm run dev`, which doesn't run `api/`), the forms open the visitor's email app with their details, so no enquiry is lost.
+Protections: hidden honeypot field, per-visitor rate limit, cross-site posts blocked, field length caps, Excel-formula neutralising, native validation, clear success/error messages.
 
 ## Brand implementation (from the Brand Guidelines)
 
@@ -60,7 +65,7 @@ Search the code for `TODO(client)`. In short:
 2. **Stats** (430K projects, 170+ customers, 200+ awards) and the **"trusted by" company names** were carried over from the prototype. Confirm they are accurate and that the company names may be shown — they imply client relationships.
 3. **Industry photos** came from the design prototype. Confirm they are licensed for commercial use.
 4. **Privacy & Terms** are drafts.
-5. Set **`PUBLIC_FORM_ENDPOINT`**.
+5. Set up **Power Automate → Excel** and add `POWER_AUTOMATE_URL` in Vercel (see Contact forms).
 6. Add analytics / cookie consent if required.
 
 ## Deploy

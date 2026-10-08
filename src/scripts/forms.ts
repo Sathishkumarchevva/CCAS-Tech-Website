@@ -1,7 +1,9 @@
 // Contact / join-our-network forms.
-// POSTs JSON to PUBLIC_FORM_ENDPOINT (Formspree-style). With no endpoint configured, falls back to a prefilled mailto:.
+// POSTs JSON to /api/submit (api/submit.js), which forwards to Power Automate and adds a row to an Excel table
+// (docs/form-to-excel-power-automate.md). PUBLIC_FORM_ENDPOINT can override the URL (e.g. Formspree).
+// If the endpoint isn't set up yet or can't be reached, the visitor's email app opens with the details instead.
 
-const ENDPOINT = (import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined)?.trim();
+const ENDPOINT = (import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined)?.trim() || '/api/submit';
 const TO = 'info@ccastech.com';
 
 document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => {
@@ -30,20 +32,22 @@ document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => 
     const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
     if (data.website) return; // honeypot
     delete data.website;
+    data.page = location.pathname;
 
-    if (!ENDPOINT) {
+    const viaEmail = () => {
       const lines = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join('\n');
       const subject = data.audience === 'seeking' ? 'Consultant enquiry — CCAS Tech' : 'Talent request — CCAS Tech';
       location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
       status.classList.add('ok');
       status.textContent = 'Your email app should open with the details filled in. If it does not, write to ' + TO + '.';
-      return;
-    }
+    };
 
     submit.disabled = true;
     const label = submit.innerHTML; submit.textContent = 'Sending…';
     try {
       const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
+      // Endpoint not deployed / not configured yet: don't lose the enquiry, hand it to the email app.
+      if (res.status === 404 || res.status === 503) { viaEmail(); return; }
       if (!res.ok) throw new Error(String(res.status));
       form.reset(); applyAudience();
       status.classList.add('ok');
