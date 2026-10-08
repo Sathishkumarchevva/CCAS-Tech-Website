@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Privacy policy" description="How CCAS Tech collects, uses and protects your information.">
+  <section class="section">
+    <div class="wrap prose">
+      <span class="label eyebrow">Legal</span>
+      <h1 style="margin:16px 0 8px">Privacy policy</h1>
+      <p class="small">Last updated: 2026. <strong>Draft for legal review before launch.</strong></p>
+
+      <h2>What we collect</h2>
+      <p>When you contact us or apply through this website we collect the details you enter: your name, email address, company or profile link, the role you are interested in, and your message. Like most websites, our host may also log technical data such as IP address and browser type for security and reliability.</p>
+      <h2>How we use it</h2>
+      <ul>
+        <li>To reply to your request and, where relevant, match you with consultants or opportunities.</li>
+        <li>To run, secure and improve this website.</li>
+        <li>To meet legal obligations.</li>
+      </ul>
+      <p>We do not sell your personal information.</p>
+      <h2>Sharing</h2>
+      <p>We share information only with service providers who help us operate the website and our business (for example email and form-handling providers), and with clients when a consultant has asked us to put them forward for a role.</p>
+      <h2>Retention</h2>
+      <p>We keep enquiries and consultant profiles only as long as needed for the purposes above, or as the law requires.</p>
+      <h2>Your choices</h2>
+      <p>You can ask to see, correct or delete your information at any time by emailing <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <h2>Contact</h2>
+      <p>Questions about this policy? Write to <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+</Base>

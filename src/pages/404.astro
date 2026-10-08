@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+<Base title="Page not found" noindex>
+  <section class="section">
+    <div class="wrap" style="max-width:720px">
+      <span class="label eyebrow">404</span>
+      <h1 style="margin-top:16px">That page isn't here.</h1>
+      <p class="lede" style="margin-top:24px">The link may be out of date, or the page may have moved. Try the homepage, or tell us what you were looking for.</p>
+      <p style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap">
+        <a class="btn btn--primary" href="/">Back to home <Icon name="ArrowRight" size={20} /></a>
+        <a class="btn btn--outline" href="/contact/">Contact us</a>
+      </p>
+    </div>
+  </section>
+</Base>

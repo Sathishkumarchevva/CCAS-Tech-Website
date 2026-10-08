@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+---
+<Base title="Contact" description="Talk to a CCAS Tech specialist. Tell us the role, the stack and the timeline and we'll reply the same business day.">
+  <PageHero eyebrow="Contact" title="Talk to a specialist today." lede="Tell us the role, the stack and the timeline. We'll reply within one business day." />
+  <section class="section">
+    <div class="wrap two">
+      <div class="info">
+        <h2>Prefer to write or call?</h2>
+        <ul role="list">
+          <li><span class="icon-tile"><Icon name="Mail" /></span><div><span class="label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div></li>
+          {site.phone && <li><span class="icon-tile"><Icon name="Phone" /></span><div><span class="label">Phone</span><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></div></li>}
+          {site.address && <li><span class="icon-tile"><Icon name="MapPin" /></span><div><span class="label">Office</span><span>{site.address}</span></div></li>}
+          <li><span class="icon-tile"><Icon name="Clock" /></span><div><span class="label">Response time</span><span>Within one business day</span></div></li>
+        </ul>
+      </div>
+      <ContactForm id="contact-form" />
+    </div>
+  </section>
+</Base>
+
+<script>
+  // /contact/?role=DevOps%20Engineer preselects the role from the Services page
+  const role = new URLSearchParams(location.search).get('role');
+  const sel = document.querySelector<HTMLSelectElement>('#contact-form-role');
+  if (role && sel) [...sel.options].forEach((o) => { if (o.value === role) sel.value = role; });
+</script>
+
+<style>
+  .two { display: grid; gap: 48px; }
+  @media (min-width: 960px) { .two { grid-template-columns: 1fr 1.3fr; gap: 64px; } }
+  .info h2 { margin-bottom: 32px; }
+  .info ul { padding: 0; display: grid; gap: 24px; }
+  .info li { display: flex; gap: 16px; align-items: center; }
+  .info :global(.icon-tile) { margin: 0; flex-shrink: 0; }
+  .info li > div { display: grid; }
+  .info a { font-weight: 600; text-decoration: none; color: var(--navy); }
+  .info a:hover { color: var(--orange-text); text-decoration: underline; }
+</style>

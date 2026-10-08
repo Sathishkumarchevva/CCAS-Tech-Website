@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import { roles, management, engagement } from '../data/site';
+---
+<Base title="Services" description="IT consulting and staffing: cloud, data, cybersecurity, software and network specialists, plus management leaders — on contract, contract-to-hire or direct hire.">
+  <PageHero eyebrow="Services" title="Technology talent, ready to ship." lede="Twelve technical specialisms and four management disciplines — every consultant vetted for depth, and every contract clear.">
+    <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Technology talent</span><h2>Specialists across the stack.</h2></div>
+        <p class="lede">Tell us the role and the stack. We'll send a short list of consultants who have done the work before.</p>
+      </div>
+      <div class="roles">
+        {roles.map((r) => (
+          <article class="role card reveal" id={r.slug}>
+            <div class="role-head">
+              <span class="icon-tile icon-tile--navy"><Icon name={r.icon} /></span>
+              <h3>{r.title}</h3>
+            </div>
+            <p class="role-detail">{r.detail}</p>
+            <ul class="tags" aria-label={`${r.title} skills`}>{r.skills.map((s) => <li>{s}</li>)}</ul>
+            <a class="arrow-link" href={`/contact/?role=${encodeURIComponent(r.title)}`}>Request a {r.title.toLowerCase()} <Icon name="ArrowRight" size={18} /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy dark" id="management">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Strategic leadership</span><h2>Management expertise.</h2></div>
+        <p class="lede">Seasoned leaders who steer your programs, finances and teams toward measurable outcomes — on an interim or project basis.</p>
+      </div>
+      <div class="grid grid--4">
+        {management.map((m) => (
+          <article class="card card--dark reveal">
+            <span class="icon-tile"><Icon name={m.icon} /></span>
+            <h3 class="h4">{m.title}</h3>
+            <p>{m.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mist" id="engagement">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">How we work with you</span><h2>Three ways to engage.</h2></div>
+        <p class="lede">Pick the model that fits the work. Rates, terms and start date are agreed up front.</p>
+      </div>
+      <div class="grid grid--3">
+        {engagement.map((e) => (
+          <article class="card card--accent reveal">
+            <h3>{e.title}</h3>
+            <p>{e.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Not sure which role you need?" text="Describe the problem. A specialist will help you shape the role and tell you honestly what it takes." />
+</Base>
+
+<style>
+  .roles { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); }
+  .role { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: calc(var(--header-h) + 16px); }
+  .role-head { display: flex; align-items: center; gap: 16px; }
+  .role-head :global(.icon-tile) { margin: 0; flex-shrink: 0; }
+  .role h3 { font-size: 22px; line-height: 28px; font-weight: 700; margin: 0; }
+  .role-detail { color: var(--steel); }
+  .role .arrow-link { margin-top: auto; }
+</style>

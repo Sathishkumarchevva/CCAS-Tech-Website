@@ -1,0 +1,259 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ContactForm from '../components/ContactForm.astro';
+import IndustryImage from '../components/IndustryImage.astro';
+import { roles, management, industries, steps, values, stats, trusted, site } from '../data/site';
+---
+<Base title="IT consulting & staffing" description="CCAS Tech connects businesses with highly skilled IT consultants — cloud, data, cybersecurity and software delivery. The right expert, connected to the right team.">
+
+  <!-- HERO -->
+  <section class="hero dark">
+    <canvas class="stars" data-stars aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div class="copy">
+        <span class="label eyebrow reveal">IT consulting &amp; staffing · USA</span>
+        <h1 class="display reveal" style="--d:.08s">Highly skilled IT consultants, <em>ready when you are.</em></h1>
+        <p class="lede reveal" style="--d:.16s">CCAS Tech connects businesses with vetted technology consultants across cloud, data, cybersecurity and software delivery. Vetted consultants. Clear contracts.</p>
+        <div class="ctas reveal" style="--d:.24s">
+          <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
+          <a class="btn btn--outline" href="/consultants/">Join our network</a>
+        </div>
+        <ul class="chips reveal" role="list" aria-label="Skills we place" style="--d:.32s">
+          {['Full-stack', 'Cloud & DevOps', 'Data & AI', 'QA automation', 'Cybersecurity', 'Mobile'].map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+
+      <div class="stage" data-hero3d>
+        <img class="fallback" src="/images/ccas-tech-mark-reversed.svg" alt="" width="320" height="320" fetchpriority="high" />
+        <canvas aria-hidden="true"></canvas>
+        <span class="float f1"><i></i>Pre-vetted engineers</span>
+        <span class="float f2"><i class="w"></i>Cloud · Data · Security</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED -->
+  <section class="trusted dark" aria-label="Trusted by">
+    <p class="label">Talent trusted by product and platform teams worldwide</p>
+    <div class="marquee-wrap">
+      <div class="marquee">
+        {[0, 1].map((n) => (
+          <ul role="list" aria-hidden={n === 1 ? 'true' : undefined}>
+            {trusted.map((t) => <li>{t}</li>)}
+          </ul>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--mist" id="services">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Our expertise</span><h2>Technology talent, ready to ship.</h2></div>
+        <p class="lede">From cloud architecture to cybersecurity, we provide the technical talent to build, secure and scale your digital infrastructure.</p>
+      </div>
+      <ul class="role-grid" role="list">
+        {roles.map((r, i) => (
+          <li class="reveal" style={`--d:${(i % 4) * 0.05}s`}>
+            <a class="role" href={`/services/#${r.slug}`}>
+              <span class="icon-tile"><Icon name={r.icon} /></span>
+              <h3>{r.title}</h3>
+              <p>{r.blurb}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="more"><a class="arrow-link" href="/services/">See all services <Icon name="ArrowRight" size={20} /></a></p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">How it works</span><h2>From brief to first day, without the runaround.</h2></div>
+        <p class="lede">We keep the process short and the language plain, so you always know what happens next.</p>
+      </div>
+      <ol class="grid grid--3 steps" role="list">
+        {steps.map((s, i) => (
+          <li class="card card--accent reveal" style={`--d:${i * 0.08}s`}>
+            <span class="label step-n">0{i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.blurb}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- MANAGEMENT -->
+  <section class="section section--navy dark" id="management">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Strategic leadership</span><h2>Management expertise.</h2></div>
+        <p class="lede">Seasoned leaders who steer your programs, finances and teams toward measurable outcomes.</p>
+      </div>
+      <div class="grid grid--4">
+        {management.map((m, i) => (
+          <article class="card card--dark reveal" style={`--d:${i * 0.06}s`}>
+            <span class="icon-tile"><Icon name={m.icon} /></span>
+            <h3 class="h4">{m.title}</h3>
+            <p>{m.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="section" id="industries">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Industries</span><h2>Specialists who already speak your industry's language.</h2></div>
+        <p class="lede">We listen first, then match consultants who know your sector and its compliance requirements.</p>
+      </div>
+      <ul class="ind-grid" role="list">
+        {industries.map((ind, i) => (
+          <li class="reveal" style={`--d:${(i % 3) * 0.06}s`}>
+            <a class="tile" href={`/industries/#${ind.slug}`}>
+              <IndustryImage name={ind.image} alt="" />
+              <span class="cap">{ind.title} <Icon name="ArrowRight" size={20} /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="section section--mist" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <span class="label eyebrow">About CCAS Tech</span>
+          <h2>The right expert, connected to the right team.</h2>
+          <p class="lede" style="margin-top:24px">CCAS Tech is a USA-based IT consulting and staffing company. We place people who build with quality and precision, and we stand behind every placement.</p>
+          <p style="margin-top:32px"><a class="btn btn--secondary" href="/about/">About us <Icon name="ArrowRight" size={20} /></a></p>
+        </div>
+        <ul class="values" role="list">
+          {values.map((v) => (
+            <li class="card">
+              <span class="icon-tile icon-tile--navy"><Icon name={v.icon} /></span>
+              <div><h3 class="h4">{v.title}</h3><p>{v.blurb}</p></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="stats dark">
+        <h3>Ready to achieve your goals?<br /><em>Let us guide you.</em></h3>
+        {stats.map((s) => <div class="stat"><b>{s.value}</b><span>{s.label}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--navy dark" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="label eyebrow">Get started</span>
+        <h2>Let's discuss your roadmap.</h2>
+        <p class="lede" style="margin-top:24px">Tell us about your goals. We'll bring a pragmatic plan and the senior talent to execute it.</p>
+        <a class="mail" href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+      <ContactForm theme="dark" id="home-form" />
+    </div>
+  </section>
+</Base>
+
+<script>
+  import '../scripts/hero3d';
+</script>
+
+<style>
+  /* Hero */
+  .hero { position: relative; isolation: isolate; overflow: hidden; background: var(--navy); }
+  .stars { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+  .hero-grid { display: grid; gap: 32px; align-items: center; min-height: min(calc(100svh - var(--header-h) - 96px), 760px); padding-block: 48px 64px; }
+  .hero .display { margin-top: 24px; color: #fff; }
+  .hero .display em { font-style: normal; color: var(--orange); }
+  .hero .lede { margin-top: 24px; max-width: 540px; color: var(--on-navy); }
+  .ctas { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px; }
+  .chips { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; max-width: 560px; padding: 0; }
+  .chips li { padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.07); border: 1px solid var(--on-navy-line); font-size: 14px; line-height: 20px; color: #DDE4F0; }
+  @media (min-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 24px; } }
+
+  .stage { position: relative; height: clamp(320px, 52vw, 640px); border-radius: 28px; }
+  .stage::before { content: ""; position: absolute; left: 50%; top: 50%; width: 80%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,122,26,.16), transparent 65%); animation: glow 4s ease-in-out infinite; }
+  @keyframes glow { 50% { opacity: .45; transform: translate(-50%, -50%) scale(1.12); } }
+  .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .stage .fallback { position: absolute; inset: 0; margin: auto; width: min(46%, 240px); height: auto; transition: opacity .6s; }
+  .stage.is-ready .fallback { opacity: 0; }
+  .float { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 999px; background: rgba(19,41,77,.72); border: 1px solid var(--on-navy-line); backdrop-filter: blur(10px); font-size: 14px; font-weight: 600; color: #fff; white-space: nowrap; animation: floaty 5s ease-in-out infinite; pointer-events: none; }
+  .float i { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(255,122,26,.2); }
+  .float i.w { background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.15); }
+  .f1 { top: 20px; left: 8px; } .f2 { bottom: 40px; right: 8px; animation-delay: 1.2s; }
+  @keyframes floaty { 50% { transform: translateY(-6px); } }
+
+  /* Trusted */
+  .trusted { background: var(--navy); padding: 40px 0; border-top: 1px solid var(--on-navy-line); overflow: hidden; }
+  .trusted .label { text-align: center; margin-bottom: 24px; padding-inline: var(--gutter); }
+  .marquee-wrap { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee { display: flex; width: max-content; animation: scroll 50s linear infinite; }
+  .marquee:hover { animation-play-state: paused; }
+  .marquee ul { display: flex; gap: 64px; padding: 0 32px; margin: 0; list-style: none; }
+  .marquee li { font-family: var(--font-display); font-weight: 500; font-size: 24px; letter-spacing: -.01em; color: rgba(255,255,255,.55); white-space: nowrap; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { animation: none !important; width: auto; flex-wrap: wrap; justify-content: center; }
+    .marquee ul[aria-hidden] { display: none; }
+    .marquee ul { flex-wrap: wrap; justify-content: center; gap: 16px 40px; }
+    .stage::before, .float { animation: none !important; }
+  }
+
+  /* Services grid */
+  .role-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); padding: 0; }
+  .role { display: block; height: 100%; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-card); padding: 28px; text-decoration: none; transition: border-color .2s, transform .2s; }
+  .role:hover { border-color: var(--navy); transform: translateY(-2px); }
+  .role h3 { font-size: 20px; line-height: 26px; font-weight: 700; margin-bottom: 8px; }
+  .role p { color: var(--steel); font-size: 15px; line-height: 24px; }
+  .role:hover .icon-tile { background: var(--navy); color: #fff; }
+  .more { margin-top: 40px; }
+
+  .steps { padding: 0; counter-reset: s; }
+  .steps .card { padding: 32px; }
+  .step-n { color: var(--orange-text); display: block; margin-bottom: 12px; }
+  .steps h3 { font-size: 24px; }
+
+  /* Industries */
+  .ind-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); padding: 0; }
+  .tile { position: relative; display: block; aspect-ratio: 4 / 3; border-radius: var(--radius-card); overflow: hidden; color: #fff; text-decoration: none; background: var(--navy); }
+  .tile :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .tile:hover :global(img) { transform: scale(1.05); }
+  .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(11,31,58,.92)); }
+  .cap { position: absolute; z-index: 1; left: 24px; right: 24px; bottom: 20px; display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+  .cap :global(svg) { transition: transform .2s; }
+  .tile:hover .cap :global(svg) { transform: translateX(4px); color: var(--orange); }
+
+  /* About */
+  .about-grid { display: grid; gap: 48px; align-items: start; }
+  .values { display: grid; gap: 16px; padding: 0; grid-template-columns: 1fr; }
+  .values .card { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding: 24px; align-items: start; }
+  .values .icon-tile { margin: 0; }
+  @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 64px; } }
+
+  .stats { margin-top: clamp(48px, 7vw, 96px); display: grid; gap: 24px; padding: clamp(28px, 4vw, 48px); border-radius: 24px; background: var(--navy); grid-template-columns: 1fr 1fr; align-items: center; }
+  .stats h3 { grid-column: 1 / -1; color: #fff; font-weight: 700; }
+  .stats h3 em { font-style: normal; color: var(--orange); }
+  .stat b { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 4vw, 52px); line-height: 1.1; letter-spacing: -.02em; color: #fff; }
+  .stat span { font-size: 14px; color: var(--on-navy); }
+  @media (min-width: 900px) { .stats { grid-template-columns: 1.4fr repeat(3, 1fr); } .stats h3 { grid-column: auto; } }
+
+  /* Contact */
+  .contact-grid { display: grid; gap: 48px; }
+  .mail { display: inline-block; margin-top: 32px; font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 2.4vw, 26px); color: #fff; text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 4px; }
+  .mail:hover { color: var(--orange); }
+  @media (min-width: 960px) { .contact-grid { grid-template-columns: 1fr 1.15fr; gap: 64px; } }
+</style>

@@ -1,0 +1,56 @@
+---
+import Logo from './Logo.astro';
+import { site, nav, roles } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <a href="/" aria-label="CCAS Tech — home"><Logo variant="reversed" /></a>
+        <p>{site.tagline} IT consulting and staffing, built on vetted consultants and clear contracts.</p>
+      </div>
+      <div>
+        <h2 class="label">Explore</h2>
+        <ul role="list">
+          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="label">Talent</h2>
+        <ul role="list">
+          {roles.slice(0, 5).map((r) => <li><a href={`/services/#${r.slug}`}>{r.title}</a></li>)}
+          <li><a href="/services/">All services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="label">Contact</h2>
+        <ul role="list">
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          {site.phone && <li><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></li>}
+          {site.address && <li>{site.address}</li>}
+          {site.linkedin && <li><a href={site.linkedin} rel="noopener">LinkedIn</a></li>}
+          <li><a href="/consultants/">Join our network</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© {year} CCAS Tech. All rights reserved.</span>
+      <span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--deep-navy); color: var(--on-navy); padding: 72px 0 32px; }
+  .cols { display: grid; gap: 40px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .cols { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .cols { grid-template-columns: 1.6fr 1fr 1fr 1.2fr; } }
+  .about p { margin-top: 20px; max-width: 340px; }
+  h2.label { color: #9FB0CB; margin-bottom: 16px; font-weight: 400; }
+  ul { padding: 0; display: grid; gap: 12px; }
+  a { text-decoration: none; transition: color .15s; }
+  a:hover { color: var(--orange); }
+  .legal { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--on-navy-line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; }
+</style>

@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Icon from '../components/Icon.astro';
+const perks = [
+  { icon: 'Target', title: 'Roles that fit your skills', blurb: 'We match on what you are best at, not on keywords in a résumé.' },
+  { icon: 'FileText', title: 'Clear contracts', blurb: 'Rate, term and scope in writing before you start. No surprises.' },
+  { icon: 'Handshake', title: 'A recruiter who stays close', blurb: 'One person who knows you, checks in, and speaks up for you.' },
+  { icon: 'Rocket', title: 'Work with serious teams', blurb: 'Product and platform teams that need your expertise and respect it.' },
+];
+---
+<Base title="Consultants — join our network" description="Join the CCAS Tech consultant network. Clear contracts, roles matched to your skills, and a recruiter who stays close.">
+  <PageHero eyebrow="Consultants" title="Join our network." lede="If you build, secure or run technology for a living, we'd like to know you. Tell us what you do best and we'll bring roles that fit.">
+    <a class="btn btn--primary" href="#apply">Apply now <Icon name="ArrowRight" size={20} /></a>
+  </PageHero>
+
+  <section class="section section--mist">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="label eyebrow">Why CCAS Tech</span><h2>Good work, straight answers.</h2></div></div>
+      <div class="grid grid--4">
+        {perks.map((p) => (
+          <article class="card reveal">
+            <span class="icon-tile icon-tile--navy"><Icon name={p.icon} /></span>
+            <h3 class="h4">{p.title}</h3>
+            <p>{p.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apply">
+    <div class="wrap two">
+      <div>
+        <span class="label eyebrow">Apply</span>
+        <h2 style="margin-top:16px">Tell us what you do best.</h2>
+        <p class="lede" style="margin-top:24px">Share a LinkedIn profile or portfolio and a few lines about your experience. A recruiter will reply within one business day.</p>
+        <p style="margin-top:24px" class="small">Prefer email? Write to <a class="link" href="mailto:info@ccastech.com">info@ccastech.com</a>.</p>
+      </div>
+      <ContactForm audience="seeking" toggle={false} id="join-form" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .two { display: grid; gap: 48px; }
+  @media (min-width: 960px) { .two { grid-template-columns: 1fr 1.15fr; gap: 64px; } }
+</style>

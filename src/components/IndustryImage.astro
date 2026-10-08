@@ -1,0 +1,9 @@
+---
+import { Image } from 'astro:assets';
+interface Props { name: string; alt?: string; sizes?: string; width?: number; loading?: 'lazy' | 'eager'; }
+const { name, alt = '', sizes = '(min-width: 900px) 33vw, 100vw', width = 800, loading = 'lazy' } = Astro.props;
+const all = import.meta.glob<{ default: ImageMetadata }>('../assets/industries/*.jpg', { eager: true });
+const img = all[`../assets/industries/${name}.jpg`]?.default;
+if (!img) throw new Error(`Missing industry image: ${name}`);
+---
+<Image src={img} {alt} {sizes} {width} format="webp" quality={72} {loading} widths={[480, 800, 1200]} />

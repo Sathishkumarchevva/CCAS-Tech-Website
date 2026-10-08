@@ -1,0 +1,94 @@
+---
+import Icon from './Icon.astro';
+import { roles } from '../data/site';
+interface Props { theme?: 'light' | 'dark'; audience?: 'hiring' | 'seeking'; toggle?: boolean; id?: string; }
+const { theme = 'light', audience = 'hiring', toggle = true, id = 'contact-form' } = Astro.props;
+---
+<form class:list={['form', `form--${theme}`]} data-form aria-labelledby={`${id}-legend`} id={id}>
+  <p class="sr-only" id={`${id}-legend`}>Contact CCAS Tech</p>
+
+  {toggle ? (
+    <fieldset class="seg">
+      <legend class="sr-only">I am</legend>
+      <label><input type="radio" name="audience" value="hiring" checked={audience === 'hiring'} /><span>I'm hiring</span></label>
+      <label><input type="radio" name="audience" value="seeking" checked={audience === 'seeking'} /><span>I'm looking for a role</span></label>
+    </fieldset>
+  ) : (
+    <input type="hidden" name="audience" value={audience} />
+  )}
+
+  <div class="field"><label for={`${id}-name`}>Full name</label><input id={`${id}-name`} name="name" autocomplete="name" required placeholder="Jane Cooper" /></div>
+  <div class="field"><label for={`${id}-email`}>Email</label><input id={`${id}-email`} name="email" type="email" autocomplete="email" required placeholder="jane@company.com" /></div>
+
+  <div class="field" data-for="hiring"><label for={`${id}-company`}>Company</label><input id={`${id}-company`} name="company" autocomplete="organization" placeholder="Company name" /></div>
+  <div class="field" data-for="seeking"><label for={`${id}-link`}>LinkedIn or portfolio</label><input id={`${id}-link`} name="profile_url" type="url" placeholder="https://linkedin.com/in/…" /></div>
+
+  <div class="field">
+    <label for={`${id}-role`}>
+      <span data-for="hiring" class="inline">Role needed</span><span data-for="seeking" class="inline">Primary skill</span>
+    </label>
+    <select id={`${id}-role`} name="role">
+      {roles.map((r) => <option>{r.title}</option>)}
+      <option>Management / leadership</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="field full">
+    <label for={`${id}-msg`}>
+      <span data-for="hiring" class="inline">Tell us about the project</span><span data-for="seeking" class="inline">Tell us about your experience</span>
+    </label>
+    <textarea id={`${id}-msg`} name="message" rows="4" placeholder="Team size, timeline, tech stack…"></textarea>
+  </div>
+
+  <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+
+  <div class="full actions">
+    <button class="btn btn--primary" type="submit">Send request <Icon name="ArrowRight" size={20} /></button>
+    <p class="form-status" role="status" aria-live="polite" data-status></p>
+  </div>
+  <p class="full small fine">We only use your details to reply to this request. See our <a href="/privacy/">privacy policy</a>.</p>
+</form>
+
+<style is:global>
+  .form { display: grid; gap: 20px; grid-template-columns: 1fr; padding: clamp(24px, 4vw, 40px); border-radius: 24px; min-width: 0; }
+  @media (min-width: 640px) { .form { grid-template-columns: 1fr 1fr; } }
+  .form .full, .form .seg { grid-column: 1 / -1; }
+  .form [hidden] { display: none !important; }
+  .form .field { display: grid; gap: 8px; align-content: start; min-width: 0; }
+  .form .field label { font-size: 14px; line-height: 20px; font-weight: 600; }
+  .form .inline { display: inline; }
+  .form input:not([type=radio]):not([type=hidden]), .form select, .form textarea {
+    width: 100%; min-width: 0; padding: 14px 16px; border-radius: 12px; border: 1px solid #C9CFDA; background: #fff; color: var(--ink); font-size: 16px; line-height: 22px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .form textarea { min-height: 120px; resize: vertical; }
+  .form input::placeholder, .form textarea::placeholder { color: var(--steel); }
+  .form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(255,122,26,.55); }
+  .form :user-invalid { border-color: #B42318; }
+  .form .seg { display: flex; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+  .form .seg label { flex: 1; min-width: 0; }
+  .form .seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .form .seg span { display: block; text-align: center; padding: 12px 8px; border-radius: 12px; border: 2px solid var(--navy); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
+  .form .seg input:checked + span { background: var(--orange); border-color: var(--orange); color: var(--navy); }
+  .form .seg input:focus-visible + span { outline: 3px solid var(--orange); outline-offset: 2px; }
+  .form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .form .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .form .fine { color: var(--steel); }
+  .form .fine a { color: var(--orange-text); }
+  .form-status { font-weight: 500; }
+  .form-status.ok { color: #0B6B3A; }
+  .form-status.err { color: #B42318; }
+
+  .form--light { background: #fff; border: 1px solid var(--border); }
+  .form--light .field label { color: var(--navy); }
+  .form--light .seg span { color: var(--navy); }
+
+  .form--dark { background: var(--slate); border: 1px solid rgba(255,255,255,.1); }
+  .form--dark .field label { color: #fff; }
+  .form--dark .seg span { color: #fff; border-color: rgba(255,255,255,.4); }
+  .form--dark .fine { color: var(--on-navy); }
+  .form--dark .fine a { color: #fff; text-decoration: underline; }
+  .form--dark .form-status.ok { color: #7EE2A8; }
+  .form--dark .form-status.err { color: #FFB4A9; }
+</style>

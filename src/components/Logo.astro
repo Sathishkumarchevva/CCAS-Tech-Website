@@ -1,0 +1,10 @@
+---
+// Always the supplied artwork — never redraw or retype the logo (Brand Guidelines 02).
+interface Props { variant?: 'color' | 'reversed'; class?: string; }
+const { variant = 'color', class: cls } = Astro.props;
+---
+<img class:list={['logo', cls]} src={`/images/ccas-tech-logo-${variant}.svg`} alt="CCAS Tech" width="185" height="40" decoding="async" />
+<style>
+  .logo { height: 32px; width: auto; }
+  @media (min-width: 900px) { .logo { height: 40px; } }
+</style>
