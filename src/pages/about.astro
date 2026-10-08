@@ -53,8 +53,11 @@ import { values, stats } from '../data/site';
 
   <section class="section section--navy dark numbers" data-glow>
     <div class="aurora" aria-hidden="true"><i></i><i></i></div>
-    <div class="wrap stats">
-      {stats.map((s) => <div class="stat reveal" data-r="up-lg"><b data-count={s.value}>{s.value}</b><span>{s.label}</span></div>)}
+    <div class="wrap">
+      <p class="label eyebrow reveal" style="margin:0 auto 48px">CCAS Tech in numbers</p>
+      <div class="stats">
+        {stats.map((s) => <div class="stat reveal" data-r="up-lg"><b data-count={s.value}>{s.value}</b><span>{s.label}</span></div>)}
+      </div>
     </div>
   </section>
 
@@ -72,7 +75,10 @@ import { values, stats } from '../data/site';
   .ring.r2 { animation-duration: 80s; animation-direction: reverse; }
   @media (min-width: 900px) { .mark-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
   .numbers { overflow: hidden; isolation: isolate; padding-block: clamp(72px, 9vw, 120px); }
-  .stats { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .stats { display: grid; gap: 40px 0; grid-template-columns: repeat(3, 1fr); text-align: center; }
+  .stat { padding-inline: 16px; }
+  @media (min-width: 720px) { .stat + .stat { border-left: 1px solid var(--on-navy-line); } }
+  @media (max-width: 719px) { .stats { grid-template-columns: 1fr; } .stat + .stat { padding-top: 40px; border-top: 1px solid var(--on-navy-line); } }
   .stat b { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(56px, 8vw, 112px); line-height: 1; letter-spacing: -.03em; color: #fff; }
   .stat span { display: block; margin-top: 12px; color: var(--on-navy); font-size: 18px; }
   @media (prefers-reduced-motion: reduce) { .mark-art img, .ring { animation: none; } }
