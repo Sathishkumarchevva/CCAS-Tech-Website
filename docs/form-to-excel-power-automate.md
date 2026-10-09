@@ -16,19 +16,27 @@ If you can't get Premium, tell us. There is a no-Premium alternative (the websit
 
 ---
 
-## Step 1. Create the Excel file with a table
-1. Open **Excel for the web** (office.com → Excel) or desktop Excel, and create a workbook in **OneDrive for Business** or a **SharePoint** document library. Name it e.g. **CCAS Tech - website enquiries.xlsx**.
-2. In row 1, type these headings, one per column (A to J), exactly:
+## Step 1. The Excel file (already created for you)
+A ready-made workbook called **CCAS Tech - website enquiries.xlsx** was created in the OneDrive of the Microsoft 365 account that was connected during setup. It has:
+- a sheet named **Enquiries**
+- an Excel **table** named `Submissions`, with these 10 headings in row 1 (A to J):
 
-   | A | B | C | D | E | F | G | H | I | J |
-   |---|---|---|---|---|---|---|---|---|---|
-   | Submitted (UTC) | Submitted (local) | Type | Name | Email | Company | LinkedIn / portfolio | Role / skill | Message | Page |
+| A | B | C | D | E | F | G | H | I | J |
+|---|---|---|---|---|---|---|---|---|---|
+| Submitted (UTC) | Submitted (local) | Type | Name | Email | Company | LinkedIn / portfolio | Role / skill | Message | Page |
 
-3. Click any heading cell, then **Insert → Table**, tick **My table has headers**, **OK**.
-4. With the table selected: **Table Design** (or **Table**) → **Table Name** → type `Submissions`.
-5. Close the file (the connector can fail if someone has it open in desktop Excel).
+- one **SAMPLE ROW** (an Excel table must contain at least one data row). **Delete that row after your first real test** (right-click it → Delete → Table Rows).
 
-> The flow writes into a **table**, not a plain range. Without the table it can't add rows.
+Need it elsewhere (e.g. a shared SharePoint site so the whole team can open it)? Just move or copy the file there in OneDrive/SharePoint; the flow in Step 3 points at wherever the file lives when you pick it.
+
+<details><summary>Making the workbook yourself instead</summary>
+
+1. Create a workbook in OneDrive for Business or a SharePoint library.
+2. Type the 10 headings above in row 1, select them, **Insert → Table** (tick *My table has headers*).
+3. **Table Design → Table Name** → `Submissions`. Close the file.
+
+The flow writes into a **table**, not a plain range.
+</details>
 
 ## Step 2. Create the flow
 1. Go to <https://make.powerautomate.com>, then **Create → Instant cloud flow**.
