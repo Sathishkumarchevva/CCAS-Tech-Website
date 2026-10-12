@@ -1,0 +1,221 @@
+CCAS TECH — LINKEDIN COMPANY PAGE: EVERYTHING TO PASTE
+(plain-text version: copy and paste directly, line breaks are clean)
+
+==============================================================================
+CONFIRM BEFORE YOU PUBLISH
+==============================================================================
+1. Website domain. The website and brand kit use ccastech.com, but your Microsoft 365 account uses ccas-tech.com. Decide which is the real public domain and make sure the website, email (info@...) and LinkedIn all use the same one.
+
+2. Facts to add: year founded, headquarters address, company size, phone number. None of these were available, so they are marked TODO and left out of the copy.
+
+3. Service promises used in the copy: "vetted consultants", "clear contracts", "a recruiter who stays close". Check the team can keep these before publishing.
+
+4. Numbers and names deliberately NOT used: the website currently shows 430K projects, 170+ customers, 200+ awards and a list of well-known company names. They came from the design prototype and are unverified. Do not put them on LinkedIn until confirmed.
+
+5. Legal. LinkedIn pages are public. If you mention clients, certifications or partnerships later, make sure you have permission and proof.
+
+==============================================================================
+01  PAGE DETAILS
+==============================================================================
+Page name: CCAS Tech   [Where: Create page → Name]
+Public URL (custom): linkedin.com/company/ccastech   [Where: Create page → Public URL. Use this if available; otherwise ccas-tech]
+Website: https://ccastech.com   <-- Confirm this is the live domain (see "Confirm before you publish")   [Where: Page details → Website]
+Industry: Staffing and Recruiting   (Alternative: IT Services and IT Consulting. Staffing and Recruiting is recommended because it matches how people search for and apply to staffing firms.)   [Where: Page details → Industry]
+Company size: [TO BE FILLED IN]   <-- Select the real headcount range (for example 11-50 employees)   [Where: Page details → Company size]
+Company type: Privately Held   <-- Confirm (Privately Held / Partnership / Self-Employed / Public Company)   [Where: Page details → Company type]
+Year founded: [TO BE FILLED IN]   <-- Add the real year   [Where: Page details → Year founded]
+Headquarters / location: [TO BE FILLED IN]   <-- Add the real street address, city, state and ZIP   [Where: Page details → Locations]
+Phone: [TO BE FILLED IN]   <-- Optional. Add a monitored business number   [Where: Page details → Phone]
+Contact email: info@ccastech.com   <-- Confirm this mailbox exists and is monitored   [Where: Mentioned in About and posts]
+Custom button: Contact us  →  https://ccastech.com/contact/   (Alternative: Learn more → https://ccastech.com/services/)   [Where: Page → Custom button]
+Hashtags (up to 3): #ITStaffing  #TechTalent  #ITConsulting   [Where: Page details → Hashtags]
+
+==============================================================================
+02  TAGLINE (max 120)
+==============================================================================
+RECOMMENDED (74):
+IT consulting and staffing. The right expert, connected to the right team.
+
+ALTERNATIVE 1 (102):
+Vetted IT consultants. Clear contracts. Cloud, data, security and software talent, ready when you are.
+
+ALTERNATIVE 2 (96):
+USA-based IT consulting and staffing: highly skilled technology consultants, ready when you are.
+
+==============================================================================
+03  ABOUT / OVERVIEW (max 2000; this one is 1217)
+==============================================================================
+CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants.
+
+The right expert, connected to the right team.
+
+We start by understanding the work. Then we match consultants who have done it before, agree clear contracts, and stay close once the engagement starts. Vetted consultants. Clear contracts.
+
+WHAT WE PLACE
+• Technology talent: Data Science, Mobile App Development, Full-Stack and Web Development, DevOps, Cybersecurity, Information Security, Database Administration, Network Architecture and Administration, Business Intelligence.
+• Management expertise: Program Delivery, People & Operations, Financial Management, GTM & Product.
+
+INDUSTRIES
+Technology, E-commerce, Banking, Finance, Insurance and Marketing.
+
+HOW WE WORK
+• Contract: a defined scope and term for a project, a gap or a peak.
+• Contract-to-hire: work with a consultant first, then convert once it is the right fit.
+• Direct hire: we find, vet and present permanent candidates, and you make the offer.
+
+HIRING? Tell us the role and the timeline: https://ccastech.com/contact/
+TECHNOLOGY CONSULTANT? Join our network: https://ccastech.com/consultants/
+Email: info@ccastech.com
+
+==============================================================================
+04  SPECIALTIES (20 of 20) AND HASHTAGS
+==============================================================================
+- IT Staffing
+- IT Consulting
+- Technology Recruitment
+- Contract Staffing
+- Contract-to-Hire
+- Direct Hire
+- Staff Augmentation
+- Talent Acquisition
+- Cloud Engineering
+- DevOps
+- Cybersecurity
+- Information Security
+- Data Science
+- Business Intelligence
+- Full-Stack Development
+- Mobile App Development
+- Database Administration
+- Network Architecture
+- Program Management
+- Technology Consulting
+
+Comma-separated: IT Staffing, IT Consulting, Technology Recruitment, Contract Staffing, Contract-to-Hire, Direct Hire, Staff Augmentation, Talent Acquisition, Cloud Engineering, DevOps, Cybersecurity, Information Security, Data Science, Business Intelligence, Full-Stack Development, Mobile App Development, Database Administration, Network Architecture, Program Management, Technology Consulting
+
+Hashtags: #ITStaffing #TechTalent #ITConsulting
+
+==============================================================================
+05  LOGO AND BANNER FILES (inside the brand asset kit)
+==============================================================================
+Logo (square, 400 x 400 minimum 300 x 300)
+   brand-assets/05-social/profile-picture/ccas-tech-avatar-navy-800.png
+   Navy tile, white arcs, orange point. Alternatives in the same folder: -white-, -orange-.
+Company cover banner (1128 x 191 displayed)
+   brand-assets/05-social/cover-banners/ccas-tech-linkedin-company-cover-2256x382.png
+   Use the 2256 x 382 file (2x) for the sharpest result. A 1128 x 191 version is in the same folder. Keep the logo in the centre-safe area.
+Personal banner for team members (optional)
+   brand-assets/05-social/cover-banners/ccas-tech-linkedin-personal-banner-3168x792.png
+   For staff who want to match the company page on their own profiles.
+
+==============================================================================
+06  SHORT DESCRIPTION
+==============================================================================
+CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants. Vetted consultants. Clear contracts. The right expert, connected to the right team.
+
+Employee headline: [Job title] at CCAS Tech | IT consulting and staffing
+
+==============================================================================
+07  FIVE READY-TO-POST UPDATES
+==============================================================================
+------------------------------------------------------------------------------
+POST 1: INTRODUCTION (PIN THIS ONE)
+------------------------------------------------------------------------------
+CCAS Tech is on LinkedIn.
+
+We are a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants: the right expert, connected to the right team.
+
+What to expect from us:
+• Vetted consultants
+• Clear contracts
+• Plain language, no jargon
+
+Hiring for cloud, data, security or software roles? Tell us the role and the timeline: https://ccastech.com/contact/
+
+Follow this page for roles, insights and news from the team.
+
+#ITStaffing #TechTalent #ITConsulting
+
+------------------------------------------------------------------------------
+POST 2: HOW WE WORK
+------------------------------------------------------------------------------
+How we work, in three steps.
+
+1. Tell us what you need. Share the role, the stack and the timeline.
+2. Meet vetted consultants. We screen for technical depth and fit, then send a short list of people we would put on our own team.
+3. Start with clear contracts. Rates, terms and start date are agreed up front. Your consultant gets to work, and we stay close.
+
+Contract, contract-to-hire or direct hire: pick the model that fits the work.
+
+Need a specialist? https://ccastech.com/services/
+
+#ITStaffing #Hiring #TechTalent
+
+------------------------------------------------------------------------------
+POST 3: FOR CONSULTANTS
+------------------------------------------------------------------------------
+Technology consultants: we would like to know you.
+
+If you build, secure or run technology for a living, join the CCAS Tech network. Tell us what you do best and we will bring roles that fit.
+
+What you get:
+• Roles matched to your skills
+• Clear contracts: rate, term and scope in writing before you start
+• A recruiter who stays close
+
+Apply here: https://ccastech.com/consultants/
+
+#ITJobs #ITConsulting #TechTalent
+
+------------------------------------------------------------------------------
+POST 4: SKILLS WE PLACE
+------------------------------------------------------------------------------
+The skills we place:
+
+Data Science · Mobile App Development · Full-Stack Development · Web Development · DevOps · Cybersecurity · Information Security · Database Administration · Network Architecture · Business Intelligence
+
+Plus management expertise: program delivery, people and operations, financial management, and go-to-market and product.
+
+Looking for something specific? Tell us the role: https://ccastech.com/services/
+
+#DevOps #Cybersecurity #DataScience
+
+------------------------------------------------------------------------------
+POST 5: INDUSTRIES
+------------------------------------------------------------------------------
+Sector experience cuts ramp-up time.
+
+We place IT consultants who already know the work and the rules of their industry: technology, e-commerce, banking, finance, insurance and marketing.
+
+Regulated or not, the standard is the same. We find out what your sector expects before we send anyone.
+
+See the sectors we support: https://ccastech.com/industries/
+
+#ITConsulting #TechHiring #ITStaffing
+
+==============================================================================
+08  SETUP CHECKLIST
+==============================================================================
+1. Sign in to LinkedIn with a personal profile that will be an admin. A company page cannot exist without at least one personal admin.
+2. Click "For Business" (top right, grid icon) → "Create a Company Page" → "Company". If a page already exists, ask the owner to add you as a Super admin instead.
+3. Paste the name, public URL, website, industry, size and type from Section 1. Add the logo and tagline. Tick the box confirming you are authorised, then "Create page".
+4. Open the page as admin → "Edit page" (or Admin tools → Edit page). Paste the About text, add specialties, location, phone, hashtags and the custom button. Upload the cover banner.
+5. Add at least two admins (one can leave or lose access) from Admin tools → Manage admins.
+6. Publish Post 1 and pin it, then Posts 2 to 5 over the next two weeks (not all on one day).
+7. Invite your team to follow the page and add "CCAS Tech" as their current employer. Share the page link in email signatures and on business cards.
+8. Tell us the final LinkedIn URL so it can be added to the website footer (src/data/site.ts → linkedin) and the other website pages.
+
+==============================================================================
+09  VOICE GUIDE
+==============================================================================
+Expert. Reliable. Connected. Direct. Plain language, no jargon for its own sake, no hype.
+
+WE SAY:
+  + We place senior cloud engineers in 10 days.  (Only use a number like this if it is true.)
+  + Talk to a specialist today.
+  + Vetted consultants. Clear contracts.
+
+WE AVOID:
+  - Leveraging synergistic talent paradigms.
+  - Best-in-class, world-leading rockstars!!!
+  - Contact us for more information.
