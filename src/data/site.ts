@@ -10,9 +10,12 @@ export const site = {
   email: 'info@ccas-tech.com',
   founded: 2020,
   teamSize: { min: 11, max: 50 },
-  // TODO(client): add the real phone number and address — they are hidden while empty.
+  // TODO(client): add a phone number (hidden while empty) and, if you want it shown, a street address.
+  city: 'Davidson',
+  region: 'North Carolina',
+  regionCode: 'NC',
   phone: '',
-  address: '',
+  address: 'Davidson, North Carolina, USA',
   linkedin: '', // TODO(client): company LinkedIn URL
 };
 
@@ -36,7 +39,7 @@ export const roles: Role[] = [
     detail: 'iOS, Android and cross-platform engineers who ship polished apps and keep releases boring.',
     skills: ['Swift', 'Kotlin', 'React Native', 'Flutter', 'Fastlane'] },
   { group: 'data', slug: 'data-science', icon: 'BrainCircuit', title: 'Data Science', blurb: 'Models and analysis that turn raw data into decisions.',
-    detail: 'Data scientists and ML engineers who take a model from notebook to production and tie it to a business result.',
+    detail: 'Data scientists and machine learning engineers who take a model, including AI-driven ones, from notebook to production and tie it to a business result.',
     skills: ['Python', 'PyTorch', 'scikit-learn', 'MLOps', 'SQL'] },
   { group: 'data', slug: 'business-intelligence', icon: 'ChartColumn', title: 'Business Intelligence', blurb: 'Dashboards and data models your leaders can trust.',
     detail: 'Analysts and engineers who turn scattered data into dashboards people actually trust.',
@@ -74,22 +77,28 @@ export const management = [
 
 export const industries = [
   { slug: 'technology', title: 'Technology', image: 'technology', blurb: 'Software, SaaS and platform companies scaling their engineering teams.',
-    detail: 'Product and platform teams need engineers who ship. We place full-stack, DevOps and data specialists who slot into your sprint cadence from week one.',
+    challenge: 'Roadmaps move faster than hiring, and one wrong hire can cost a quarter.',
+    help: 'Full-stack, DevOps and data engineers who join your sprint cadence and contribute in the first week.',
     roles: ['Full-Stack Developer', 'DevOps Engineer', 'Data Science'] },
   { slug: 'e-commerce', title: 'E-Commerce', image: 'e-commerce', blurb: 'Storefronts, checkout and fulfilment systems that stay up on peak days.',
-    detail: 'Peak traffic is unforgiving. We provide web, mobile and infrastructure talent who build fast storefronts and keep them available.',
+    challenge: 'Peak days expose every weak spot, from the checkout page to the servers behind it.',
+    help: 'Web, mobile and DevOps specialists who build fast storefronts and keep them available when traffic spikes.',
     roles: ['Web Developer', 'Mobile App Development', 'DevOps Engineer'] },
   { slug: 'banking', title: 'Banking', image: 'banking', blurb: 'Secure, compliant systems for retail and commercial banking.',
-    detail: 'Banking technology carries heavy compliance and security obligations. Our consultants have worked inside regulated environments and respect the controls.',
+    challenge: 'Every system touches money, customer data and a regulator.',
+    help: 'Security, database and network consultants who have worked under audit and respect access, change and data-handling controls.',
     roles: ['Cybersecurity Engineer', 'Database Administrator', 'Network Architect'] },
   { slug: 'finance', title: 'Finance', image: 'finance', blurb: 'Analytics, reporting and risk platforms for finance teams.',
-    detail: 'From forecasting models to governed reporting, we staff the analysts and engineers who give finance leaders numbers they can trust.',
+    challenge: 'Reports arrive late, numbers disagree, and nobody is sure which version is right.',
+    help: 'BI, data science and information security analysts who build governed models and reporting that leaders can rely on.',
     roles: ['Business Intelligence', 'Data Science', 'Information Security Analyst'] },
   { slug: 'insurance', title: 'Insurance', image: 'insurance', blurb: 'Claims, underwriting and policy systems, modernized.',
-    detail: 'Insurers are modernizing long-lived systems. We bring developers and data specialists who can work with legacy platforms and move them forward.',
+    challenge: 'Core claims and policy systems are decades old and still business critical.',
+    help: 'Developers, data specialists and database administrators who can work safely on legacy platforms while moving them forward.',
     roles: ['Full-Stack Developer', 'Data Science', 'Database Administrator'] },
   { slug: 'marketing', title: 'Marketing', image: 'marketing', blurb: 'Web, data and automation for marketing and media teams.',
-    detail: 'Marketing runs on data and fast-moving web experiences. We place developers and analysts who connect the two.',
+    challenge: 'Campaigns depend on clean data and web experiences that change every week.',
+    help: 'Web developers and analysts who connect your data to your site and your campaigns.',
     roles: ['Web Developer', 'Business Intelligence', 'Data Science'] },
 ];
 
@@ -144,4 +153,11 @@ export const principles = [
   { icon: 'Layers', title: 'The work comes first', blurb: 'We learn what the project actually needs before we look at a single résumé.' },
   { icon: 'ShieldCheck', title: 'Rules respected', blurb: 'Banking, finance and insurance carry security and compliance duties. We ask about them up front.' },
   { icon: 'MessagesSquare', title: 'Clear from day one', blurb: 'Rates, terms and start date agreed in writing, and one recruiter you can reach.' },
+];
+
+// Problem -> fix pairs for the homepage.
+export const fixes = [
+  { problem: 'The résumé says one thing', title: 'The project needs another.', fix: 'We start from the work and match consultants who have done it before, so the shortlist is built on skills and not on keywords.' },
+  { problem: 'The terms are vague', title: 'Surprises start in the small print.', fix: 'Rates, scope, term and start date are agreed in writing before anyone begins. If something changes, you hear it from us first.' },
+  { problem: 'Support ends at placement', title: 'Day one is when problems start.', fix: 'One recruiter stays in touch with you and the consultant, and speaks up early if the fit is not working.' },
 ];

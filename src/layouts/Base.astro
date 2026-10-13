@@ -22,6 +22,7 @@ const jsonLd = {
   foundingDate: String(site.founded),
   numberOfEmployees: { '@type': 'QuantitativeValue', minValue: site.teamSize.min, maxValue: site.teamSize.max },
   areaServed: 'US',
+  address: { '@type': 'PostalAddress', addressLocality: site.city, addressRegion: site.regionCode, addressCountry: 'US' },
 };
 ---
 <!doctype html>

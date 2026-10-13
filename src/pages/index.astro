@@ -5,7 +5,7 @@ import ContactForm from '../components/ContactForm.astro';
 import IndustryImage from '../components/IndustryImage.astro';
 import Steps from '../components/Steps.astro';
 import TechMarquee from '../components/TechMarquee.astro';
-import { roles, management, industries, steps, values, commitments, site } from '../data/site';
+import { roles, management, industries, steps, values, commitments, fixes, site } from '../data/site';
 ---
 <Base title="IT consulting & staffing" description="CCAS Tech connects businesses with highly skilled IT consultants — cloud, data, cybersecurity and software delivery. The right expert, connected to the right team.">
 
@@ -43,7 +43,7 @@ import { roles, management, industries, steps, values, commitments, site } from 
     <div class="wrap">
       <div class="sec-head sec-head--split">
         <div><span class="label eyebrow">What we place</span><h2>Technology talent, ready to ship.</h2></div>
-        <p class="lede">Cloud, security, data and software specialists, vetted for depth and ready to contribute from the first week.</p>
+        <p class="lede">Cloud, security, data, AI and software specialists, vetted for depth and ready to contribute from the first week.</p>
       </div>
       <ul class="role-grid" role="list">
         {roles.map((r, i) => (
@@ -62,8 +62,27 @@ import { roles, management, industries, steps, values, commitments, site } from 
 
   <TechMarquee />
 
+  <!-- WHERE HIRING GOES WRONG -->
+  <section class="section" id="why">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Why teams call us</span><h2>Hiring technical people goes wrong in three ways.</h2></div>
+        <p class="lede">We built CCAS Tech around fixing each one, and we say so in the contract.</p>
+      </div>
+      <div class="grid grid--3 fixes">
+        {fixes.map((x, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${i * 0.1}s`}>
+            <p class="label bad">{x.problem}</p>
+            <h3>{x.title}</h3>
+            <p>{x.fix}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
-  <section class="section" id="how">
+  <section class="section section--mist" id="how">
     <div class="wrap">
       <div class="sec-head sec-head--split">
         <div><span class="label eyebrow">How it works</span><h2>From brief to first day, without the runaround.</h2></div>
@@ -207,6 +226,11 @@ import { roles, management, industries, steps, values, commitments, site } from 
 
 
   /* Services grid */
+  .fixes .card { display: flex; flex-direction: column; gap: 12px; padding: 32px; }
+  .fixes .bad { color: #B42318; display: flex; align-items: center; gap: 10px; }
+  .fixes .bad::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #B42318; }
+  .fixes h3 { font-size: clamp(22px, 2vw, 26px); margin: 0; }
+  .fixes p:last-child { color: var(--steel); margin: 0; }
   .role-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); padding: 0; }
   .role { display: block; height: 100%; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-card); padding: 28px; text-decoration: none; transition: border-color .25s, transform .25s, box-shadow .25s; }
   .role:hover { border-color: var(--navy); transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(11,31,58,.35); }

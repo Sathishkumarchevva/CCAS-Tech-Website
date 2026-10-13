@@ -23,7 +23,7 @@ import { values, commitments, deliver, engagement, principles, site, industries 
       <dl>
         <div class="reveal"><dt class="label">Founded</dt><dd>{site.founded}</dd></div>
         <div class="reveal" style="--d:.08s"><dt class="label">Team</dt><dd>{site.teamSize.min}&ndash;{site.teamSize.max} people</dd></div>
-        <div class="reveal" style="--d:.16s"><dt class="label">Based in</dt><dd>the USA</dd></div>
+        <div class="reveal" style="--d:.16s"><dt class="label">Based in</dt><dd>{site.city}, {site.regionCode}</dd></div>
         <div class="reveal" style="--d:.24s"><dt class="label">Industries</dt><dd>{industries.length} sectors</dd></div>
       </dl>
     </div>

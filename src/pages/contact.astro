@@ -15,7 +15,7 @@ import { site } from '../data/site';
         <ul role="list">
           <li class="spot reveal"><span class="icon-tile"><Icon name="Mail" /></span><div><span class="label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div></li>
           {site.phone && <li class="spot reveal"><span class="icon-tile"><Icon name="Phone" /></span><div><span class="label">Phone</span><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></div></li>}
-          {site.address && <li class="spot reveal"><span class="icon-tile"><Icon name="MapPin" /></span><div><span class="label">Office</span><span>{site.address}</span></div></li>}
+          {site.address && <li class="spot reveal"><span class="icon-tile"><Icon name="MapPin" /></span><div><span class="label">Location</span><span>{site.address}</span></div></li>}
           <li class="spot reveal"><span class="icon-tile"><Icon name="Clock" /></span><div><span class="label">Response time</span><span>Within one business day</span></div></li>
         </ul>
         <ol class="next" role="list">

@@ -52,10 +52,11 @@ const approach = [
               <div class="shot"><IndustryImage name={ind.image} alt="" sizes="(min-width: 960px) 700px, 100vw" width={1200} loading={i === 0 ? 'eager' : 'lazy'} /><span class="chip">{ind.title}</span></div>
               <div class="body">
                 <h3>{ind.title}</h3>
-                <p class="lede">{ind.detail}</p>
+                <div class="cp"><p class="label">The challenge</p><p>{ind.challenge}</p></div>
+                <div class="cp cp--help"><p class="label">How we help</p><p>{ind.help}</p></div>
                 <p class="label" style="margin-top:24px">Roles we place most</p>
                 <ul class="tags" style="margin-top:12px">{ind.roles.map((r) => <li>{r}</li>)}</ul>
-                <p style="margin-top:28px"><a class="btn btn--secondary btn--sm" href="/contact/">Talk to a {ind.title.toLowerCase()} specialist <Icon name="ArrowRight" size={18} /></a></p>
+                <p style="margin-top:28px"><a class="btn btn--secondary btn--sm" href="/contact/">Talk to our {ind.title.toLowerCase()} team <Icon name="ArrowRight" size={18} /></a></p>
               </div>
             </article>
           ))}
@@ -181,6 +182,10 @@ const approach = [
   .shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(11,31,58,.55)); pointer-events: none; }
   .chip { position: absolute; z-index: 1; left: 20px; bottom: 18px; padding: 8px 16px; border-radius: 99px; background: var(--orange); color: var(--navy); font-weight: 600; font-size: 14px; }
   .body { padding: clamp(24px, 3.4vw, 44px); }
+  .cp { margin-top: 18px; padding-left: 16px; border-left: 3px solid var(--border); }
+  .cp p:last-child { margin: 4px 0 0; color: var(--slate); font-size: 17px; line-height: 1.55; }
+  .cp--help { border-left-color: var(--orange); }
+  .cp--help p:last-child { color: var(--ink); }
   .body h3 { font-size: clamp(30px, 3.4vw, 44px); font-weight: 700; letter-spacing: -.02em; margin-bottom: 16px; }
 
   .matrix-wrap { position: relative; overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-card); background: #fff; }
