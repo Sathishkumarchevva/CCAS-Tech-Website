@@ -43,28 +43,31 @@ ALTERNATIVE 2 (96):
 USA-based IT consulting and staffing: highly skilled technology consultants, ready when you are.
 
 ==============================================================================
-03  ABOUT / OVERVIEW (max 2000; this one is 1217)
+03  ABOUT / OVERVIEW (max 2000; this one is 1530)
 ==============================================================================
-CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants.
+Great technology needs the right people behind it.
 
-The right expert, connected to the right team.
+CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants: the right expert, connected to the right team.
 
-We start by understanding the work. Then we match consultants who have done it before, agree clear contracts, and stay close once the engagement starts. Vetted consultants. Clear contracts.
+We start by understanding the work. Then we match consultants who have done it before, agree clear contracts up front, and stay close once the engagement starts. Plain language, no surprises.
 
-WHAT WE PLACE
-• Technology talent: Data Science, Mobile App Development, Full-Stack and Web Development, DevOps, Cybersecurity, Information Security, Database Administration, Network Architecture and Administration, Business Intelligence.
-• Management expertise: Program Delivery, People & Operations, Financial Management, GTM & Product.
+WHAT WE DELIVER
+• Technology talent: cloud and DevOps, cybersecurity and information security, data science and machine learning, business intelligence, full-stack, web and mobile development, databases and networks.
+• Management expertise: program delivery, people and operations, financial management, and go-to-market and product leadership.
+
+HOW YOU CAN WORK WITH US
+• Contract: a defined scope and term for a project, a gap or a peak.
+• Contract-to-hire: work together first, then convert once it is the right fit.
+• Direct hire: we find and vet permanent candidates, and you make the offer.
 
 INDUSTRIES
-Technology, E-commerce, Banking, Finance, Insurance and Marketing.
+Technology, e-commerce, banking, finance, insurance and marketing. Sector experience cuts ramp-up time, so we find out what your industry expects on security and compliance before we send anyone.
 
-HOW WE WORK
-• Contract: a defined scope and term for a project, a gap or a peak.
-• Contract-to-hire: work with a consultant first, then convert once it is the right fit.
-• Direct hire: we find, vet and present permanent candidates, and you make the offer.
+WHY CCAS TECH
+Vetted consultants. Clear contracts. A recruiter who stays close. Expert, reliable, connected and direct.
 
-HIRING? Tell us the role and the timeline: https://ccastech.com/contact/
-TECHNOLOGY CONSULTANT? Join our network: https://ccastech.com/consultants/
+BUSINESSES: tell us the role and the timeline at https://ccastech.com/contact/
+TECHNOLOGY PROFESSIONALS: join our network at https://ccastech.com/consultants/
 Email: info@ccastech.com
 
 ==============================================================================
@@ -111,7 +114,7 @@ Personal banner for team members (optional)
 ==============================================================================
 06  SHORT DESCRIPTION
 ==============================================================================
-CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants. Vetted consultants. Clear contracts. The right expert, connected to the right team.
+CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants across cloud, data, cybersecurity and software, with vetted consultants and clear contracts. The right expert, connected to the right team.
 
 Employee headline: [Job title] at CCAS Tech | IT consulting and staffing
 
