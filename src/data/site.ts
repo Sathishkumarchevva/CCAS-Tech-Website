@@ -24,49 +24,50 @@ export const nav = [
 export type Role = { group: 'software' | 'data' | 'security' | 'infrastructure'; slug: string; icon: string; title: string; blurb: string; detail: string; skills: string[] };
 
 export const roles: Role[] = [
-  { group: 'data', slug: 'data-science', icon: 'BrainCircuit', title: 'Data Science', blurb: 'Predictive models and insights to drive decisions.',
-    detail: 'Data scientists and ML engineers who take a model from notebook to production and tie it to a business result.',
-    skills: ['Python', 'PyTorch', 'scikit-learn', 'MLOps', 'SQL'] },
-  { group: 'software', slug: 'mobile-app-development', icon: 'Smartphone', title: 'Mobile App Development', blurb: 'Native and cross-platform apps with robust CI/CD.',
-    detail: 'iOS, Android and cross-platform engineers who ship polished apps and keep releases boring.',
-    skills: ['Swift', 'Kotlin', 'React Native', 'Flutter', 'Fastlane'] },
-  { group: 'software', slug: 'full-stack-developer', icon: 'CodeXml', title: 'Full-Stack Developer', blurb: 'Front-end, back-end, and API engineering.',
+  { group: 'software', slug: 'full-stack-developer', icon: 'CodeXml', title: 'Full-Stack Developer', blurb: 'Engineers who connect the interface, the API and the database.',
     detail: 'Engineers comfortable across the whole stack, from the interface to the API to the database behind it.',
     skills: ['TypeScript', 'React', 'Node.js', 'Java', '.NET', 'PostgreSQL'] },
-  { group: 'security', slug: 'cybersecurity-specialist', icon: 'ShieldCheck', title: 'Cybersecurity Specialist', blurb: 'Threat modeling, hardening, and monitoring.',
-    detail: 'Specialists who find weak points before attackers do, and build the monitoring that catches the rest.',
-    skills: ['Threat modeling', 'SIEM', 'Pen testing', 'IAM', 'Zero trust'] },
-  { group: 'data', slug: 'database-administrator', icon: 'Database', title: 'Database Administrator', blurb: 'High availability, tuning, and data protection.',
-    detail: 'DBAs who keep data fast, available and recoverable across on-premise and cloud platforms.',
-    skills: ['Oracle', 'SQL Server', 'PostgreSQL', 'Backup & DR', 'Performance tuning'] },
-  { group: 'infrastructure', slug: 'network-architect', icon: 'Network', title: 'Network Architect', blurb: 'Enterprise network design and zero-trust patterns.',
-    detail: 'Architects who design resilient, segmented networks for data centres, campuses and multi-cloud.',
-    skills: ['SD-WAN', 'Cisco', 'Zero trust', 'Cloud networking', 'BGP'] },
-  { group: 'software', slug: 'web-developer', icon: 'Monitor', title: 'Web Developer', blurb: 'Responsive, accessible websites and apps.',
+  { group: 'software', slug: 'web-developer', icon: 'Monitor', title: 'Web Developer', blurb: 'Fast, accessible sites and web apps that work on every device.',
     detail: 'Front-end developers who build fast, accessible interfaces that hold up on every device.',
     skills: ['HTML/CSS', 'JavaScript', 'Accessibility', 'CMS', 'Performance'] },
-  { group: 'data', slug: 'business-intelligence', icon: 'ChartColumn', title: 'Business Intelligence', blurb: 'Dashboards, KPIs, and governed data models.',
+  { group: 'software', slug: 'mobile-app-development', icon: 'Smartphone', title: 'Mobile App Development', blurb: 'iOS, Android and cross-platform apps, built to ship and easy to maintain.',
+    detail: 'iOS, Android and cross-platform engineers who ship polished apps and keep releases boring.',
+    skills: ['Swift', 'Kotlin', 'React Native', 'Flutter', 'Fastlane'] },
+  { group: 'data', slug: 'data-science', icon: 'BrainCircuit', title: 'Data Science', blurb: 'Models and analysis that turn raw data into decisions.',
+    detail: 'Data scientists and ML engineers who take a model from notebook to production and tie it to a business result.',
+    skills: ['Python', 'PyTorch', 'scikit-learn', 'MLOps', 'SQL'] },
+  { group: 'data', slug: 'business-intelligence', icon: 'ChartColumn', title: 'Business Intelligence', blurb: 'Dashboards and data models your leaders can trust.',
     detail: 'Analysts and engineers who turn scattered data into dashboards people actually trust.',
     skills: ['Power BI', 'Tableau', 'dbt', 'Data modeling', 'SQL'] },
-  { group: 'infrastructure', slug: 'devops-engineer', icon: 'Workflow', title: 'DevOps Engineer', blurb: 'CI/CD, IaC, observability, and release automation.',
-    detail: 'Engineers who automate delivery and infrastructure so teams can release safely and often.',
-    skills: ['Kubernetes', 'Terraform', 'AWS', 'Azure', 'GitHub Actions'] },
-  { group: 'infrastructure', slug: 'network-administrator', icon: 'Router', title: 'Network Administrator', blurb: 'Operations, troubleshooting, and resilience.',
-    detail: 'Administrators who run day-to-day network operations and resolve incidents quickly.',
-    skills: ['LAN/WAN', 'Firewalls', 'VPN', 'Monitoring', 'Wi-Fi'] },
-  { group: 'security', slug: 'information-security-analyst', icon: 'ShieldAlert', title: 'Information Security Analyst', blurb: 'Risk assessments, controls, and incident response.',
-    detail: 'Analysts who assess risk, maintain controls and lead the response when something goes wrong.',
-    skills: ['Risk assessment', 'SOC 2', 'NIST', 'Incident response', 'Audit'] },
-  { group: 'security', slug: 'cybersecurity-engineer', icon: 'Lock', title: 'Cybersecurity Engineer', blurb: 'Security across endpoints, cloud, and apps.',
+  { group: 'data', slug: 'database-administrator', icon: 'Database', title: 'Database Administrator', blurb: 'Databases that stay fast, available and recoverable.',
+    detail: 'DBAs who keep data fast, available and recoverable across on-premise and cloud platforms.',
+    skills: ['Oracle', 'SQL Server', 'PostgreSQL', 'Backup & DR', 'Performance tuning'] },
+  { group: 'security', slug: 'cybersecurity-specialist', icon: 'ShieldCheck', title: 'Cybersecurity Specialist', blurb: 'People who find weak points early and keep watch for the rest.',
+    detail: 'Specialists who find weak points before attackers do, and build the monitoring that catches the rest.',
+    skills: ['Threat modeling', 'SIEM', 'Pen testing', 'IAM', 'Zero trust'] },
+  { group: 'security', slug: 'cybersecurity-engineer', icon: 'Lock', title: 'Cybersecurity Engineer', blurb: 'Security built into endpoints, cloud accounts and applications.',
     detail: 'Engineers who build security into endpoints, cloud accounts and applications from the start.',
     skills: ['Cloud security', 'AppSec', 'EDR', 'DevSecOps', 'Automation'] },
+  { group: 'security', slug: 'information-security-analyst', icon: 'ShieldAlert', title: 'Information Security Analyst', blurb: 'Risk reviews, control checks and incident response.',
+    detail: 'Analysts who assess risk, maintain controls and lead the response when something goes wrong.',
+    skills: ['Risk assessment', 'SOC 2', 'NIST', 'Incident response', 'Audit'] },
+  { group: 'infrastructure', slug: 'devops-engineer', icon: 'Workflow', title: 'DevOps Engineer', blurb: 'Automated releases, infrastructure as code and clear visibility into production.',
+    detail: 'Engineers who automate delivery and infrastructure so teams can release safely and often.',
+    skills: ['Kubernetes', 'Terraform', 'AWS', 'Azure', 'GitHub Actions'] },
+  { group: 'infrastructure', slug: 'network-architect', icon: 'Network', title: 'Network Architect', blurb: 'Resilient, segmented network design for data centres and the cloud.',
+    detail: 'Architects who design resilient, segmented networks for data centres, campuses and multi-cloud.',
+    skills: ['SD-WAN', 'Cisco', 'Zero trust', 'Cloud networking', 'BGP'] },
+  { group: 'infrastructure', slug: 'network-administrator', icon: 'Router', title: 'Network Administrator', blurb: 'Day-to-day network operations and fast incident resolution.',
+    detail: 'Administrators who run day-to-day network operations and resolve incidents quickly.',
+    skills: ['LAN/WAN', 'Firewalls', 'VPN', 'Monitoring', 'Wi-Fi'] },
 ];
 
+
 export const management = [
-  { icon: 'Target', title: 'Program Delivery', blurb: 'Scope, budget, risk, and execution governance at scale.' },
-  { icon: 'Users', title: 'People & Ops', blurb: 'Talent enablement, operating models, and process improvement.' },
-  { icon: 'Banknote', title: 'Financial Management', blurb: 'Forecasting, ROI, cost controls, and portfolio prioritization.' },
-  { icon: 'Compass', title: 'GTM & Product', blurb: 'Discovery, roadmaps, customer insights, and growth strategy.' },
+  { icon: 'Target', title: 'Program leadership', blurb: 'Leaders who keep scope, budget and risk under control from kickoff to delivery.' },
+  { icon: 'Users', title: 'Operations & people', blurb: 'Experienced managers who strengthen teams, processes and ways of working.' },
+  { icon: 'Banknote', title: 'Finance & budgeting', blurb: 'Planning, forecasting and cost control for technology portfolios.' },
+  { icon: 'Compass', title: 'Product & growth', blurb: 'Product and go-to-market leads who turn customer insight into a roadmap.' },
 ];
 
 export const industries = [
@@ -109,15 +110,13 @@ export const values = [
   { icon: 'MessageSquareText', title: 'Direct', blurb: 'Straight answers in plain language, with no jargon and no surprises.' },
 ];
 
-// TODO(client): confirm every figure below before launch — carried over from the approved prototype.
-export const stats = [
-  { value: '430K', label: 'Projects delivered' },
-  { value: '170+', label: 'Happy customers' },
-  { value: '200+', label: 'Awards & partners' },
+// Plain-language commitments shown where a numbers band would normally go.
+// Deliberately NOT statistics: add real figures here only once the company can prove them.
+export const commitments = [
+  { word: 'Vetted', label: 'Consultants screened for technical depth and fit before you meet them' },
+  { word: 'Clear', label: 'Rates, terms and start date agreed in writing before work begins' },
+  { word: 'Close', label: 'One recruiter who stays in touch after the engagement starts' },
 ];
-
-// TODO(client): confirm these names may be shown. Carried over from the approved prototype.
-export const trusted = ['Amazon', 'Apple', 'Microsoft', 'IBM', 'Meta', 'Discover', 'Capital One', 'Deloitte', 'EY', 'Infosys', 'Tech Mahindra', "Kohl's"];
 
 export const groups = [
   { id: 'all', label: 'All roles' },
@@ -135,7 +134,7 @@ export const tech = [
 // What we place, grouped the way clients ask for it (used on the About page).
 export const deliver = {
   technology: ['Cloud & DevOps', 'Cybersecurity', 'Information security', 'Data science & machine learning', 'Business intelligence', 'Full-stack development', 'Web & mobile development', 'Databases', 'Networks'],
-  management: ['Program delivery', 'People & operations', 'Financial management', 'Go-to-market & product'],
+  management: ['Program leadership', 'Operations & people', 'Finance & budgeting', 'Product & growth'],
 };
 
 // Principles shown on the About page.

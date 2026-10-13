@@ -62,7 +62,7 @@ Protections: hidden honeypot field, per-visitor rate limit, cross-site posts blo
 Search the code for `TODO(client)`. In short:
 
 1. **Phone number, office address, LinkedIn URL** — hidden until filled in `src/data/site.ts`.
-2. **Stats** (430K projects, 170+ customers, 200+ awards) and the **"trusted by" company names** were carried over from the prototype. Confirm they are accurate and that the company names may be shown — they imply client relationships.
+2. **No statistics or client names are shown**, on purpose. Add real ones (in `commitments` in `src/data/site.ts` or a new section) only when the company can prove them.
 3. **Industry photos** came from the design prototype. Confirm they are licensed for commercial use.
 4. **Privacy & Terms** are drafts.
 5. Set up **Power Automate → Excel** and add `POWER_AUTOMATE_URL` in Vercel (see Contact forms).

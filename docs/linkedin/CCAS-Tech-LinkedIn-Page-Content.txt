@@ -10,7 +10,7 @@ CONFIRM BEFORE YOU PUBLISH
 
 3. Service promises used in the copy: "vetted consultants", "clear contracts", "a recruiter who stays close". Check the team can keep these before publishing.
 
-4. Numbers and names deliberately NOT used: the website currently shows 430K projects, 170+ customers, 200+ awards and a list of well-known company names. They came from the design prototype and are unverified. Do not put them on LinkedIn until confirmed.
+4. Numbers and names deliberately NOT used: no statistics, client names or awards appear anywhere on LinkedIn or the website. An earlier draft of the site carried figures and a client-name strip that came from another company's website (spadrix.com); they have been removed. Add real figures only when you can prove them.
 
 5. Legal. LinkedIn pages are public. If you mention clients, certifications or partnerships later, make sure you have permission and proof.
 
@@ -43,7 +43,7 @@ ALTERNATIVE 2 (96):
 USA-based IT consulting and staffing: highly skilled technology consultants, ready when you are.
 
 ==============================================================================
-03  ABOUT / OVERVIEW (max 2000; this one is 1533)
+03  ABOUT / OVERVIEW (max 2000; this one is 1518)
 ==============================================================================
 Great technology needs the right people behind it.
 
@@ -53,7 +53,7 @@ We start by understanding the work. Then we match consultants who have done it b
 
 WHAT WE DELIVER
 • Technology talent: cloud and DevOps, cybersecurity and information security, data science and machine learning, business intelligence, full-stack, web and mobile development, databases and networks.
-• Management expertise: program delivery, people and operations, financial management, and go-to-market and product leadership.
+• Delivery leadership: program leadership, operations and people, finance and budgeting, and product and growth.
 
 HOW YOU CAN WORK WITH US
 • Contract: a defined scope and term for a project, a gap or a peak.
@@ -177,7 +177,7 @@ The skills we place:
 
 Data Science · Mobile App Development · Full-Stack Development · Web Development · DevOps · Cybersecurity · Information Security · Database Administration · Network Architecture · Business Intelligence
 
-Plus management expertise: program delivery, people and operations, financial management, and go-to-market and product.
+Plus delivery leadership: program leadership, operations and people, finance and budgeting, and product and growth.
 
 Looking for something specific? Tell us the role: https://ccas-tech.com/services/
 

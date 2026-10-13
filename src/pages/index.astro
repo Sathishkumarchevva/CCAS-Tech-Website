@@ -5,7 +5,7 @@ import ContactForm from '../components/ContactForm.astro';
 import IndustryImage from '../components/IndustryImage.astro';
 import Steps from '../components/Steps.astro';
 import TechMarquee from '../components/TechMarquee.astro';
-import { roles, management, industries, steps, values, stats, trusted, site } from '../data/site';
+import { roles, management, industries, steps, values, commitments, site } from '../data/site';
 ---
 <Base title="IT consulting & staffing" description="CCAS Tech connects businesses with highly skilled IT consultants — cloud, data, cybersecurity and software delivery. The right expert, connected to the right team.">
 
@@ -37,26 +37,13 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
     </div>
   </section>
 
-  <!-- TRUSTED -->
-  <section class="trusted dark" aria-label="Trusted by">
-    <p class="label">Talent trusted by product and platform teams worldwide</p>
-    <div class="marquee-wrap">
-      <div class="marquee">
-        {[0, 1].map((n) => (
-          <ul role="list" aria-hidden={n === 1 ? 'true' : undefined}>
-            {trusted.map((t) => <li>{t}</li>)}
-          </ul>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- SERVICES -->
   <section class="section section--mist" id="services">
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">Our expertise</span><h2>Technology talent, ready to ship.</h2></div>
-        <p class="lede">From cloud architecture to cybersecurity, we provide the technical talent to build, secure and scale your digital infrastructure.</p>
+        <div><span class="label eyebrow">What we place</span><h2>Technology talent, ready to ship.</h2></div>
+        <p class="lede">Cloud, security, data and software specialists, vetted for depth and ready to contribute from the first week.</p>
       </div>
       <ul class="role-grid" role="list">
         {roles.map((r, i) => (
@@ -90,8 +77,8 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
   <section class="section section--navy dark" id="management">
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">Strategic leadership</span><h2>Management expertise.</h2></div>
-        <p class="lede">Seasoned leaders who steer your programs, finances and teams toward measurable outcomes.</p>
+        <div><span class="label eyebrow">Leadership</span><h2>Leaders for the work around the code.</h2></div>
+        <p class="lede">Experienced managers for interim or project work, accountable for the result and not only the plan.</p>
       </div>
       <div class="grid grid--4">
         {management.map((m, i) => (
@@ -146,8 +133,8 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
       </div>
 
       <div class="stats dark reveal" data-r="scale">
-        <h3>Ready to achieve your goals?<br /><em>Let us guide you.</em></h3>
-        {stats.map((s) => <div class="stat"><b data-count={s.value}>{s.value}</b><span>{s.label}</span></div>)}
+        <h3>Ready to talk about your team?<br /><em>We will take it from there.</em></h3>
+        {commitments.map((s) => <div class="stat"><b>{s.word}</b><span>{s.label}</span></div>)}
       </div>
     </div>
   </section>
@@ -178,8 +165,8 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
     <div class="wrap contact-grid">
       <div>
         <span class="label eyebrow">Get started</span>
-        <h2>Let's discuss your roadmap.</h2>
-        <p class="lede" style="margin-top:24px">Tell us about your goals. We'll bring a pragmatic plan and the senior talent to execute it.</p>
+        <h2>Tell us what you need.</h2>
+        <p class="lede" style="margin-top:24px">Share the role, the stack and the timeline. We will reply with a plan and a short list of vetted consultants.</p>
         <a class="mail" href={`mailto:${site.email}`}>{site.email}</a>
       </div>
       <ContactForm theme="dark" id="home-form" />
@@ -218,21 +205,6 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
   @keyframes floaty { 50% { transform: translateY(-6px); } }
   @media (max-width: 639px) { .float { display: none; } .stage { height: 300px; } }
 
-  /* Trusted */
-  .trusted { background: var(--navy); padding: 40px 0; border-top: 1px solid var(--on-navy-line); overflow: hidden; }
-  .trusted .label { text-align: center; margin-bottom: 24px; padding-inline: var(--gutter); }
-  .marquee-wrap { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .marquee { display: flex; width: max-content; animation: scroll 50s linear infinite; }
-  .marquee:hover { animation-play-state: paused; }
-  .marquee ul { display: flex; gap: 64px; padding: 0 32px; margin: 0; list-style: none; }
-  .marquee li { font-family: var(--font-display); font-weight: 500; font-size: 24px; letter-spacing: -.01em; color: rgba(255,255,255,.55); white-space: nowrap; }
-  @keyframes scroll { to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee { animation: none !important; width: auto; flex-wrap: wrap; justify-content: center; }
-    .marquee ul[aria-hidden] { display: none; }
-    .marquee ul { flex-wrap: wrap; justify-content: center; gap: 16px 40px; }
-    .stage::before, .float { animation: none !important; }
-  }
 
   /* Services grid */
   .role-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); padding: 0; }
@@ -279,6 +251,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
   .values .icon-tile { margin: 0; }
   @media (min-width: 900px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 64px; } }
 
+  .stats .stat b { font-size: clamp(28px, 3.2vw, 44px); }
   .stats { margin-top: clamp(48px, 7vw, 96px); display: grid; gap: 24px; padding: clamp(28px, 4vw, 48px); border-radius: 24px; background: var(--navy); grid-template-columns: 1fr 1fr; align-items: center; }
   .stats h3 { grid-column: 1 / -1; color: #fff; font-weight: 700; }
   .stats h3 em { font-style: normal; color: var(--orange); }
