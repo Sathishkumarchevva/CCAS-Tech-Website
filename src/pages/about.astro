@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
 import HeroPledge from '../components/HeroPledge.astro';
-import { values, commitments, deliver, engagement, principles } from '../data/site';
+import { values, commitments, deliver, engagement, principles, site, industries } from '../data/site';
 ---
 <Base title="About" description="CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants, on contract, contract-to-hire or direct hire.">
   <PageHero eyebrow="About CCAS Tech" title="The right expert, connected to the right team." lede="Great technology needs the right people behind it. CCAS Tech is a USA-based IT consulting and staffing company, and we connect businesses with highly skilled technology consultants."><HeroPledge slot="art" /></PageHero>
@@ -16,6 +16,18 @@ import { values, commitments, deliver, engagement, principles } from '../data/si
     </div>
   </section>
 
+
+
+  <section class="glance" aria-label="CCAS Tech at a glance">
+    <div class="wrap">
+      <dl>
+        <div class="reveal"><dt class="label">Founded</dt><dd>{site.founded}</dd></div>
+        <div class="reveal" style="--d:.08s"><dt class="label">Team</dt><dd>{site.teamSize.min}&ndash;{site.teamSize.max} people</dd></div>
+        <div class="reveal" style="--d:.16s"><dt class="label">Based in</dt><dd>the USA</dd></div>
+        <div class="reveal" style="--d:.24s"><dt class="label">Industries</dt><dd>{industries.length} sectors</dd></div>
+      </dl>
+    </div>
+  </section>
 
   <section class="section section--mist">
     <div class="wrap">
@@ -131,6 +143,14 @@ import { values, commitments, deliver, engagement, principles } from '../data/si
   .deliver .card :global(.arrow-link) { margin-top: auto; }
   .deliver .tags { margin: 4px 0 8px; }
   .section--navy { overflow: hidden; isolation: isolate; }
+  .glance { border-block: 1px solid var(--border); background: #fff; }
+  .glance dl { display: grid; grid-template-columns: repeat(2, 1fr); margin: 0; }
+  .glance dl > div { padding: 28px 16px; border-bottom: 1px solid var(--border); }
+  .glance dl > div:nth-child(odd) { border-right: 1px solid var(--border); }
+  .glance dl > div:nth-last-child(-n+2) { border-bottom: 0; }
+  .glance dt { margin-bottom: 6px; }
+  .glance dd { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 2.6vw, 36px); letter-spacing: -.02em; color: var(--navy); line-height: 1.1; }
+  @media (min-width: 800px) { .glance dl { grid-template-columns: repeat(4, 1fr); } .glance dl > div { padding: 36px 28px; border-bottom: 0; } .glance dl > div:nth-child(odd) { border-right: 0; } .glance dl > div + div { border-left: 1px solid var(--border); } .glance dl > div:first-child { padding-left: 0; } }
   .statement { padding-block: clamp(80px, 11vw, 160px); }
   .statement .scrub { margin-top: 28px; max-width: 24em; }
   .mark-grid { display: grid; gap: 48px; align-items: center; }

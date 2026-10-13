@@ -8,6 +8,8 @@ export const site = {
   description:
     'CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants: vetted people, clear contracts, the right expert for the right team.',
   email: 'info@ccas-tech.com',
+  founded: 2020,
+  teamSize: { min: 11, max: 50 },
   // TODO(client): add the real phone number and address — they are hidden while empty.
   phone: '',
   address: '',

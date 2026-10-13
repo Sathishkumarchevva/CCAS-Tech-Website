@@ -19,6 +19,8 @@ const jsonLd = {
   description: site.description,
   email: site.email,
   slogan: site.tagline,
+  foundingDate: String(site.founded),
+  numberOfEmployees: { '@type': 'QuantitativeValue', minValue: site.teamSize.min, maxValue: site.teamSize.max },
   areaServed: 'US',
 };
 ---
