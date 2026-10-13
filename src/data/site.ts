@@ -3,11 +3,11 @@
 
 export const site = {
   name: 'CCAS Tech',
-  url: 'https://ccastech.com',
+  url: 'https://ccas-tech.com',
   tagline: 'The right expert, connected to the right team.',
   description:
-    'CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants.',
-  email: 'info@ccastech.com',
+    'CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants: vetted people, clear contracts, the right expert for the right team.',
+  email: 'info@ccas-tech.com',
   // TODO(client): add the real phone number and address — they are hidden while empty.
   phone: '',
   address: '',
@@ -103,10 +103,10 @@ export const steps = [
 ];
 
 export const values = [
-  { icon: 'BadgeCheck', title: 'Expert', blurb: 'Deep technical credibility. We know the work we staff.' },
-  { icon: 'Clock', title: 'Reliable', blurb: 'On time, as promised. Partners trust us with critical roles.' },
-  { icon: 'Handshake', title: 'Connected', blurb: 'We bridge clients and consultants — the twin arcs of our mark.' },
-  { icon: 'MessageSquareText', title: 'Direct', blurb: 'Clear, plain language. No jargon for its own sake.' },
+  { icon: 'BadgeCheck', title: 'Expert', blurb: 'We understand the work we staff, so our shortlists are built on skills, not keywords.' },
+  { icon: 'Clock', title: 'Reliable', blurb: 'We do what we said, when we said it, so clients trust us with the roles that matter.' },
+  { icon: 'Handshake', title: 'Connected', blurb: 'We sit between client and consultant and keep both informed, like the twin arcs of our mark.' },
+  { icon: 'MessageSquareText', title: 'Direct', blurb: 'Straight answers in plain language, with no jargon and no surprises.' },
 ];
 
 // TODO(client): confirm every figure below before launch — carried over from the approved prototype.
@@ -130,4 +130,17 @@ export const groups = [
 export const tech = [
   ['Python', 'TypeScript', 'React', 'Java', '.NET', 'Swift', 'Kotlin', 'Node.js', 'Go', 'SQL'],
   ['AWS', 'Azure', 'GCP', 'Kubernetes', 'Terraform', 'Docker', 'GitHub Actions', 'Snowflake', 'Databricks', 'Power BI'],
+];
+
+// What we place, grouped the way clients ask for it (used on the About page).
+export const deliver = {
+  technology: ['Cloud & DevOps', 'Cybersecurity', 'Information security', 'Data science & machine learning', 'Business intelligence', 'Full-stack development', 'Web & mobile development', 'Databases', 'Networks'],
+  management: ['Program delivery', 'People & operations', 'Financial management', 'Go-to-market & product'],
+};
+
+// Principles shown on the About page.
+export const principles = [
+  { icon: 'Layers', title: 'The work comes first', blurb: 'We learn what the project actually needs before we look at a single résumé.' },
+  { icon: 'ShieldCheck', title: 'Rules respected', blurb: 'Banking, finance and insurance carry security and compliance duties. We ask about them up front.' },
+  { icon: 'MessagesSquare', title: 'Clear from day one', blurb: 'Rates, terms and start date agreed in writing, and one recruiter you can reach.' },
 ];

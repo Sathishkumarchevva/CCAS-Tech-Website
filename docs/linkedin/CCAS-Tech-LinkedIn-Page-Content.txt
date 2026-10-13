@@ -4,7 +4,7 @@ CCAS TECH — LINKEDIN COMPANY PAGE: EVERYTHING TO PASTE
 ==============================================================================
 CONFIRM BEFORE YOU PUBLISH
 ==============================================================================
-1. Website domain. The website and brand kit use ccastech.com, but your Microsoft 365 account uses ccas-tech.com. Decide which is the real public domain and make sure the website, email (info@...) and LinkedIn all use the same one.
+1. Website domain. The website is on ccas-tech.com (confirmed), which matches your Microsoft 365 account. Make sure the email address info@ccas-tech.com exists and is monitored, because the website and LinkedIn both publish it.
 
 2. Facts to add: year founded, headquarters address, company size, phone number. None of these were available, so they are marked TODO and left out of the copy.
 
@@ -18,16 +18,16 @@ CONFIRM BEFORE YOU PUBLISH
 01  PAGE DETAILS
 ==============================================================================
 Page name: CCAS Tech   [Where: Create page → Name]
-Public URL (custom): linkedin.com/company/ccastech   [Where: Create page → Public URL. Use this if available; otherwise ccas-tech]
-Website: https://ccastech.com   <-- Confirm this is the live domain (see "Confirm before you publish")   [Where: Page details → Website]
+Public URL (custom): linkedin.com/company/ccas-tech   [Where: Create page → Public URL. Use this if available; otherwise ccastech]
+Website: https://ccas-tech.com   <-- Live once the Vercel project has ccas-tech.com added under Domains   [Where: Page details → Website]
 Industry: Staffing and Recruiting   (Alternative: IT Services and IT Consulting. Staffing and Recruiting is recommended because it matches how people search for and apply to staffing firms.)   [Where: Page details → Industry]
 Company size: [TO BE FILLED IN]   <-- Select the real headcount range (for example 11-50 employees)   [Where: Page details → Company size]
 Company type: Privately Held   <-- Confirm (Privately Held / Partnership / Self-Employed / Public Company)   [Where: Page details → Company type]
 Year founded: [TO BE FILLED IN]   <-- Add the real year   [Where: Page details → Year founded]
 Headquarters / location: [TO BE FILLED IN]   <-- Add the real street address, city, state and ZIP   [Where: Page details → Locations]
 Phone: [TO BE FILLED IN]   <-- Optional. Add a monitored business number   [Where: Page details → Phone]
-Contact email: info@ccastech.com   <-- Confirm this mailbox exists and is monitored   [Where: Mentioned in About and posts]
-Custom button: Contact us  →  https://ccastech.com/contact/   (Alternative: Learn more → https://ccastech.com/services/)   [Where: Page → Custom button]
+Contact email: info@ccas-tech.com   <-- Confirm this mailbox exists and is monitored   [Where: Mentioned in About and posts]
+Custom button: Contact us  →  https://ccas-tech.com/contact/   (Alternative: Learn more → https://ccas-tech.com/services/)   [Where: Page → Custom button]
 Hashtags (up to 3): #ITStaffing  #TechTalent  #ITConsulting   [Where: Page details → Hashtags]
 
 ==============================================================================
@@ -43,7 +43,7 @@ ALTERNATIVE 2 (96):
 USA-based IT consulting and staffing: highly skilled technology consultants, ready when you are.
 
 ==============================================================================
-03  ABOUT / OVERVIEW (max 2000; this one is 1530)
+03  ABOUT / OVERVIEW (max 2000; this one is 1533)
 ==============================================================================
 Great technology needs the right people behind it.
 
@@ -66,9 +66,9 @@ Technology, e-commerce, banking, finance, insurance and marketing. Sector experi
 WHY CCAS TECH
 Vetted consultants. Clear contracts. A recruiter who stays close. Expert, reliable, connected and direct.
 
-BUSINESSES: tell us the role and the timeline at https://ccastech.com/contact/
-TECHNOLOGY PROFESSIONALS: join our network at https://ccastech.com/consultants/
-Email: info@ccastech.com
+BUSINESSES: tell us the role and the timeline at https://ccas-tech.com/contact/
+TECHNOLOGY PROFESSIONALS: join our network at https://ccas-tech.com/consultants/
+Email: info@ccas-tech.com
 
 ==============================================================================
 04  SPECIALTIES (20 of 20) AND HASHTAGS
@@ -133,7 +133,7 @@ What to expect from us:
 • Clear contracts
 • Plain language, no jargon
 
-Hiring for cloud, data, security or software roles? Tell us the role and the timeline: https://ccastech.com/contact/
+Hiring for cloud, data, security or software roles? Tell us the role and the timeline: https://ccas-tech.com/contact/
 
 Follow this page for roles, insights and news from the team.
 
@@ -150,7 +150,7 @@ How we work, in three steps.
 
 Contract, contract-to-hire or direct hire: pick the model that fits the work.
 
-Need a specialist? https://ccastech.com/services/
+Need a specialist? https://ccas-tech.com/services/
 
 #ITStaffing #Hiring #TechTalent
 
@@ -166,7 +166,7 @@ What you get:
 • Clear contracts: rate, term and scope in writing before you start
 • A recruiter who stays close
 
-Apply here: https://ccastech.com/consultants/
+Apply here: https://ccas-tech.com/consultants/
 
 #ITJobs #ITConsulting #TechTalent
 
@@ -179,7 +179,7 @@ Data Science · Mobile App Development · Full-Stack Development · Web Developm
 
 Plus management expertise: program delivery, people and operations, financial management, and go-to-market and product.
 
-Looking for something specific? Tell us the role: https://ccastech.com/services/
+Looking for something specific? Tell us the role: https://ccas-tech.com/services/
 
 #DevOps #Cybersecurity #DataScience
 
@@ -192,7 +192,7 @@ We place IT consultants who already know the work and the rules of their industr
 
 Regulated or not, the standard is the same. We find out what your sector expects before we send anyone.
 
-See the sectors we support: https://ccastech.com/industries/
+See the sectors we support: https://ccas-tech.com/industries/
 
 #ITConsulting #TechHiring #ITStaffing
 

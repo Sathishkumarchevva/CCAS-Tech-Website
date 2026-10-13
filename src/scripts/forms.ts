@@ -4,7 +4,7 @@
 // If the endpoint isn't set up yet or can't be reached, the visitor's email app opens with the details instead.
 
 const ENDPOINT = (import.meta.env.PUBLIC_FORM_ENDPOINT as string | undefined)?.trim() || '/api/submit';
-const TO = 'info@ccastech.com';
+const TO = 'info@ccas-tech.com';
 
 document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach((form) => {
   const status = form.querySelector<HTMLElement>('[data-status]')!;

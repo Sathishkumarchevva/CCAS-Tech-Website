@@ -4,19 +4,81 @@ import PageHero from '../components/PageHero.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
 import HeroPledge from '../components/HeroPledge.astro';
-import { values, stats } from '../data/site';
+import { values, stats, deliver, engagement, principles } from '../data/site';
 ---
-<Base title="About" description="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants.">
-  <PageHero eyebrow="About CCAS Tech" title="The right expert, connected to the right team." lede="CCAS Tech is a USA-based IT consulting and staffing company that connects businesses with highly skilled technology consultants."><HeroPledge slot="art" /></PageHero>
+<Base title="About" description="CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants, on contract, contract-to-hire or direct hire.">
+  <PageHero eyebrow="About CCAS Tech" title="The right expert, connected to the right team." lede="Great technology needs the right people behind it. CCAS Tech is a USA-based IT consulting and staffing company, and we connect businesses with highly skilled technology consultants."><HeroPledge slot="art" /></PageHero>
 
   <section class="section statement">
     <div class="wrap">
       <span class="label eyebrow reveal">What we do</span>
-      <p class="scrub" data-scrub>Hiring technical people is hard to do well. The résumé says one thing, the project needs another. So we start by understanding the work, then match consultants who have done it before, agree clear contracts and <em>stay close once it starts.</em></p>
+      <p class="scrub" data-scrub>Technology only delivers when the right people are behind it. So we start by understanding the work, match consultants who have done it before, agree clear contracts up front and <em>stay close once the engagement starts.</em></p>
     </div>
   </section>
 
+
   <section class="section section--mist">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">What we deliver</span><h2 data-split>Two kinds of expertise, one standard.</h2></div>
+        <p class="lede reveal">Hands-on engineers to build and protect your systems, and experienced leaders to steer the programs, budgets and teams around them.</p>
+      </div>
+      <div class="grid grid--2 deliver">
+        <article class="card card--accent spot reveal" data-r="left">
+          <h3>Technology talent</h3>
+          <p>Specialists who have done the work before and can start contributing quickly.</p>
+          <ul class="tags">{deliver.technology.map((t) => <li>{t}</li>)}</ul>
+          <a class="arrow-link" href="/services/">Explore technology roles <Icon name="ArrowRight" size={18} /></a>
+        </article>
+        <article class="card card--accent spot reveal" data-r="right">
+          <h3>Management expertise</h3>
+          <p>Seasoned leaders for interim, project or programme work, accountable for outcomes.</p>
+          <ul class="tags">{deliver.management.map((t) => <li>{t}</li>)}</ul>
+          <a class="arrow-link" href="/services/#management">See management support <Icon name="ArrowRight" size={18} /></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">How you can work with us</span><h2 data-split>Pick the model that fits the work.</h2></div>
+        <p class="lede reveal">Whether you need a specialist for a quarter or a permanent hire, the terms are agreed before anyone starts.</p>
+      </div>
+      <div class="grid grid--3">
+        {engagement.map((e, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${i * 0.1}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={e.icon} /></span>
+            <h3>{e.title}</h3>
+            <p>{e.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy dark">
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Industries we know</span><h2 data-split>Sector experience cuts ramp-up time.</h2></div>
+        <p class="lede reveal">Technology, e-commerce, banking, finance, insurance and marketing. Before we send anyone, we find out what your industry expects on security and compliance.</p>
+      </div>
+      <div class="grid grid--3">
+        {principles.map((p, i) => (
+          <article class="card card--dark spot reveal" data-r="up-lg" style={`--d:${i * 0.1}s`}>
+            <span class="icon-tile"><Icon name={p.icon} /></span>
+            <h3>{p.title}</h3>
+            <p>{p.blurb}</p>
+          </article>
+        ))}
+      </div>
+      <p class="reveal" style="margin-top:32px"><a class="btn btn--outline" href="/industries/">See our industries <Icon name="ArrowRight" size={20} /></a></p>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap">
       <div class="sec-head sec-head--split">
         <div><span class="label eyebrow">How we behave</span><h2 data-split>Expert. Reliable. Connected. Direct.</h2></div>
@@ -34,7 +96,7 @@ import { values, stats } from '../data/site';
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section--mist">
     <div class="wrap mark-grid">
       <div class="mark-art reveal" data-r="left">
         <svg viewBox="0 0 400 400" aria-hidden="true" focusable="false">
@@ -65,10 +127,14 @@ import { values, stats } from '../data/site';
 </Base>
 
 <style>
+  .deliver .card { display: flex; flex-direction: column; gap: 16px; }
+  .deliver .card :global(.arrow-link) { margin-top: auto; }
+  .deliver .tags { margin: 4px 0 8px; }
+  .section--navy { overflow: hidden; isolation: isolate; }
   .statement { padding-block: clamp(80px, 11vw, 160px); }
   .statement .scrub { margin-top: 28px; max-width: 24em; }
   .mark-grid { display: grid; gap: 48px; align-items: center; }
-  .mark-art { position: relative; background: var(--mist); border-radius: var(--radius-card); display: grid; place-items: center; aspect-ratio: 1; max-width: 520px; width: 100%; overflow: hidden; }
+  .mark-art { position: relative; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-card); display: grid; place-items: center; aspect-ratio: 1; max-width: 520px; width: 100%; overflow: hidden; }
   .mark-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
   .mark-art img { position: relative; width: 42%; height: auto; animation: breathe 6s ease-in-out infinite; }
   .ring { transform-box: view-box; transform-origin: 50% 50%; animation: spin 50s linear infinite; }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ccastech.com/sitemap-index.xml
+Sitemap: https://ccas-tech.com/sitemap-index.xml

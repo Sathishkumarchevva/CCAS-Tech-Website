@@ -17,8 +17,8 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
     <div class="wrap hero-grid">
       <div class="copy">
         <span class="label eyebrow reveal">IT consulting &amp; staffing · USA</span>
-        <h1 class="display" data-split>Highly skilled IT consultants, <em>ready when you are.</em></h1>
-        <p class="lede reveal" style="--d:.45s">CCAS Tech connects businesses with vetted technology consultants across cloud, data, cybersecurity and software delivery. Vetted consultants. Clear contracts.</p>
+        <h1 class="display" data-split>Great technology needs the <em>right people behind it.</em></h1>
+        <p class="lede reveal" style="--d:.45s">CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with vetted consultants across cloud, data, security and software, on contract, contract-to-hire or direct hire.</p>
         <div class="ctas reveal" style="--d:.6s">
           <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
           <a class="btn btn--outline" href="/consultants/">Join our network</a>
@@ -110,7 +110,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
     <div class="wrap">
       <div class="sec-head sec-head--split">
         <div><span class="label eyebrow">Industries</span><h2>Specialists who already speak your industry's language.</h2></div>
-        <p class="lede">We listen first, then match consultants who know your sector and its compliance requirements.</p>
+        <p class="lede">Sector experience cuts ramp-up time. Before we send anyone, we find out what your industry expects on security and compliance.</p>
       </div>
       <ul class="ind-grid" role="list">
         {industries.map((ind, i) => (
@@ -132,7 +132,7 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
         <div>
           <span class="label eyebrow">About CCAS Tech</span>
           <h2>The right expert, connected to the right team.</h2>
-          <p class="lede" style="margin-top:24px">CCAS Tech is a USA-based IT consulting and staffing company. We place people who build with quality and precision, and we stand behind every placement.</p>
+          <p class="lede" style="margin-top:24px">We start by understanding the work. Then we match consultants who have done it before, agree clear contracts up front, and stay close once the engagement starts. Plain language, no surprises.</p>
           <p style="margin-top:32px"><a class="btn btn--secondary" href="/about/">About us <Icon name="ArrowRight" size={20} /></a></p>
         </div>
         <ul class="values" role="list">
@@ -148,6 +148,27 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
       <div class="stats dark reveal" data-r="scale">
         <h3>Ready to achieve your goals?<br /><em>Let us guide you.</em></h3>
         {stats.map((s) => <div class="stat"><b data-count={s.value}>{s.value}</b><span>{s.label}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO WAYS IN -->
+  <section class="section" id="ways">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="label eyebrow">Two ways in</span><h2 data-split>Hiring, or looking for your next role?</h2></div></div>
+      <div class="grid grid--2 ways">
+        <article class="card card--accent spot reveal" data-r="left">
+          <span class="icon-tile icon-tile--navy"><Icon name="Building" /></span>
+          <h3>For businesses</h3>
+          <p>Tell us the role, the stack and the timeline. You get a short list of vetted consultants, with rates and terms agreed before anyone starts.</p>
+          <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
+        </article>
+        <article class="card card--accent spot reveal" data-r="right">
+          <span class="icon-tile icon-tile--navy"><Icon name="UserCheck" /></span>
+          <h3>For technology professionals</h3>
+          <p>Share what you do best. We match you to roles that fit your skills, put the contract in writing, and a recruiter stays in touch.</p>
+          <a class="btn btn--secondary" href="/consultants/">Join our network <Icon name="ArrowRight" size={20} /></a>
+        </article>
       </div>
     </div>
   </section>
@@ -266,6 +287,10 @@ import { roles, management, industries, steps, values, stats, trusted, site } fr
   @media (min-width: 900px) { .stats { grid-template-columns: 1.4fr repeat(3, 1fr); } .stats h3 { grid-column: auto; } }
 
   /* Contact */
+  .ways .card { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: clamp(28px, 3vw, 44px); }
+  .ways .card .btn { margin-top: auto; }
+  .ways h3 { font-size: clamp(24px, 2.4vw, 32px); }
+  @supports (grid-template-rows: subgrid) { @media (min-width: 640px) { .ways .card { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 16px; justify-items: start; } .ways .card h3, .ways .card p { margin: 0; } } }
   .contact-grid { display: grid; gap: 48px; }
   .mail { display: inline-block; margin-top: 32px; font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 2.4vw, 26px); color: #fff; text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 4px; }
   .mail:hover { color: var(--orange); }

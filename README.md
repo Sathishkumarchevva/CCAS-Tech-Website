@@ -70,4 +70,4 @@ Search the code for `TODO(client)`. In short:
 
 ## Deploy
 
-Any static host works (Vercel, Netlify, Cloudflare Pages, GitHub Pages). Build command `npm run build`, output directory `dist`. The canonical site URL (`https://ccastech.com`) is set in `astro.config.mjs` and drives the sitemap and meta tags.
+Any static host works (Vercel, Netlify, Cloudflare Pages, GitHub Pages). Build command `npm run build`, output directory `dist`. The canonical site URL (`https://ccas-tech.com`) is set in `astro.config.mjs` and drives the sitemap and meta tags.

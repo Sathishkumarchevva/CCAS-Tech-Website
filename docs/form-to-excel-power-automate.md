@@ -113,7 +113,7 @@ Excel files lock while being written, so two submissions at the same instant can
 
 ## Good to know
 - **Where it lives:** the Excel file is in your Microsoft 365 storage. Share it with colleagues with Excel's normal **Share** button.
-- **Email alerts (optional):** add **Send an email (V2)** after the Excel step to notify `info@ccastech.com` for every enquiry.
+- **Email alerts (optional):** add **Send an email (V2)** after the Excel step to notify `info@ccas-tech.com` for every enquiry.
 - **Spam protection:** hidden trap field (bots are discarded), per-visitor rate limit (best-effort), cross-site posts blocked, 3,000 characters per field.
 - **Formula safety:** any value starting with `=`, `+`, `-` or `@` is stored with a leading `'` so it can't run as an Excel formula.
 - **Rotating the secret URL:** in the flow, edit the trigger and regenerate the URL (or delete and re-add the trigger), then update `POWER_AUTOMATE_URL` in Vercel and redeploy.

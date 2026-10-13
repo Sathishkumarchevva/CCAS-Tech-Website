@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://ccastech.com',
+  site: 'https://ccas-tech.com',
   integrations: [sitemap()],
   build: { inlineStylesheets: 'auto' },
   vite: { build: { chunkSizeWarningLimit: 900 } }, // three.js is lazy-loaded on the homepage only
