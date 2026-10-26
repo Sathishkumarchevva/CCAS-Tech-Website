@@ -1,8 +1,10 @@
-// Vercel serverless function: receives the website forms and forwards them to a Power Automate flow,
-// which adds a row to an Excel table. See docs/form-to-excel-power-automate.md.
+// Vercel serverless function: receives the website forms and delivers each enquiry to HR two ways:
+//   1. an email to HR_EMAIL (default hr@ccas-tech.com) through Resend   -> RESEND_API_KEY
+//   2. a new row in an Excel table through a Power Automate flow         -> POWER_AUTOMATE_URL
+// Either one is enough; both can be on. See docs/form-submissions-setup.md.
 //
-// Why a function instead of calling Power Automate from the browser: the flow's URL contains a secret
-// signature. Kept here (POWER_AUTOMATE_URL, server-side only) it never reaches visitors.
+// Why a function and not the browser: both the API key and the flow URL are secrets. Kept here, server-side,
+// they never reach visitors.
 
 const MAX_FIELD = 3000;
 const TYPE_LABELS = { hiring: 'Hiring talent', seeking: 'Consultant (looking for a role)' };
@@ -58,8 +60,9 @@ export default async function handler(req, res) {
   const name = clean(data.name), email = clean(data.email);
   if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return res.status(400).json({ ok: false, error: 'invalid' });
 
-  const url = process.env.POWER_AUTOMATE_URL;
-  if (!url) return res.status(503).json({ ok: false, error: 'not_configured' });
+  const paUrl = process.env.POWER_AUTOMATE_URL;
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!paUrl && !resendKey) return res.status(503).json({ ok: false, error: 'not_configured' });
 
   const now = new Date();
   const payload = {
@@ -75,16 +78,46 @@ export default async function handler(req, res) {
     page: clean(data.page),
   };
 
+  // Two independent destinations: an Excel row (Power Automate) and an email to HR (Resend).
+  // The visitor sees success if at least one of them accepted the enquiry.
+  const jobs = [];
+  if (paUrl) jobs.push(['excel', () => postJson(paUrl, payload)]);
+  if (resendKey) jobs.push(['email', () => sendHrEmail(resendKey, payload)]);
+  const results = await Promise.allSettled(jobs.map(([, run]) => run()));
+  let ok = false;
+  results.forEach((r, i) => {
+    if (r.status === 'fulfilled') ok = true;
+    else console.error(`${jobs[i][0]} delivery failed:`, r.reason && r.reason.message);
+  });
+  if (!ok) return res.status(502).json({ ok: false, error: 'upstream' });
+  return res.status(200).json({ ok: true });
+}
+
+async function postJson(url, body, headers = {}) {
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), 12000);
   try {
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: ctl.signal });
-    if (!r.ok) { console.error('Power Automate responded', r.status); return res.status(502).json({ ok: false, error: 'upstream' }); }
-    return res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error('Power Automate request failed:', err && err.name);
-    return res.status(502).json({ ok: false, error: 'upstream' });
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(body), signal: ctl.signal });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r;
   } finally {
     clearTimeout(timer);
   }
+}
+
+// Plain-text email (no HTML, so nothing a visitor types can be interpreted as markup).
+function sendHrEmail(key, p) {
+  const oneLine = (v) => String(v).replace(/[\r\n]+/g, ' ').slice(0, 120);
+  const rows = [
+    ['Type', p.type], ['Name', p.name], ['Email', p.email], ['Company', p.company], ['LinkedIn / portfolio', p.profileUrl],
+    ['Role / skill', p.role], ['Page', p.page], ['Received', p.submittedAtLocal + ' (' + (process.env.FORM_TIMEZONE || 'America/New_York') + ')'],
+  ].filter(([, v]) => v);
+  const text = rows.map(([k, v]) => k + ': ' + v).join('\n') + '\n\nMessage:\n' + (p.message || '(none)') + '\n\n-- Sent by the CCAS Tech website. Reply to this email to answer the sender.';
+  return postJson(process.env.RESEND_API_URL || 'https://api.resend.com/emails', {
+    from: process.env.RESEND_FROM || 'CCAS Tech Website <onboarding@resend.dev>',
+    to: [process.env.HR_EMAIL || 'hr@ccas-tech.com'],
+    reply_to: p.email,
+    subject: 'New website enquiry: ' + oneLine(p.type) + ' - ' + oneLine(p.name),
+    text,
+  }, { Authorization: 'Bearer ' + key });
 }

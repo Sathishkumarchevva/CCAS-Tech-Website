@@ -35,19 +35,18 @@ Almost all copy lives in **`src/data/site.ts`**: contact details, nav, the 12 ro
 
 ## Contact forms
 
-All three forms (homepage, Contact, Consultants → Apply) post to `/api/submit` ([`api/submit.js`](api/submit.js), a Vercel serverless function). It validates the data, discards spam, and forwards it to a **Power Automate** flow that adds a row to a table in a **Microsoft Excel** workbook.
+All three forms (homepage, Contact Us, Careers → Apply) post to `/api/submit` ([`api/submit.js`](api/submit.js), a Vercel serverless function). It validates the data, discards spam, and delivers each enquiry to HR by **email** (`RESEND_API_KEY`) and/or as a **row in an Excel table** (`POWER_AUTOMATE_URL`).
 
-Setup (about 15 minutes, in your Microsoft 365 account): [`docs/form-to-excel-power-automate.md`](docs/form-to-excel-power-automate.md). Then add two environment variables in Vercel and redeploy:
+Setup: [`docs/form-submissions-setup.md`](docs/form-submissions-setup.md). Email takes about 5 minutes; the Excel flow is in [`docs/form-to-excel-power-automate.md`](docs/form-to-excel-power-automate.md) and needs a Power Automate Premium licence.
 
 | Variable | Purpose |
 |---|---|
-| `POWER_AUTOMATE_URL` | The flow's "HTTP POST URL". Secret: keep it server-side (no `PUBLIC_` prefix). |
-| `FORM_TIMEZONE` | Optional. Time zone for the "Submitted (local)" column. Default `America/New_York`. |
+| `RESEND_API_KEY` | Emails every enquiry to `HR_EMAIL` (default `hr@ccas-tech.com`). Secret. |
+| `POWER_AUTOMATE_URL` | Adds every enquiry to Excel. Secret. |
+| `HR_EMAIL`, `RESEND_FROM`, `FORM_TIMEZONE` | Optional. See `.env.example`. |
 
-The "When an HTTP request is received" trigger needs a **Power Automate Premium** licence. The guide explains the alternative if you don't have one.
-
-Until `POWER_AUTOMATE_URL` is set (and during `npm run dev`, which doesn't run `api/`), the forms open the visitor's email app with their details, so no enquiry is lost.
-Protections: hidden honeypot field, per-visitor rate limit, cross-site posts blocked, field length caps, Excel-formula neutralising, native validation, clear success/error messages.
+**If neither secret is set, the forms only open the visitor's email app, so most enquiries are lost.** Set at least one before launch. During `npm run dev` the `api/` folder does not run, so the forms fall back the same way.
+Protections: hidden honeypot field, per-visitor rate limit, cross-site posts blocked, field length caps, plain-text email, Excel-formula neutralising, native validation, clear success/error messages.
 
 ## Brand implementation (from the Brand Guidelines)
 
@@ -67,7 +66,7 @@ Search the code for `TODO(client)`. In short:
 2. **No statistics or client names are shown**, on purpose. Add real ones (in `commitments` in `src/data/site.ts` or a new section) only when the company can prove them.
 3. **Industry photos** came from the design prototype. Confirm they are licensed for commercial use.
 4. **Privacy & Terms** are drafts.
-5. Set up **Power Automate → Excel** and add `POWER_AUTOMATE_URL` in Vercel (see Contact forms).
+5. Turn on form delivery: add `RESEND_API_KEY` (and optionally `POWER_AUTOMATE_URL`) in Vercel (see Contact forms).
 6. Add analytics / cookie consent if required.
 
 ## Deploy

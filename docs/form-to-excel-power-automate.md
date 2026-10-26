@@ -1,5 +1,7 @@
 # Send website form submissions to a Microsoft Excel file (Power Automate)
 
+> Overview of all delivery options (including email to HR): [`form-submissions-setup.md`](form-submissions-setup.md).
+
 Every submission from the **homepage form**, the **Contact** page and **Consultants → Apply** becomes a new row in an Excel workbook stored in your Microsoft 365 account (OneDrive or SharePoint).
 
 ```
