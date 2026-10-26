@@ -204,6 +204,9 @@ p { text-wrap: pretty; }
   @media (min-width: 640px) {
     .grid > .card:has(> .icon-tile) { display: grid; grid-template-rows: subgrid; grid-row: span 3; row-gap: 0; align-content: start; }
     .grid > .card:has(> .icon-tile) > p { margin: 0; align-self: start; }
+    /* cards with a trailing link have four parts */
+    .grid > .card:has(> .icon-tile):has(> .arrow-link) { grid-row: span 4; }
+    .grid > .card:has(> .icon-tile) > .arrow-link { margin-top: 12px; align-self: end; }
   }
 }
 

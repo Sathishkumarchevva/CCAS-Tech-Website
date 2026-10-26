@@ -18,14 +18,16 @@ npm run preview   # serve the production build
 
 | Route | Purpose |
 |---|---|
-| `/` | Hero (3D twin-arc mark), services, how it works, management, industries, about, contact form |
-| `/services/` | 12 technology roles + 4 management disciplines + engagement models |
-| `/industries/` | Technology, E-commerce, Banking, Finance, Insurance, Marketing |
-| `/consultants/` | "Join our network" — for consultants (separate form) |
-| `/about/` | Who we are, values, the meaning of the mark |
-| `/contact/` | Contact form + details (supports `?role=` preselect) |
-| `/privacy/`, `/terms/` | **Draft** legal pages — need review by counsel |
+| `/` | Hero (3D twin-arc mark), what we do, roles, problem → fix, how it works, leadership, industries, about, contact form |
+| `/about-us/` | Story, mission & vision, approach, values, the meaning of the mark |
+| `/expertise/` | Recruiting & staffing (14 roles), IT consulting, outsourced IT teams, leadership, IT training, hiring models |
+| `/industries/` | Technology, E-commerce, Banking, Finance, Insurance, Marketing (challenge → how we help) |
+| `/careers/` | Who we look for, path in, referral program, apply form (no job openings are listed on purpose) |
+| `/contact-us/` | Contact details, location, form (supports `?role=` preselect) |
+| `/privacy/`, `/terms/` | **Draft** legal pages, need review by counsel |
 | `404` | Not-found page |
+
+Old addresses (`/about/`, `/services/`, `/consultants/`, `/contact/`) redirect to the new ones.
 
 ## Editing content
 

@@ -13,15 +13,18 @@ const year = new Date().getFullYear();
       <div>
         <h2 class="label">Explore</h2>
         <ul role="list">
-          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
-          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/about-us/">About Us</a></li>
+          <li><a href="/expertise/">Expertise</a></li>
+          <li><a href="/industries/">Industries</a></li>
+          <li><a href="/careers/">Careers</a></li>
+          <li><a href="/contact-us/">Contact Us</a></li>
         </ul>
       </div>
       <div>
         <h2 class="label">Talent</h2>
         <ul role="list">
-          {roles.slice(0, 5).map((r) => <li><a href={`/services/#${r.slug}`}>{r.title}</a></li>)}
-          <li><a href="/services/">All services</a></li>
+          {roles.slice(0, 5).map((r) => <li><a href={`/expertise/#${r.slug}`}>{r.title}</a></li>)}
+          <li><a href="/expertise/">All services</a></li>
         </ul>
       </div>
       <div>
@@ -31,7 +34,7 @@ const year = new Date().getFullYear();
           {site.phone && <li><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></li>}
           {site.address && <li>{site.address}</li>}
           {site.linkedin && <li><a href={site.linkedin} rel="noopener">LinkedIn</a></li>}
-          <li><a href="/consultants/">Join our network</a></li>
+          <li><a href="/careers/">Join our network</a></li>
         </ul>
       </div>
     </div>

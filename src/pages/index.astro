@@ -5,7 +5,7 @@ import ContactForm from '../components/ContactForm.astro';
 import IndustryImage from '../components/IndustryImage.astro';
 import Steps from '../components/Steps.astro';
 import TechMarquee from '../components/TechMarquee.astro';
-import { roles, management, industries, steps, values, commitments, fixes, site } from '../data/site';
+import { roles, management, industries, steps, values, commitments, fixes, solutions, site } from '../data/site';
 ---
 <Base title="IT consulting & staffing" description="CCAS Tech connects businesses with highly skilled IT consultants — cloud, data, cybersecurity and software delivery. The right expert, connected to the right team.">
 
@@ -20,8 +20,8 @@ import { roles, management, industries, steps, values, commitments, fixes, site 
         <h1 class="display" data-split>Great technology needs the <em>right people behind it.</em></h1>
         <p class="lede reveal" style="--d:.45s">CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with vetted consultants across cloud, data, security and software, on contract, contract-to-hire or direct hire.</p>
         <div class="ctas reveal" style="--d:.6s">
-          <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
-          <a class="btn btn--outline" href="/consultants/">Join our network</a>
+          <a class="btn btn--primary" href="/contact-us/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
+          <a class="btn btn--outline" href="/careers/">Join our network</a>
         </div>
         <ul class="chips reveal" role="list" aria-label="Skills we place" style="--d:.75s">
           {['Full-stack', 'Cloud & DevOps', 'Data & AI', 'QA automation', 'Cybersecurity', 'Mobile'].map((c) => <li>{c}</li>)}
@@ -38,17 +38,37 @@ import { roles, management, industries, steps, values, commitments, fixes, site 
   </section>
 
 
+  <!-- WHAT WE DO -->
+  <section class="section" id="what">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Introducing CCAS Tech</span><h2>Your big IT plans, without the hassle.</h2></div>
+        <p class="lede">Technology moves fast, and there is rarely time to research every option or risk an amateur. We bring structured, accountable IT support you can trust, in four forms.</p>
+      </div>
+      <div class="grid grid--4 sol">
+        {solutions.map((x, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${i * 0.08}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={x.icon} /></span>
+            <h3 class="h4">{x.title}</h3>
+            <p>{x.blurb}</p>
+            <a class="arrow-link" href={`/expertise/${x.href}`}>{x.cta} <Icon name="ArrowRight" size={18} /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section class="section section--mist" id="services">
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">What we place</span><h2>Technology talent, ready to ship.</h2></div>
+        <div><span class="label eyebrow">IT recruiting &amp; staffing</span><h2>Technology talent, ready to ship.</h2></div>
         <p class="lede">Cloud, security, data, AI and software specialists, vetted for depth and ready to contribute from the first week.</p>
       </div>
       <ul class="role-grid" role="list">
         {roles.map((r, i) => (
           <li class="reveal" style={`--d:${(i % 4) * 0.05}s`}>
-            <a class="role spot" href={`/services/#${r.slug}`}>
+            <a class="role spot" href={`/expertise/#${r.slug}`}>
               <span class="icon-tile"><Icon name={r.icon} /></span>
               <h3>{r.title}</h3>
               <p>{r.blurb}</p>
@@ -56,7 +76,7 @@ import { roles, management, industries, steps, values, commitments, fixes, site 
           </li>
         ))}
       </ul>
-      <p class="more"><a class="arrow-link" href="/services/">See all services <Icon name="ArrowRight" size={20} /></a></p>
+      <p class="more"><a class="arrow-link" href="/expertise/">See all expertise <Icon name="ArrowRight" size={20} /></a></p>
     </div>
   </section>
 
@@ -66,7 +86,7 @@ import { roles, management, industries, steps, values, commitments, fixes, site 
   <section class="section" id="why">
     <div class="wrap">
       <div class="sec-head sec-head--split">
-        <div><span class="label eyebrow">Why teams call us</span><h2>Hiring technical people goes wrong in three ways.</h2></div>
+        <div><span class="label eyebrow">Why we are different</span><h2>Hiring technical people goes wrong in three ways.</h2></div>
         <p class="lede">We built CCAS Tech around fixing each one, and we say so in the contract.</p>
       </div>
       <div class="grid grid--3 fixes">
@@ -139,7 +159,7 @@ import { roles, management, industries, steps, values, commitments, fixes, site 
           <span class="label eyebrow">About CCAS Tech</span>
           <h2>The right expert, connected to the right team.</h2>
           <p class="lede" style="margin-top:24px">Founded in 2020, we start by understanding the work. Then we match consultants who have done it before, agree clear contracts up front, and stay close once the engagement starts. Plain language, no surprises.</p>
-          <p style="margin-top:32px"><a class="btn btn--secondary" href="/about/">About us <Icon name="ArrowRight" size={20} /></a></p>
+          <p style="margin-top:32px"><a class="btn btn--secondary" href="/about-us/">About us <Icon name="ArrowRight" size={20} /></a></p>
         </div>
         <ul class="values" role="list">
           {values.map((v) => (
@@ -167,13 +187,13 @@ import { roles, management, industries, steps, values, commitments, fixes, site 
           <span class="icon-tile icon-tile--navy"><Icon name="Building" /></span>
           <h3>For businesses</h3>
           <p>Tell us the role, the stack and the timeline. You get a short list of vetted consultants, with rates and terms agreed before anyone starts.</p>
-          <a class="btn btn--primary" href="/contact/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
+          <a class="btn btn--primary" href="/contact-us/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
         </article>
         <article class="card card--accent spot reveal" data-r="right">
           <span class="icon-tile icon-tile--navy"><Icon name="UserCheck" /></span>
           <h3>For technology professionals</h3>
           <p>Share what you do best. We match you to roles that fit your skills, put the contract in writing, and a recruiter stays in touch.</p>
-          <a class="btn btn--secondary" href="/consultants/">Join our network <Icon name="ArrowRight" size={20} /></a>
+          <a class="btn btn--secondary" href="/careers/">Join our network <Icon name="ArrowRight" size={20} /></a>
         </article>
       </div>
     </div>
@@ -226,6 +246,8 @@ import { roles, management, industries, steps, values, commitments, fixes, site 
 
 
   /* Services grid */
+  .sol .card { display: flex; flex-direction: column; gap: 12px; }
+  .sol .card .arrow-link { margin-top: auto; padding-top: 8px; align-self: flex-start; }
   .fixes .card { display: flex; flex-direction: column; gap: 12px; padding: 32px; }
   .fixes .bad { color: #B42318; display: flex; align-items: center; gap: 10px; }
   .fixes .bad::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #B42318; }

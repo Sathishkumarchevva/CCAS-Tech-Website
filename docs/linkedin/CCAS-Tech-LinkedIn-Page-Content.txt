@@ -27,7 +27,7 @@ Year founded: [TO BE FILLED IN]   <-- Add the real year   [Where: Page details �
 Headquarters / location: [TO BE FILLED IN]   <-- Add the real street address, city, state and ZIP   [Where: Page details → Locations]
 Phone: [TO BE FILLED IN]   <-- Optional. Add a monitored business number   [Where: Page details → Phone]
 Contact email: hr@ccas-tech.com   <-- Confirm this mailbox exists and is monitored   [Where: Mentioned in About and posts]
-Custom button: Contact us  →  https://ccas-tech.com/contact/   (Alternative: Learn more → https://ccas-tech.com/services/)   [Where: Page → Custom button]
+Custom button: Contact us  →  https://ccas-tech.com/contact-us/   (Alternative: Learn more → https://ccas-tech.com/expertise/)   [Where: Page → Custom button]
 Hashtags (up to 3): #ITStaffing  #TechTalent  #ITConsulting   [Where: Page details → Hashtags]
 
 ==============================================================================
@@ -43,7 +43,7 @@ ALTERNATIVE 2 (96):
 USA-based IT consulting and staffing: highly skilled technology consultants, ready when you are.
 
 ==============================================================================
-03  ABOUT / OVERVIEW (max 2000; this one is 1516)
+03  ABOUT / OVERVIEW (max 2000; this one is 1515)
 ==============================================================================
 Great technology needs the right people behind it.
 
@@ -66,8 +66,8 @@ Technology, e-commerce, banking, finance, insurance and marketing. Sector experi
 WHY CCAS TECH
 Vetted consultants. Clear contracts. A recruiter who stays close. Expert, reliable, connected and direct.
 
-BUSINESSES: tell us the role and the timeline at https://ccas-tech.com/contact/
-TECHNOLOGY PROFESSIONALS: join our network at https://ccas-tech.com/consultants/
+BUSINESSES: tell us the role and the timeline at https://ccas-tech.com/contact-us/
+TECHNOLOGY PROFESSIONALS: join our network at https://ccas-tech.com/careers/
 Email: hr@ccas-tech.com
 
 ==============================================================================
@@ -133,7 +133,7 @@ What to expect from us:
 • Clear contracts
 • Plain language, no jargon
 
-Hiring for cloud, data, security or software roles? Tell us the role and the timeline: https://ccas-tech.com/contact/
+Hiring for cloud, data, security or software roles? Tell us the role and the timeline: https://ccas-tech.com/contact-us/
 
 Follow this page for roles, insights and news from the team.
 
@@ -150,7 +150,7 @@ How we work, in three steps.
 
 Contract, contract-to-hire or direct hire: pick the model that fits the work.
 
-Need a specialist? https://ccas-tech.com/services/
+Need a specialist? https://ccas-tech.com/expertise/
 
 #ITStaffing #Hiring #TechTalent
 
@@ -166,7 +166,7 @@ What you get:
 • Clear contracts: rate, term and scope in writing before you start
 • A recruiter who stays close
 
-Apply here: https://ccas-tech.com/consultants/
+Apply here: https://ccas-tech.com/careers/
 
 #ITJobs #ITConsulting #TechTalent
 
@@ -179,7 +179,7 @@ Data Science · Mobile App Development · Full-Stack Development · Web Developm
 
 Plus delivery leadership: program leadership, operations and people, finance and budgeting, and product and growth.
 
-Looking for something specific? Tell us the role: https://ccas-tech.com/services/
+Looking for something specific? Tell us the role: https://ccas-tech.com/expertise/
 
 #DevOps #Cybersecurity #DataScience
 

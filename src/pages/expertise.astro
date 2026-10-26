@@ -1,0 +1,204 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import TechMarquee from '../components/TechMarquee.astro';
+import HeroStack from '../components/HeroStack.astro';
+import Steps from '../components/Steps.astro';
+import { roles, management, engagement, groups, solutions, consultingSteps, outsourcing, training, industries } from '../data/site';
+---
+<Base title="Expertise" description="IT recruiting and staffing, IT consulting, outsourced IT teams and IT training from CCAS Tech, a USA-based IT consulting and staffing company.">
+  <PageHero eyebrow="Expertise" title="IT expertise that moves the work forward." lede={`Recruiting, consulting, outsourced teams and training, backed by ${roles.length} technical specialisms and four leadership areas. Every consultant is vetted, and every term is agreed up front.`}>
+    <a class="btn btn--primary" href="/contact-us/">Find a consultant <Icon name="ArrowRight" size={20} /></a>
+    <a class="btn btn--outline" href="#roles">Browse roles</a>
+    <HeroStack slot="art" />
+  </PageHero>
+
+  <!-- WHAT WE DO -->
+  <section class="section" id="solutions">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">What we do</span><h2 data-split>Four ways we help.</h2></div>
+        <p class="lede reveal">Technology moves quickly and teams are stretched. Pick the support that fits, or combine them.</p>
+      </div>
+      <div class="grid grid--4">
+        {solutions.map((x, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${i * 0.08}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={x.icon} /></span>
+            <h3 class="h4">{x.title}</h3>
+            <p>{x.blurb}</p>
+            <a class="arrow-link" href={x.href}>{x.cta} <Icon name="ArrowRight" size={18} /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTING -->
+  <section class="section section--mist" id="consulting">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">IT consulting</span><h2 data-split>Advice built on your real systems.</h2></div>
+        <p class="lede reveal">Change is easier when the plan starts from what you already run. Our specialists assess first, then recommend what is worth doing, and help carry it out.</p>
+      </div>
+      <Steps items={consultingSteps} />
+    </div>
+  </section>
+
+  <!-- ROLES -->
+  <section class="section" id="roles">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">IT recruiting &amp; staffing</span><h2 data-split>Specialists across the stack.</h2></div>
+        <p class="lede reveal">Tell us the role and the stack. We will send a short list of consultants who have done the work before.</p>
+      </div>
+
+      <div class="filters reveal" role="group" aria-label="Filter roles">
+        {groups.map((g) => <button type="button" class="chip-btn" data-filter={g.id} aria-pressed={g.id === 'all'}>{g.label}</button>)}
+        <span class="count label"><b data-count-out>{roles.length}</b> roles</span>
+      </div>
+
+      <div class="roles">
+        {roles.map((r, i) => (
+          <article class="role card spot reveal" id={r.slug} data-group={r.group} style={`--d:${(i % 3) * 0.07}s`}>
+            <div class="role-head">
+              <span class="icon-tile icon-tile--navy"><Icon name={r.icon} /></span>
+              <h3>{r.title}</h3>
+            </div>
+            <p class="role-detail">{r.detail}</p>
+            <ul class="tags" aria-label={`${r.title} skills`}>{r.skills.map((s) => <li>{s}</li>)}</ul>
+            <a class="arrow-link" href={`/contact-us/?role=${encodeURIComponent(r.title)}`}>Request this role <Icon name="ArrowRight" size={18} /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TechMarquee />
+
+  <!-- OUTSOURCING -->
+  <section class="section" id="outsourcing">
+    <div class="wrap two-col">
+      <div>
+        <span class="label eyebrow">Outsourced IT teams</span>
+        <h2 data-split style="margin-top:16px">Hand over the scope, keep the focus.</h2>
+        <p class="lede reveal" style="margin-top:24px;--d:.2s">Get the benefit of a skilled, well-run technology team without the cost of building and maintaining one. You set the goal, we staff and manage the work.</p>
+        <p class="reveal" style="margin-top:32px;--d:.3s"><a class="btn btn--secondary" href="/contact-us/">Discuss a project <Icon name="ArrowRight" size={20} /></a></p>
+      </div>
+      <ul class="checks" role="list">
+        {outsourcing.map((t, i) => (
+          <li class="card spot reveal" data-r="right" style={`--d:${i * 0.08}s`}><span class="tick"><Icon name="Check" size={18} /></span><span>{t}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="section section--mist" id="management">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Leadership</span><h2 data-split>Leaders for the work around the code.</h2></div>
+        <p class="lede reveal">Experienced managers for interim or project work, accountable for the result and not only the plan.</p>
+      </div>
+      <div class="grid grid--4">
+        {management.map((m, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${i * 0.08}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={m.icon} /></span>
+            <h3 class="h4">{m.title}</h3>
+            <p>{m.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING -->
+  <section class="section section--navy dark" id="training">
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">IT training</span><h2 data-split>Skills your team can use on Monday.</h2></div>
+        <p class="lede reveal">Projects slip when a team lacks one key skill. Our training closes that gap with practical sessions, tailored to the tools and goals you already have.</p>
+      </div>
+      <div class="grid grid--4">
+        {training.features.map((f, i) => (
+          <article class="card card--dark spot reveal" data-r="up-lg" style={`--d:${i * 0.08}s`}>
+            <span class="icon-tile"><Icon name={f.icon} /></span>
+            <h3 class="h4">{f.title}</h3>
+            <p>{f.blurb}</p>
+          </article>
+        ))}
+      </div>
+      <p class="label reveal" style="margin-top:40px">Training topics include</p>
+      <ul class="tags reveal" style="margin-top:12px">{training.topics.map((t) => <li>{t}</li>)}</ul>
+      <p class="reveal" style="margin-top:32px"><a class="btn btn--primary" href="/contact-us/?role=Other">Ask about training <Icon name="ArrowRight" size={20} /></a></p>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT -->
+  <section class="section" id="engagement">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">How we work with you</span><h2 data-split>Three ways to hire.</h2></div>
+        <p class="lede reveal">Pick the model that fits the work. Rates, terms and start date are agreed up front.</p>
+      </div>
+      <div class="grid grid--3">
+        {engagement.map((e, i) => (
+          <article class="card card--accent spot reveal" style={`--d:${i * 0.1}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={e.icon} /></span>
+            <h3>{e.title}</h3>
+            <p>{e.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES TEASER -->
+  <section class="section section--mist">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Industries</span><h2 data-split>Sector experience cuts ramp-up time.</h2></div>
+        <p class="lede reveal">We place consultants who already know the rules of the sector they join, from banking to e-commerce.</p>
+      </div>
+      <ul class="tags reveal" style="gap:10px">{industries.map((i) => <li><a href={`/industries/#${i.slug}`} style="text-decoration:none;color:inherit">{i.title}</a></li>)}</ul>
+      <p class="reveal" style="margin-top:28px"><a class="arrow-link" href="/industries/">Explore our industries <Icon name="ArrowRight" size={18} /></a></p>
+    </div>
+  </section>
+
+  <CtaBand title="Not sure which support you need?" text="Describe the problem. A specialist will help you shape it and tell you honestly what it takes." />
+</Base>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .chip-btn { padding: 10px 20px; border-radius: 999px; border: 2px solid var(--border); background: #fff; color: var(--navy); font-weight: 600; font-size: 15px; cursor: pointer; transition: background-color .2s, color .2s, border-color .2s, transform .2s; }
+  .chip-btn:hover { border-color: var(--navy); }
+  .chip-btn[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .count { margin-left: auto; color: var(--steel); }
+  .count b { color: var(--navy); font-weight: 400; }
+  .roles { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+  .role { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: calc(var(--header-h) + 24px); }
+  .role[hidden] { display: none; }
+  .role.pop { animation: pop .5s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+  .role-head { display: flex; align-items: center; gap: 16px; }
+  .role-head :global(.icon-tile) { margin: 0; flex-shrink: 0; }
+  .role h3 { margin: 0; }
+  .role-detail { color: var(--steel); }
+  .role .arrow-link { margin-top: auto; }
+  @supports (grid-template-rows: subgrid) {
+    .roles { row-gap: 20px; }
+    .role { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 20px; align-content: start; }
+    .role .tags { align-content: start; }
+    .role .arrow-link { align-self: end; }
+  }
+  [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+  .two-col { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 900px) { .two-col { grid-template-columns: 1fr 1fr; gap: 80px; } }
+  .checks { padding: 0; display: grid; gap: 14px; }
+  .checks .card { display: flex; gap: 16px; align-items: flex-start; padding: 20px 24px; }
+  .tick { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--orange); color: var(--navy); display: grid; place-items: center; }
+  .section--navy { overflow: hidden; isolation: isolate; }
+  .card .arrow-link { margin-top: 12px; }
+</style>

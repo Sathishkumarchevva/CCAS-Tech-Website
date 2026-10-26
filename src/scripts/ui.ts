@@ -143,6 +143,6 @@ if (chips.length) {
     const c = document.querySelector('[data-count-out]'); if (c) c.textContent = String(items.filter((i) => !i.hidden).length);
   };
   chips.forEach((c) => c.addEventListener('click', () => apply(c.dataset.filter ?? 'all')));
-  // deep links like /services/#devops-engineer must never land on a filtered-out card
+  // deep links like /expertise/#devops-engineer must never land on a filtered-out card
   if (location.hash && document.querySelector(location.hash)) apply('all');
 }

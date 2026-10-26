@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Steps from '../components/Steps.astro';
+import Icon from '../components/Icon.astro';
+import HeroMatch from '../components/HeroMatch.astro';
+import { lookingFor, referral, site } from '../data/site';
+const perks = [
+  { icon: 'Target', title: 'Roles that fit your skills', blurb: 'We match on what you are best at, not on keywords in a résumé.' },
+  { icon: 'FileText', title: 'Clear contracts', blurb: 'Rate, term and scope in writing before you start. No surprises.' },
+  { icon: 'Handshake', title: 'A recruiter who stays close', blurb: 'One person who knows you, checks in, and speaks up for you.' },
+  { icon: 'Rocket', title: 'Work with serious teams', blurb: 'Product and platform teams that need your expertise and respect it.' },
+];
+const path = [
+  { icon: 'Send', title: 'Apply in two minutes', blurb: 'Share your profile and what you do best. No long forms, no account to create.' },
+  { icon: 'MessagesSquare', title: 'Talk to a recruiter', blurb: 'A short call about your skills, goals, rate and availability. Honest answers both ways.' },
+  { icon: 'BriefcaseBusiness', title: 'Get matched', blurb: 'We bring roles that fit. You choose which to pursue, and we handle the rest.' },
+];
+---
+<Base title="Careers" description="Build your technology career with CCAS Tech. Join our talent network, meet a recruiter who stays close, and get matched to roles that fit, with clear contracts.">
+  <PageHero eyebrow="Careers" title="Build your career with us." lede="We pursue excellent results for our clients, and that depends on excellent people. If you build, secure or run technology for a living, we would like to know you.">
+    <a class="btn btn--primary" href="#apply">Apply now <Icon name="ArrowRight" size={20} /></a>
+    <a class="btn btn--outline" href="#refer">Refer someone</a>
+    <HeroMatch slot="art" />
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap two">
+      <div>
+        <span class="label eyebrow">Grow with CCAS Tech</span>
+        <h2 data-split style="margin-top:16px">Careers that are matched, not just posted.</h2>
+      </div>
+      <div class="body">
+        <p class="lede reveal">We are always widening the range of organizations and problems we help with, and we need skilled people to do that well. Whether you join our talent network or the CCAS Tech team, you get a straight conversation and someone in your corner.</p>
+        <p class="lede reveal" style="--d:.1s">We do not list open positions on this page. Instead, we keep your profile and come to you when a role fits, so apply even if you do not see a title that matches.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mist">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Why CCAS Tech</span><h2 data-split>Good work, straight answers.</h2></div>
+        <p class="lede reveal">We keep it simple: the right role, a clear contract and someone in your corner.</p>
+      </div>
+      <div class="grid grid--4">
+        {perks.map((p, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${i * 0.08}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={p.icon} /></span>
+            <h3 class="h4">{p.title}</h3>
+            <p>{p.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Who we look for</span><h2 data-split>People who want to do the work well.</h2></div>
+        <p class="lede reveal">Skills get you in the door. These habits are what make a consultant someone clients ask for again.</p>
+      </div>
+      <div class="grid grid--3">
+        {lookingFor.map((l, i) => (
+          <article class="card spot reveal" data-r="up-lg" style={`--d:${(i % 3) * 0.08}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={l.icon} /></span>
+            <h3 class="h4">{l.title}</h3>
+            <p>{l.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mist">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Your path in</span><h2 data-split>From hello to your next role.</h2></div>
+        <p class="lede reveal">Three steps, and you always know where you stand.</p>
+      </div>
+      <Steps items={path} />
+    </div>
+  </section>
+
+  <section class="section" id="refer">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div><span class="label eyebrow">Referral program</span><h2 data-split>Know someone great? Introduce them.</h2></div>
+        <p class="lede reveal">The best people usually know other good people. If you are part of the CCAS Tech team, refer them and we will take care of the rest.</p>
+      </div>
+      <div class="grid grid--3">
+        {referral.map((r, i) => (
+          <article class="card card--accent spot reveal" style={`--d:${i * 0.1}s`}>
+            <span class="icon-tile icon-tile--navy"><Icon name={r.icon} /></span>
+            <h3>{r.title}</h3>
+            <p>{r.blurb}</p>
+          </article>
+        ))}
+      </div>
+      <p class="small reveal" style="margin-top:24px;max-width:720px">Referrals are made through our HR team: <a class="link" href={`mailto:${site.email}`}>{site.email}</a>. A referred person must not already be a current employee. If several people refer the same candidate, the first to tell HR is recognized.</p>
+    </div>
+  </section>
+
+  <section class="section section--navy dark apply" id="apply">
+    <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+    <div class="wrap two">
+      <div>
+        <span class="label eyebrow">Apply</span>
+        <h2 data-split style="margin-top:16px">Tell us what you do best.</h2>
+        <p class="lede reveal" style="margin-top:24px">Share a LinkedIn profile or portfolio and a few lines about your experience. A recruiter will reply within one business day.</p>
+        <p style="margin-top:24px" class="small reveal">Prefer email? Write to <a class="link" href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      </div>
+      <div class="reveal" data-r="right"><ContactForm theme="dark" audience="seeking" toggle={false} id="join-form" /></div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .apply { overflow: hidden; isolation: isolate; }
+  .two { display: grid; gap: 48px; }
+  @media (min-width: 960px) { .two { grid-template-columns: 1fr 1.15fr; gap: 80px; } }
+  .body { display: grid; gap: 20px; max-width: 640px; }
+</style>

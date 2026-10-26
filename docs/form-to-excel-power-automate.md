@@ -56,7 +56,7 @@ The flow writes into a **table**, not a plain range.
   "profileUrl": "",
   "role": "DevOps Engineer",
   "message": "We need two engineers for three months.",
-  "page": "/contact/"
+  "page": "/contact-us/"
 }
 ```
 

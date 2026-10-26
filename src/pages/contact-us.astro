@@ -6,8 +6,8 @@ import Icon from '../components/Icon.astro';
 import HeroChat from '../components/HeroChat.astro';
 import { site } from '../data/site';
 ---
-<Base title="Contact" description="Talk to a CCAS Tech specialist. Tell us the role, the stack and the timeline and we'll reply the same business day.">
-  <PageHero eyebrow="Contact" title="Talk to a specialist today." lede="Tell us the role, the stack and the timeline. We'll reply within one business day."><HeroChat slot="art" /></PageHero>
+<Base title="Contact Us" description="Contact CCAS Tech in Davidson, North Carolina. Tell us the role, the stack and the timeline, or the problem you are trying to solve, and we will reply within one business day.">
+  <PageHero eyebrow="Contact Us" title="We are happy to hear from you." lede="Tell us the role, the stack and the timeline, or just the problem you are trying to solve. The earlier you talk to us, the easier it is to fit the right solution into your plans."><HeroChat slot="art" /></PageHero>
   <section class="section">
     <div class="wrap two">
       <div class="info">
@@ -15,7 +15,7 @@ import { site } from '../data/site';
         <ul role="list">
           <li class="spot reveal"><span class="icon-tile"><Icon name="Mail" /></span><div><span class="label">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div></li>
           {site.phone && <li class="spot reveal"><span class="icon-tile"><Icon name="Phone" /></span><div><span class="label">Phone</span><a href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></div></li>}
-          {site.address && <li class="spot reveal"><span class="icon-tile"><Icon name="MapPin" /></span><div><span class="label">Location</span><span>{site.address}</span></div></li>}
+          {site.address && <li class="spot reveal"><span class="icon-tile"><Icon name="MapPin" /></span><div><span class="label">Location</span><span>{site.address}</span><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.city + ', ' + site.region)}`} rel="noopener" target="_blank" class="small">View on map</a></div></li>}
           <li class="spot reveal"><span class="icon-tile"><Icon name="Clock" /></span><div><span class="label">Response time</span><span>Within one business day</span></div></li>
         </ul>
         <ol class="next" role="list">
@@ -31,7 +31,7 @@ import { site } from '../data/site';
 </Base>
 
 <script>
-  // /contact/?role=DevOps%20Engineer preselects the role from the Services page
+  // /contact-us/?role=DevOps%20Engineer preselects the role from the Services page
   const role = new URLSearchParams(location.search).get('role');
   const sel = document.querySelector<HTMLSelectElement>('#contact-form-role');
   if (role && sel) [...sel.options].forEach((o) => { if (o.value === role) sel.value = role; });

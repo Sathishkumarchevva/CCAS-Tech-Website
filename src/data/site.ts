@@ -20,10 +20,10 @@ export const site = {
 };
 
 export const nav = [
-  { label: 'Services', href: '/services/' },
-  { label: 'Industries', href: '/industries/' },
-  { label: 'Consultants', href: '/consultants/' },
-  { label: 'About', href: '/about/' },
+  { label: 'About Us', href: '/about-us/' },
+  { label: 'Expertise', href: '/expertise/' },
+  { label: 'Careers', href: '/careers/' },
+  { label: 'Contact Us', href: '/contact-us/' },
 ];
 
 export type Role = { group: 'software' | 'data' | 'security' | 'infrastructure'; slug: string; icon: string; title: string; blurb: string; detail: string; skills: string[] };
@@ -32,6 +32,12 @@ export const roles: Role[] = [
   { group: 'software', slug: 'full-stack-developer', icon: 'CodeXml', title: 'Full-Stack Developer', blurb: 'Engineers who connect the interface, the API and the database.',
     detail: 'Engineers comfortable across the whole stack, from the interface to the API to the database behind it.',
     skills: ['TypeScript', 'React', 'Node.js', 'Java', '.NET', 'PostgreSQL'] },
+  { group: 'software', slug: 'api-integration-engineer', icon: 'Cable', title: 'API & Integration Engineer', blurb: 'APIs and integrations that connect your systems reliably.',
+    detail: 'Engineers who design, secure and manage the APIs and integrations that let your systems talk to each other.',
+    skills: ['REST', 'GraphQL', 'API gateways', 'Messaging', 'OAuth'] },
+  { group: 'software', slug: 'qa-automation-engineer', icon: 'Bug', title: 'QA Automation Engineer', blurb: 'Automated testing built into every release.',
+    detail: 'Testers and engineers who build automated checks into the delivery pipeline so quality is verified continuously, not at the end.',
+    skills: ['Selenium', 'Playwright', 'Cypress', 'CI pipelines', 'API testing'] },
   { group: 'software', slug: 'web-developer', icon: 'Monitor', title: 'Web Developer', blurb: 'Fast, accessible sites and web apps that work on every device.',
     detail: 'Front-end developers who build fast, accessible interfaces that hold up on every device.',
     skills: ['HTML/CSS', 'JavaScript', 'Accessibility', 'CMS', 'Performance'] },
@@ -160,4 +166,65 @@ export const fixes = [
   { problem: 'The résumé says one thing', title: 'The project needs another.', fix: 'We start from the work and match consultants who have done it before, so the shortlist is built on skills and not on keywords.' },
   { problem: 'The terms are vague', title: 'Surprises start in the small print.', fix: 'Rates, scope, term and start date are agreed in writing before anyone begins. If something changes, you hear it from us first.' },
   { problem: 'Support ends at placement', title: 'Day one is when problems start.', fix: 'One recruiter stays in touch with you and the consultant, and speaks up early if the fit is not working.' },
+];
+
+// ---------- Expertise page ----------
+export const solutions = [
+  { icon: 'Users', title: 'IT recruiting & staffing', blurb: 'Contract, contract-to-hire and direct hire. We source, screen and shortlist, so you only interview people worth your time.', href: '#roles', cta: 'See the roles we place' },
+  { icon: 'Lightbulb', title: 'IT consulting', blurb: 'Specialists who study the systems you actually run, then recommend practical changes you can measure.', href: '#consulting', cta: 'How consulting works' },
+  { icon: 'Layers', title: 'Outsourced IT teams', blurb: 'Hand a defined scope to a managed group of specialists, and keep your own people on core goals.', href: '#outsourcing', cta: 'How it works' },
+  { icon: 'GraduationCap', title: 'IT training', blurb: 'Practical, instructor-led sessions for your team, shaped around your tools and your goals.', href: '#training', cta: 'Training topics' },
+];
+
+export const consultingSteps = [
+  { icon: 'Search', title: 'Assess', blurb: 'We review your systems, your goals and the gaps, and ask the questions a good colleague would.' },
+  { icon: 'Lightbulb', title: 'Recommend', blurb: 'You get a plain-language plan: what to change, in what order, and what it should cost and deliver.' },
+  { icon: 'Rocket', title: 'Deliver and support', blurb: 'Specialists carry the plan out with you, and we stay available as your needs change.' },
+];
+
+export const outsourcing = [
+  'A defined scope, timeline and success measure, agreed before work starts',
+  'A managed group of specialists, led by one accountable contact',
+  'Regular, plain updates so you always know where things stand',
+  'The option to scale the team up or down as the work changes',
+];
+
+export const training = {
+  features: [
+    { icon: 'BookOpen', title: 'Hands-on', blurb: 'Practical exercises and real examples your team can reuse straight away.' },
+    { icon: 'Target', title: 'Tailored', blurb: 'Content shaped around your stack, your projects and your skill gaps.' },
+    { icon: 'Users', title: 'Flexible groups', blurb: 'From one person to a full team, on dates that work for you.' },
+    { icon: 'MapPin', title: 'Where you are', blurb: 'Delivered at your office, ours or online, with materials provided.' },
+  ],
+  topics: ['Front-end development', 'Full-stack development', 'API management', 'Cloud & DevOps', 'IT security', 'Data management', 'QA automation', 'IT infrastructure'],
+};
+
+// ---------- About Us page ----------
+export const mission = {
+  mission: 'To connect exceptional technology talent with the organizations that need it, through honest advice, clear contracts and follow-through.',
+  vision: 'To be the IT staffing and consulting partner businesses call first, because the last engagement went the way we said it would.',
+};
+
+export const approach = [
+  { icon: 'UserCheck', title: 'One point of contact', blurb: 'A named recruiter owns your account, knows your team, and answers when you call.' },
+  { icon: 'Search', title: 'A dedicated search', blurb: 'We run your requisition as a focused search, not a job post that waits for replies.' },
+  { icon: 'ChartColumn', title: 'Results you can measure', blurb: 'We agree what good looks like up front, such as time to shortlist and fit after 90 days, and report against it.' },
+];
+
+export const anySize = 'Start-up, local business, growing company or enterprise: the process is the same and the effort is too. We shape the engagement to fit your size, your stack and your culture.';
+
+// ---------- Careers page ----------
+export const lookingFor = [
+  { icon: 'Target', title: 'Results-minded', blurb: 'You care about outcomes for the client, and you can show them.' },
+  { icon: 'Handshake', title: 'Collaborative', blurb: 'You build good working relationships with clients and colleagues.' },
+  { icon: 'BookOpen', title: 'Always learning', blurb: 'You keep sharpening your skills and you share what you learn.' },
+  { icon: 'MessageSquareText', title: 'Straight talking', blurb: 'You are clear, honest and easy to work with.' },
+  { icon: 'Workflow', title: 'Process-minded', blurb: 'You look for ways to make the work smoother and more reliable.' },
+  { icon: 'BadgeCheck', title: 'Aligned with us', blurb: 'You share our values: expert, reliable, connected and direct.' },
+];
+
+export const referral = [
+  { icon: 'Handshake', title: 'Introduce someone', blurb: 'Tell our HR team about a skilled person who should be on our radar.' },
+  { icon: 'MessagesSquare', title: 'We take it from there', blurb: 'We speak to them, treat them well, and keep you informed.' },
+  { icon: 'Gift', title: 'Recognition', blurb: 'If it leads to a placement, we thank you. HR confirms the terms in writing before you refer.' },
 ];
