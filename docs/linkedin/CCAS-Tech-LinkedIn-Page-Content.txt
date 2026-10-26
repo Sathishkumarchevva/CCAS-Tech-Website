@@ -4,7 +4,7 @@ CCAS TECH — LINKEDIN COMPANY PAGE: EVERYTHING TO PASTE
 ==============================================================================
 CONFIRM BEFORE YOU PUBLISH
 ==============================================================================
-1. Website domain. The website is on ccas-tech.com (confirmed), which matches your Microsoft 365 account. Make sure the email address info@ccas-tech.com exists and is monitored, because the website and LinkedIn both publish it.
+1. Website domain. The website is on ccas-tech.com (confirmed), which matches your Microsoft 365 account. Make sure the email address hr@ccas-tech.com exists and is monitored, because the website and LinkedIn both publish it.
 
 2. Facts to add: year founded, headquarters address, company size, phone number. None of these were available, so they are marked TODO and left out of the copy.
 
@@ -26,7 +26,7 @@ Company type: Privately Held   <-- Confirm (Privately Held / Partnership / Self-
 Year founded: [TO BE FILLED IN]   <-- Add the real year   [Where: Page details → Year founded]
 Headquarters / location: [TO BE FILLED IN]   <-- Add the real street address, city, state and ZIP   [Where: Page details → Locations]
 Phone: [TO BE FILLED IN]   <-- Optional. Add a monitored business number   [Where: Page details → Phone]
-Contact email: info@ccas-tech.com   <-- Confirm this mailbox exists and is monitored   [Where: Mentioned in About and posts]
+Contact email: hr@ccas-tech.com   <-- Confirm this mailbox exists and is monitored   [Where: Mentioned in About and posts]
 Custom button: Contact us  →  https://ccas-tech.com/contact/   (Alternative: Learn more → https://ccas-tech.com/services/)   [Where: Page → Custom button]
 Hashtags (up to 3): #ITStaffing  #TechTalent  #ITConsulting   [Where: Page details → Hashtags]
 
@@ -43,7 +43,7 @@ ALTERNATIVE 2 (96):
 USA-based IT consulting and staffing: highly skilled technology consultants, ready when you are.
 
 ==============================================================================
-03  ABOUT / OVERVIEW (max 2000; this one is 1518)
+03  ABOUT / OVERVIEW (max 2000; this one is 1516)
 ==============================================================================
 Great technology needs the right people behind it.
 
@@ -68,7 +68,7 @@ Vetted consultants. Clear contracts. A recruiter who stays close. Expert, reliab
 
 BUSINESSES: tell us the role and the timeline at https://ccas-tech.com/contact/
 TECHNOLOGY PROFESSIONALS: join our network at https://ccas-tech.com/consultants/
-Email: info@ccas-tech.com
+Email: hr@ccas-tech.com
 
 ==============================================================================
 04  SPECIALTIES (20 of 20) AND HASHTAGS
