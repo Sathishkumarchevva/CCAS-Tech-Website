@@ -26,7 +26,7 @@ export const nav = [
   { label: 'Contact Us', href: '/contact-us/' },
 ];
 
-export type Role = { group: 'software' | 'data' | 'security' | 'infrastructure'; slug: string; icon: string; title: string; blurb: string; detail: string; skills: string[] };
+export type Role = { group: 'software' | 'data' | 'security' | 'infrastructure' | 'cx'; slug: string; icon: string; title: string; blurb: string; detail: string; skills: string[] };
 
 export const roles: Role[] = [
   { group: 'software', slug: 'full-stack-developer', icon: 'CodeXml', title: 'Full-Stack Developer', blurb: 'Engineers who connect the interface, the API and the database.',
@@ -38,6 +38,12 @@ export const roles: Role[] = [
   { group: 'software', slug: 'qa-automation-engineer', icon: 'Bug', title: 'QA Automation Engineer', blurb: 'Automated testing built into every release.',
     detail: 'Testers and engineers who build automated checks into the delivery pipeline so quality is verified continuously, not at the end.',
     skills: ['Selenium', 'Playwright', 'Cypress', 'CI pipelines', 'API testing'] },
+  { group: 'cx', slug: 'nice-cxone-developer', icon: 'Headset', title: 'Nice CXone Developer', blurb: 'Custom routing, IVR and integrations on NICE CXone.',
+    detail: 'Developers who build and extend NICE CXone contact centers: call and digital routing, self-service flows, and integrations with your CRM and business systems.',
+    skills: ['CXone Studio', 'REST APIs', 'IVR & routing', 'CRM integration', 'Agent apps'] },
+  { group: 'cx', slug: 'genesys-cloud-developer', icon: 'Headset', title: 'Genesys Cloud Developer', blurb: 'Flows, APIs and integrations on Genesys Cloud.',
+    detail: 'Developers who design and build on Genesys Cloud: Architect flows, platform API integrations, data actions and embedded agent experiences.',
+    skills: ['Architect flows', 'Platform API', 'Data Actions', 'Web messaging', 'Embeddable framework'] },
   { group: 'software', slug: 'web-developer', icon: 'Monitor', title: 'Web Developer', blurb: 'Fast, accessible sites and web apps that work on every device.',
     detail: 'Front-end developers who build fast, accessible interfaces that hold up on every device.',
     skills: ['HTML/CSS', 'JavaScript', 'Accessibility', 'CMS', 'Performance'] },
@@ -141,11 +147,12 @@ export const groups = [
   { id: 'data', label: 'Data' },
   { id: 'security', label: 'Security' },
   { id: 'infrastructure', label: 'Infrastructure' },
+  { id: 'cx', label: 'Contact center' },
 ];
 
 export const tech = [
   ['Python', 'TypeScript', 'React', 'Java', '.NET', 'Swift', 'Kotlin', 'Node.js', 'Go', 'SQL'],
-  ['AWS', 'Azure', 'GCP', 'Kubernetes', 'Terraform', 'Docker', 'GitHub Actions', 'Snowflake', 'Databricks', 'Power BI'],
+  ['AWS', 'Azure', 'GCP', 'Kubernetes', 'Terraform', 'Docker', 'GitHub Actions', 'Snowflake', 'Databricks', 'Power BI', 'NICE CXone', 'Genesys Cloud'],
 ];
 
 // What we place, grouped the way clients ask for it (used on the About page).
