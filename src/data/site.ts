@@ -6,7 +6,7 @@ export const site = {
   url: 'https://ccas-tech.com',
   tagline: 'The right expert, connected to the right team.',
   description:
-    'CCAS Tech is a USA-based IT consulting and staffing company. We connect businesses with highly skilled technology consultants: vetted people, clear contracts, the right expert for the right team.',
+    'We connect businesses with highly skilled technology consultants: vetted people, clear contracts, the right expert for the right team.',
   email: 'hr@ccas-tech.com',
   founded: 2020,
   teamSize: { min: 11, max: 50 },
