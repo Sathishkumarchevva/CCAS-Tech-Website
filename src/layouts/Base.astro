@@ -18,6 +18,8 @@ const jsonLd = {
   logo: new URL('/images/ccas-tech-logo-color.svg', site.url).href,
   description: site.description,
   email: site.email,
+  ...(site.phone && { telephone: site.phone.replace(/[^+\d]/g, '') }),
+  ...(site.linkedin && { sameAs: [site.linkedin] }),
   slogan: site.tagline,
   foundingDate: String(site.founded),
   numberOfEmployees: { '@type': 'QuantitativeValue', minValue: site.teamSize.min, maxValue: site.teamSize.max },

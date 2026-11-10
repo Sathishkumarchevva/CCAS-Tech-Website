@@ -10,13 +10,12 @@ export const site = {
   email: 'hr@ccas-tech.com',
   founded: 2020,
   teamSize: { min: 11, max: 50 },
-  // TODO(client): add a phone number (hidden while empty) and, if you want it shown, a street address.
   city: 'Davidson',
   region: 'North Carolina',
   regionCode: 'NC',
-  phone: '',
+  phone: '+1 (704) 856-6444',
   address: 'Davidson, North Carolina, USA',
-  linkedin: '', // TODO(client): company LinkedIn URL
+  linkedin: 'https://www.linkedin.com/company/ccastech',
 };
 
 export const nav = [
